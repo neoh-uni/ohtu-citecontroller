@@ -49,7 +49,7 @@ class Reference(ABC):
         year: str,  # or int?
     ):
 
-        self.cite = cite  # ?
+        #self.cite = cite  # ?
         self.author = author
         self.title = title
         self.year = year
