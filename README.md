@@ -1,8 +1,8 @@
 # ohtugroup2
-OhTu group2 eta
+Ohjelmistotuotanto Miniprojekti  
+Etäryhmä 2
 
-test
 
-Joonaksen commit testi
+### Backlogit
 
-Noora test
+Product- sekä sprint backlogit samassa Google Docs tiedostossa: [backlogit](https://docs.google.com/spreadsheets/d/1rT_qqeMHwjVh0V5nsZWkXJ-ITP9PoduPhPwhL3oXlmU/)
