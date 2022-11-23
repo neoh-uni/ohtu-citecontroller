@@ -88,13 +88,13 @@ class Reference(ABC):
 
     @property
     def year(self):
-        # TODO
-        ...
+        """ Returns publishment year"""
+        return self._year
 
     @year.setter
     def year(self, new_year):
-        # TODO
-        ...
+        # TODO: check isdigit()
+        self._year = new_year
 
     @abstractmethod
     def __str__(self):

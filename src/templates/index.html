@@ -1,0 +1,84 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<title>Source manager for LaTex</title>
+<div class="container">
+  <nav class="navbar navbar-expand-sm navbar-light">
+    <a class="navbar-brand" href="/">Main Page</a>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Page1</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Page 2</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Page 3</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="row">
+    <div class="col-8">
+      <h1>Welcome to Source manager for LaTex sources</h1>
+      <p>
+        This is a webpage where you can manage sources for the LaTex format.
+      </p>
+      <p>
+        The website is still in development.
+      </p>
+      
+      <h5>Create New Source</h5>
+
+      <form action="/createsource" method="post">
+
+        <div class="form-group col-6">
+          <label for="inputbook_name">Book name</label>
+          <input type="text" class="form-control" id="inputBookname" name="book_name">
+        </div>
+
+        <div class="form-group col-6">
+          <label for="inputAuthor">Author</label>
+          <input type="text" class="form-control" id="inputAuthorname" name="authour">
+        </div>
+        
+        <div class="form-group col-6">
+            <label for="inputYear">Year</label>
+            <input type="text" class="form-control" id="inputYear" name="year">
+          </div>
+
+
+        <div class="form-group col-6">
+          <input type="submit" class="btn btn-primary" value="Create source">
+        </div>
+
+      </form>
+
+      
+    </div>
+    <div class="col-4">
+      <h4>User</h4>
+      <p>                
+        {% if session.user_id %}
+        <p>You are logged in as {{ user }}</p>
+        <a href="/logout" class="btn btn-primary" >Logout</a>
+        {% else %}
+        <form action="/login" method="post">
+
+            <div class="form-group col-6">
+              <label for="inputUsername">Username</label>
+              <input type="text" class="form-control" id="inputUsername" name="username">
+            </div>
+            <div class="form-group col-6">
+              <label for="inputPassword">Password</label>
+              <input type="password" class="form-control" id="inputPassword" name="password">
+            </div>
+            <div class="form-group col-6">
+              <input type="submit" class="btn btn-primary" value="Login">
+            </div>
+          </form>
+          <a href="/register" class="btn btn-primary" >Register</a>
+        {% endif %}
+
+    </div>
+  </div>
+</div>
