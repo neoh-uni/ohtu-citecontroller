@@ -2,7 +2,7 @@
 name = "ohtugroup2"
 version = "0.1.0"
 description = ""
-authors = ["Alexander <ale.engelhardt@outlook.com>"]
+authors = ["Alexander, Joonas, Meeri, Neoh, Noora, Juuso"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
