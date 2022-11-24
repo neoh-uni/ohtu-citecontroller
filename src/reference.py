@@ -36,8 +36,8 @@ from datetime import datetime
 
 def check_year(instance, attribute, given_year):
     """
-    Checks that publishment year is in str(integers),
-    and is in range year [500, current year + 5]
+    Checks that publishment year is in a reasonable range; 
+    e.g [500, current year + 5]
     """
     year_now = datetime.now().year
     if (given_year > year_now + 5) or (given_year < 500):
