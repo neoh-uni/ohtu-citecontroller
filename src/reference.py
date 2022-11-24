@@ -33,17 +33,19 @@ from attrs import define, astuple, validators, fields, field
 from typing import Optional
 from datetime import datetime
 
+
 def check_year(instance, attribute, given_year):
     """
-    Checks that publishment year is in str(integers), 
+    Checks that publishment year is in str(integers),
     and is in range year [500, current year + 5]
     """
     if not given_year.isdigit():
         raise ValueError("Year should be a string of integers")
     year_now = datetime.now().year
     given_year = int(given_year)
-    if (given_year > year_now  + 5) or (given_year < 500):
+    if (given_year > year_now + 5) or (given_year < 500):
         raise ValueError(f"Given year is not in range [500, {year_now+5}]")
+
 
 def check_name(instance, attribute, given_name):
     """
@@ -58,6 +60,7 @@ def check_name(instance, attribute, given_name):
     for name in split_name:
         if not name.isalpha():
             raise ValueError("Name has to consists only of alphabet letters")
+
 
 def check_len(instance, attribute, given_str):
     """
@@ -78,13 +81,13 @@ class Book:
 
     # TODO: -- optional Bibitex settings for Book class, no checks yet --
     address: Optional[str] = field(default=None)
-    edition:  Optional[str] = field(default=None)
-    editor:  Optional[str] = field(default=None)
-    month:  Optional[str] = field(default=None)
-    note:  Optional[str] = field(default=None)
-    number:  Optional[str] = field(default=None)
-    series:  Optional[str] = field(default=None)
-    volume:  Optional[str] = field(default=None)
+    edition: Optional[str] = field(default=None)
+    editor: Optional[str] = field(default=None)
+    month: Optional[str] = field(default=None)
+    note: Optional[str] = field(default=None)
+    number: Optional[str] = field(default=None)
+    series: Optional[str] = field(default=None)
+    volume: Optional[str] = field(default=None)
 
 
 """
