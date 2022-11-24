@@ -25,103 +25,74 @@ Reference types given by ohtu:
 }
 
 
-
 More types: wikipedia https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
 e.g. booklet, inbook, incollection, manual, mastersthesis/phdhesis, misc, proceedings, tech report, unpublished
 
 """
-from abc import ABC, abstractmethod
+from attrs import define, astuple, validators, fields, field
+from typing import Optional
+from datetime import datetime
 
 
-def spellingChecker():
-    # TODO
-    ...
-
-
-class Reference(ABC):
-    """Default class for all reference objects"""
-
-    def __init__(
-        self,
-        # cite: str # e.g. Martin09 for {Martin, Robert} ? init now or later
-        author: str,
-        title: str,
-        year: str,  # or int?
-    ):
-
-        #self.cite = cite  # ?
-        self.author = author
-        self.title = title
-        self.year = year
-
+def check_year(instance, attribute, given_year):
     """
-    @property
-    def cite(self):
-        return self._cite
-
-    @cite.setter
-    def cite(self, new_cite):
-        # citation format e.g. Martin09 given by user
-        #TODO
-        self._cite = new_cite
+    Checks that publishment year is in a reasonable range; 
+    e.g [500, current year + 5]
     """
-
-    @property
-    def author(self):
-        return self._author
-
-    @author.setter
-    def author(self, new_name):
-        """Check author str format before adding"""
-        # TODO
-        self._author = new_name
-
-    @property
-    def title(self):
-        return self._title
-
-    @title.setter
-    def title(self, new_title):
-        """Check title str format before adding"""
-        # TODO
-        self._title = new_title
-
-    @property
-    def year(self):
-        # TODO
-        ...
-
-    @year.setter
-    def year(self, new_year):
-        # TODO
-        ...
-
-    @abstractmethod
-    def __str__(self):
-        """return ref in latex format? or separate method"""
+    year_now = datetime.now().year
+    if (given_year > year_now + 5) or (given_year < 500):
+        raise ValueError(f"Given year is not in range [500, {year_now+5}]")
 
 
-# new file for this?
-class Book(Reference):
-    """Reference object for books"""
+def check_name(instance, attribute, given_name):
+    """
+    Check that name is in proper format:
+    - Firstname + ... + Surname
+    - str made of [Aa-Zz]
+    """
+    split_name = given_name.split()
+    len_n = len(split_name)
+    if len_n < 2:
+        raise ValueError("First name and surname is required")
+    for name in split_name:
+        if not name.isalpha():
+            raise ValueError("Name has to consists only of alphabet letters")
 
-    def __init__(self, author: str, title: str, year: str, publisher: str):
 
-        super().__init__(author=author, title=title, year=year)
+def check_len(instance, attribute, given_str):
+    """
+    BibTeX has a 5000 character limit for each field?
+    e.g. https://clemson.libguides.com/LaTeX
+    """
+    if len(given_str) > 5000:
+        raise ValueError("Str length exceeds BibTeX field character limit of 5000")
 
-        self.publisher = publisher
 
-    @property
-    def publisher(self):
-        return self._publisher
+@define
+class Book:
 
-    @publisher.setter
-    def publisher(self, new_publisher):
-        """Check publisher format"""
-        # TODO
-        self._publisher = new_publisher
+    author: str = field(validator=[validators.instance_of(str), check_name, check_len])
+    title: str = field(validator=[validators.instance_of(str), check_len])
+    year: int = field(validator=[validators.instance_of(int), check_year])
+    publisher: str = field(validator=[validators.instance_of(str), check_len])
 
-    def __str__(self):
-        """return ref in latex format? or separate method"""
-        # TODO
-        return f"@book\{{MY_CITE\n  author = {self.author}..."
+    # TODO: -- optional Bibitex settings for Book class, no checks yet --
+    address: Optional[str] = field(default=None)
+    edition: Optional[str] = field(default=None)
+    editor: Optional[str] = field(default=None)
+    month: Optional[str] = field(default=None)
+    note: Optional[str] = field(default=None)
+    number: Optional[str] = field(default=None)
+    series: Optional[str] = field(default=None)
+    volume: Optional[str] = field(default=None)
+
+
+"""
+f = Book(author="Matt Kerry", title="magic land of 123", publisher="hehe", year=1999)
+print(f.author)
+print(f.title)
+print(f.publisher)
+print(f.year)
+f.author = "test" #should produce error
+print(f.author)
+"""
