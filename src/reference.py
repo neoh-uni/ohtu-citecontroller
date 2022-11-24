@@ -39,10 +39,7 @@ def check_year(instance, attribute, given_year):
     Checks that publishment year is in str(integers),
     and is in range year [500, current year + 5]
     """
-    if not given_year.isdigit():
-        raise ValueError("Year should be a string of integers")
     year_now = datetime.now().year
-    given_year = int(given_year)
     if (given_year > year_now + 5) or (given_year < 500):
         raise ValueError(f"Given year is not in range [500, {year_now+5}]")
 
@@ -76,7 +73,7 @@ class Book:
 
     author: str = field(validator=[validators.instance_of(str), check_name, check_len])
     title: str = field(validator=[validators.instance_of(str), check_len])
-    year: str = field(validator=[validators.instance_of(str), check_year, check_len])
+    year: int = field(validator=[validators.instance_of(int), check_year])
     publisher: str = field(validator=[validators.instance_of(str), check_len])
 
     # TODO: -- optional Bibitex settings for Book class, no checks yet --
@@ -91,10 +88,11 @@ class Book:
 
 
 """
-f = Book(author="Matt Kerry", title="magic land of 123", publisher="hehe", year="1999")
+f = Book(author="Matt Kerry", title="magic land of 123", publisher="hehe", year=1999)
 print(f.author)
 print(f.title)
 print(f.publisher)
+print(f.year)
 f.author = "test" #should produce error
 print(f.author)
 """
