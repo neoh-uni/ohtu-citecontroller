@@ -68,7 +68,7 @@ def check_len(instance, attribute, given_str):
     e.g. https://clemson.libguides.com/LaTeX
     """
     if len(given_str) > 5000:
-        raise ValueError("Title length exceeds BibTeX character limit of 5000")
+        raise ValueError("Str length exceeds BibTeX field character limit of 5000")
 
 
 @define
@@ -95,4 +95,6 @@ f = Book(author="Matt Kerry", title="magic land of 123", publisher="hehe", year=
 print(f.author)
 print(f.title)
 print(f.publisher)
+f.author = "test" #should produce error
+print(f.author)
 """
