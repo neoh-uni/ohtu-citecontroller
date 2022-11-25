@@ -26,3 +26,7 @@ class TestBook(unittest.TestCase):
 
     def test_error_with_nonalph_name(self):
         self.assertRaises(ValueError, reference.Book,author="Pro C0der", title="What is DevOps?", publisher="unigrafia", year=2011)
+
+    def test_error_with_nonvalid_year(self):
+        self.assertRaises(ValueError, reference.Book,author="Pro Coder", title="What is DevOps?", publisher="unigrafia", year=300)
+        self.assertRaises(ValueError, reference.Book,author="Pro Coder", title="What is DevOps?", publisher="unigrafia", year=5000)
