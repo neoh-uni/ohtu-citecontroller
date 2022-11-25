@@ -1,6 +1,8 @@
-# ohtugroup2
+# Citecontroller
 Ohjelmistotuotanto Miniprojekti  
 Etäryhmä 2
+
+Deployed at: https://citecontroller.herokuapp.com/
 
 
 ### Backlogit
