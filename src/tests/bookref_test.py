@@ -6,7 +6,7 @@ class TestBook(unittest.TestCase):
         self.valid_book = reference.Book(author="Pro Coder", title="What is DevOps?", publisher="unigrafia", year=2011)
         self.error_str = "a"*5001
     def test_book_author(self):
-        self.assertEqual(self.valid_book.author, "Shit Coder")
+        self.assertEqual(self.valid_book.author, "Pro Coder")
         
     def test_book_publisher(self):
         self.assertEqual(self.valid_book.publisher, "unigrafia")
