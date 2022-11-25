@@ -21,7 +21,7 @@ class TestBook(unittest.TestCase):
         self.assertRaises(TypeError, reference.Book)
 
     def test_error_with_unexpected_len_args(self):
-        self.assertRaises(ValueError, reference.Book,author="Shit Coder", title="What is DevOps?", publisher=self.error_str, year=2011)
+        self.assertRaises(ValueError, reference.Book,author="Pro Coder", title="What is DevOps?", publisher=self.error_str, year=2011)
 
     def test_error_with_nonalph_name(self):
-        self.assertRaises(ValueError, reference.Book,author="Shit C0der", title="What is DevOps?", publisher="unigrafia", year=2011)
+        self.assertRaises(ValueError, reference.Book,author="Pro C0der", title="What is DevOps?", publisher="unigrafia", year=2011)
