@@ -1,12 +1,13 @@
 from reference import Book
+from services.book_service import book_service as default_book_service
 
 class UserInputError(Exception):
     pass
 
 class Controller:
 
-    def __init__(self):
-        pass
+    def __init__(self, book_service=default_book_service):
+        self.book_service = book_service
 
     def validate_book(info: dict):
         if "author" not in info:
@@ -39,7 +40,8 @@ class Controller:
 
         return book
 
-    def add_cite(type: str, info: dict):
+    def add_cite(self, type: str, info: dict):
         if type == "book":
             validate_book(info)
             book = compile_book(info)
+            self.book_service.add_book(book)
