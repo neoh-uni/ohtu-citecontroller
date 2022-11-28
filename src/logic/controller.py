@@ -37,11 +37,10 @@ class Controller:
 
     def compile_book(info: dict):
         book = Book(info["author"], info["title"], info["year"], info["publisher"])
-
         return book
 
     def add_cite(self, type: str, info: dict):
         if type == "book":
             self.validate_book(info)
             book = self.compile_book(info)
-            self.book_service.add_book(book)
+            return book
