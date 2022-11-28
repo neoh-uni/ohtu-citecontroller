@@ -1,11 +1,12 @@
 from logic.reference import Book
 from services.book_service import book_service as default_book_service
 
+
 class UserInputError(Exception):
     pass
 
-class Controller:
 
+class Controller:
     def __init__(self, book_service=default_book_service):
         self.book_service = book_service
 
@@ -33,7 +34,6 @@ class Controller:
 
         if info["publisher"] == None:
             raise UserInputError("Book must have a publisher")
-
 
     def compile_book(info: dict):
         book = Book(info["author"], info["title"], info["year"], info["publisher"])

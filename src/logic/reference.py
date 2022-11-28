@@ -36,7 +36,7 @@ from datetime import datetime
 
 def check_year(instance, attribute, given_year):
     """
-    Checks that publishment year is in a reasonable range; 
+    Checks that publishment year is in a reasonable range;
     e.g [500, current year + 5]
     """
     year_now = datetime.now().year
@@ -85,4 +85,3 @@ class Book:
     number: Optional[str] = field(default=None)
     series: Optional[str] = field(default=None)
     volume: Optional[str] = field(default=None)
-

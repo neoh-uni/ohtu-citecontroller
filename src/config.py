@@ -9,4 +9,4 @@ except FileNotFoundError:
     pass
 
 DATABASE_URL = os.getenv("DATABASE_URL")
-DATABASE_URL = DATABASE_URL.replace('postgres://', 'postgresql://')
+DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://")

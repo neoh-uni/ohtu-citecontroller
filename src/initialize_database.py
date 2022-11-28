@@ -6,7 +6,8 @@ app.app_context().push()
 
 
 def create_tables():
-    db.session.execute("""
+    db.session.execute(
+        """
             CREATE TABLE books (
             id SERIAL PRIMARY KEY,
             author TEXT,
@@ -14,16 +15,21 @@ def create_tables():
             year INTEGER,
             publisher TEXT
         );
-    """)
+    """
+    )
 
     db.session.commit()
+
 
 def drop_tables():
-    db.session.execute("""
+    db.session.execute(
+        """
         DROP TABLE IF EXISTS books;
-    """)
+    """
+    )
 
     db.session.commit()
+
 
 def initialize_database():
     drop_tables()
