@@ -1,6 +1,6 @@
 from flask import render_template, redirect, request, Blueprint
 
-# from logic.reference import Book
+from logic.reference import Book
 from services.book_service import book_service
 
 
@@ -22,7 +22,3 @@ def create_book():
         publisher = request.form["publisher"]
         book_service.add_book(author, title, year, publisher)
         return redirect("/")
-
-    """ En saanut importattua book
-       book = Book(author, title, year, publisher)
-       book_service.add_book(book)"""
