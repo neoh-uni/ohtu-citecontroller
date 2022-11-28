@@ -86,13 +86,3 @@ class Book:
     series: Optional[str] = field(default=None)
     volume: Optional[str] = field(default=None)
 
-
-"""
-f = Book(author="Matt Kerry", title="magic land of 123", publisher="hehe", year=1999)
-print(f.author)
-print(f.title)
-print(f.publisher)
-print(f.year)
-f.author = "test" #should produce error
-print(f.author)
-"""

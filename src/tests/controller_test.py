@@ -1,6 +1,6 @@
 import unittest
-from src.logic import controller
-from src.logic import reference
+from logic.controller import Controller
+from logic.reference import Book
 
 class TestController(unittest.TestCase):
     def setUp(self):

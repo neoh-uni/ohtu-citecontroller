@@ -1,5 +1,5 @@
 import unittest
-from src.logic import reference
+from logic import reference
 
 class TestBook(unittest.TestCase):
     def setUp(self):
