@@ -12,4 +12,4 @@ class BookService:
         return self._book_repository.new_book(self.c.add_cite("book", {"author": author, "title": title, "year": year, "publisher": publisher}))
 
 
-book_service = BookService()
+book_s = BookService()

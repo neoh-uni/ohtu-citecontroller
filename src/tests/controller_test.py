@@ -13,8 +13,8 @@ class TestController(unittest.TestCase):
         }
         self.controller = Controller()
 
-    def test_constructor_assigns_book_service(self):
-        self.assertIsNotNone(self.controller.book_service)
+    # def test_constructor_assigns_book_service(self):
+    #    self.assertIsNotNone(self.controller.book_service)
 
     def test_compile_book_creates_right_valid_book(self):
         book = self.controller.compile_book(self.valid_book)

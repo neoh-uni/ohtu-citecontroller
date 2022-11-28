@@ -1,5 +1,5 @@
 from logic.reference import Book
-from services.book_service import book_service as default_book_service
+from services.book_service import book_s as default_book_service
 
 
 class UserInputError(Exception):
