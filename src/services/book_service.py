@@ -20,5 +20,5 @@ class BookService:
 
 
 
-book_s = BookService()
+book_service = BookService()
 
