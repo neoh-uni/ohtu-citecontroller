@@ -13,7 +13,7 @@ def index():
 
 
 # lukee formin tiedot
-@routes.route("/createsource", methods=["post"])
+@routes.route("/createbook", methods=["post"])
 def create_book():
     if request.method == "POST":
         title = request.form["book_name"]
@@ -22,3 +22,17 @@ def create_book():
         publisher = request.form["publisher"]
         book_service.add_book(author, title, year, publisher)
         return redirect("/")
+
+@app.route("/choosesource", methods=["POST"])
+def choose_source_type():
+
+    source_type = request.form["radiobutton"]
+
+    if source_type == "book":
+        return render_template("test.html", book=True)
+
+    if source_type == "article":
+        return render_template("test.html", article=True)
+
+    if source_type == "in_proceedings":
+        return render_template("test.html", in_proceedings=True)

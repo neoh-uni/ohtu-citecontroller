@@ -1,6 +1,8 @@
 <!doctype html>
+
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> <link rel="stylesheet" href="test.css">
 <title>Source manager for LaTex</title>
 <div class="container">
   <nav class="navbar navbar-expand-sm navbar-light">
@@ -28,8 +30,35 @@
       </p>
       
       <h5>Create New Source</h5>
+      
+      <form action="/choosesource" method ="post">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="radiobutton" id="book" value="book">
+            <label class="form-check-label" for="inlineRadio1">book</label>
+        </div>
+    
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="radiobutton" id="article" value="article">
+            <label class="form-check-label" for="inlineRadio2">article</label>
+        </div>
+        
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="radiobutton" id="in_proceedings" value="in_proceedings">
+            <label class="form-check-label" for="inlineRadio3">in proceedings</label>
+        </div>
 
-      <form action="/createsource" method="post">
+        <div class="form-group col-6">
+            <input type="submit" class="btn btn-primary" value="choose type">
+            </div>
+
+      </form>
+
+
+      {% if book  %}
+      <form action="/createbook" method="post">
+
+
+
 
         <div class="form-group col-6">
           <label for="inputbook_name">Book name</label>
@@ -56,6 +85,67 @@
         </div>
 
       </form>
+      {% endif %}
+
+      {% if article  %}
+      <form action="/createarticle" method="post">
+
+        <div class="form-group col-6">
+          <label for="inputbook_name">Article name</label>
+          <input type="text" class="form-control" id="inputArticlename" name="article_name">
+        </div>
+
+        <div class="form-group col-6">
+          <label for="inputAuthor">Author</label>
+          <input type="text" class="form-control" id="inputAuthorname" name="author">
+        </div>
+        
+        <div class="form-group col-6">
+            <label for="inputYear">Year</label>
+            <input type="text" class="form-control" id="inputYear" name="year">
+          </div>
+
+        <div class="form-group col-6">
+          <label for="inputYear">Publisher</label>
+          <input type="text" class="form-control" id="inputPublisher" name="publisher">
+        </div>
+
+        <div class="form-group col-6">
+          <input type="submit" class="btn btn-primary" value="Create source">
+        </div>
+
+      </form>
+      {% endif %}
+
+      {% if in_proceedings  %}
+      <form action="/createin_proceedings" method="post">
+
+        <div class="form-group col-6">
+          <label for="inputbook_name">In proceeding name</label>
+          <input type="text" class="form-control" id="inputInProceedingName" name="InProceeding_name">
+        </div>
+
+        <div class="form-group col-6">
+          <label for="inputAuthor">Author</label>
+          <input type="text" class="form-control" id="inputAuthorname" name="author">
+        </div>
+        
+        <div class="form-group col-6">
+            <label for="inputYear">Year</label>
+            <input type="text" class="form-control" id="inputYear" name="year">
+          </div>
+
+        <div class="form-group col-6">
+          <label for="inputYear">Publisher</label>
+          <input type="text" class="form-control" id="inputPublisher" name="publisher">
+        </div>
+
+        <div class="form-group col-6">
+          <input type="submit" class="btn btn-primary" value="Create source">
+        </div>
+
+      </form>
+      {% endif %}
 
       {% with messages = get_flashed_messages() %}
       {% if messages %}
