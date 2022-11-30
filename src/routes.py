@@ -23,7 +23,7 @@ def create_book():
         book_service.add_book(author, title, year, publisher)
         return redirect("/")
 
-@app.route("/choosesource", methods=["POST"])
+@routes.app("/choosesource", methods=["POST"])
 def choose_source_type():
 
     source_type = request.form["radiobutton"]
