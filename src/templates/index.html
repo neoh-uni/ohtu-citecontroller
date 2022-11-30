@@ -19,9 +19,9 @@
   </nav>
   <div class="row">
     <div class="col-8">
-      <h1>Welcome to Source manager for LaTex sources</h1>
+      <h1>Cite-Controller</h1>
       <p>
-        This is a webpage where you can manage sources for the LaTex format.
+        Welcome to the supreme citation manager. Here you will be able to fill in forms for various different source types such as books, articles and so forth. Filled in information will automatically be transformed to BibTex format and stored in a database. 
       </p>
       <p>
         The website is still in development.
@@ -38,7 +38,7 @@
 
         <div class="form-group col-6">
           <label for="inputAuthor">Author</label>
-          <input type="text" class="form-control" id="inputAuthorname" name="authour">
+          <input type="text" class="form-control" id="inputAuthorname" name="author">
         </div>
         
         <div class="form-group col-6">
@@ -46,6 +46,10 @@
             <input type="text" class="form-control" id="inputYear" name="year">
           </div>
 
+        <div class="form-group col-6">
+          <label for="inputYear">Publisher</label>
+          <input type="text" class="form-control" id="inputPublisher" name="publisher">
+        </div>
 
         <div class="form-group col-6">
           <input type="submit" class="btn btn-primary" value="Create source">
@@ -53,6 +57,15 @@
 
       </form>
 
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+      {% endwith %}
       
     </div>
     <div class="col-4">
