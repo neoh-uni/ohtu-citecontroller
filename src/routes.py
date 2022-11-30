@@ -16,7 +16,7 @@ def index():
 @routes.route("/createbook", methods=["post"])
 def create_book():
     if request.method == "POST":
-        title = request.form["book_name"]
+        title = request.form["title"]
         author = request.form["author"]
         year = request.form["year"]
         publisher = request.form["publisher"]
