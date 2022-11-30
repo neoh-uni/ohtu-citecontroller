@@ -73,7 +73,7 @@ class Book:
 
     author: str = field(validator=[validators.instance_of(str), check_name, check_len])
     title: str = field(validator=[validators.instance_of(str), check_len])
-    year: int = field(validator=[validators.instance_of(int), check_year])
+    year: int = field(converter=int, validator=[validators.instance_of(int), check_year])
     publisher: str = field(validator=[validators.instance_of(str), check_len])
 
     # TODO: -- optional Bibitex settings for Book class, no checks yet --

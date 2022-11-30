@@ -18,7 +18,6 @@ def create_book():
     if request.method == "POST":
         title = request.form["book_name"]
         author = request.form["author"]
-        year = int(request.form["year"])
         publisher = request.form["publisher"]
         book_service.add_book(author, title, year, publisher)
         return redirect("/")
