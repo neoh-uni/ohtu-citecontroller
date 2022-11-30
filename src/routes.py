@@ -23,16 +23,16 @@ def create_book():
         book_service.add_book(author, title, year, publisher)
         return redirect("/")
 
-@routes.app("/choosesource", methods=["POST"])
+@routes.route("/choosesource", methods=["POST"])
 def choose_source_type():
 
     source_type = request.form["radiobutton"]
 
     if source_type == "book":
-        return render_template("test.html", book=True)
+        return render_template("index.html", book=True)
 
     if source_type == "article":
-        return render_template("test.html", article=True)
+        return render_template("index.html", article=True)
 
     if source_type == "in_proceedings":
-        return render_template("test.html", in_proceedings=True)
+        return render_template("index.html", in_proceedings=True)
