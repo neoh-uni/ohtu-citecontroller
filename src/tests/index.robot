@@ -63,7 +63,9 @@ Set Year
 
 Set Publisher
     [Arguments]  ${year}
-    Input Text  inputPublisher  ${year}
+    Input Text  inputPublisher  ${publisher}
+
+
 
 Submit Reference
     Click Button  Create source

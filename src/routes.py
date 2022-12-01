@@ -13,7 +13,7 @@ def index():
 
 
 # lukee formin tiedot
-@routes.route("/createbook", methods=["post"])
+@routes.route("/createbook", methods=["POST"])
 def create_book():
     if request.method == "POST":
         title = request.form["title"]
@@ -21,6 +21,28 @@ def create_book():
         year = request.form["year"]
         publisher = request.form["publisher"]
         cite_service.add_book(author, title, year, publisher)
+        return redirect("/")
+
+@routes.route("/createarticle", methods=["POST"])
+def create_article():
+    if request.method == "POST":
+        title = request.form["title"]
+        author = request.form["author"]
+        year = request.form["year"]
+        journal = request.form["journal"]
+        volume = request.form["volume"]
+        pages = request.form["pages"]
+        cite_service.add_article(author, title, year, journal, volume, pages)
+        return redirect("/")
+
+@routes.route("/createinproceedings", methods=["POST"])
+def create_inproceedings():
+    if request.method == "POST":
+        title = request.form["title"]
+        author = request.form["author"]
+        year = request.form["year"]
+        booktitle = request.form["booktitle"]
+        cite_service.add_inproceedings(author, title, year, booktitle)
         return redirect("/")
 
 @routes.route("/choosesource", methods=["POST"])
