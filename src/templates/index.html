@@ -88,7 +88,7 @@
       <form action="/createarticle" method="post">
         
         <div class="form-group col-6">
-          <label for="inputbook_name">Article name</label>
+          <label for="inputTitle">Article name</label>
           <input type="text" class="form-control" id="inputArticleTitle" name="title">
         </div>
 
@@ -124,7 +124,7 @@
       {% endif %}
 
       {% if in_proceedings  %}
-      <form action="/createin_proceedings" method="post">
+      <form action="/createinproceedings" method="post">
 
         <div class="form-group col-6">
           <label for="inputbook_name">In proceeding name</label>
@@ -142,8 +142,8 @@
           </div>
 
         <div class="form-group col-6">
-          <label for="inputYear">Publisher</label>
-          <input type="text" class="form-control" id="inputPublisher" name="publisher">
+          <label for="inputBookTitle">Booktitle</label>
+          <input type="text" class="form-control" id="inputBooktitle" name="booktitle">
         </div>
 
         <div class="form-group col-6">
