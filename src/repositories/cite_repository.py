@@ -24,7 +24,7 @@ class CiteRepository:
     
     def new_inproceedings(self, inproceedings):
         sql = """INSERT INTO cites (type, author, title, year, booktitle)
-                VALUES (:type, :author, :title, :year, booktitle)"""
+                VALUES (:type, :author, :title, :year, :booktitle)"""
         db.session.execute(
             sql,
             {"type": "inproceedings", "author": inproceedings.author, "title": inproceedings.title, "year": inproceedings.year, "booktitle": inproceedings.booktitle},

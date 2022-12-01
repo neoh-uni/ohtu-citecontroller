@@ -1,6 +1,4 @@
 from flask import render_template, redirect, request, Blueprint
-
-from logic.reference import Book
 from services.cite_service import cite_service
 
 
