@@ -1,11 +1,10 @@
-from repositories.book_repository import book_repository as default_book_repository
+from repositories.cite_repository import book_repository as default_book_repository
 from logic import reference
 
 # TODO: Make this universal service
-class BookService:
+class CiteService:
     def __init__(self, book_repository=default_book_repository):
         self._book_repository = book_repository
-        
 
     def add_book(self, author, title, year, publisher):
 
@@ -19,5 +18,5 @@ class BookService:
             print(e)
 
 
-book_service = BookService()
+book_service = CiteService()
 
