@@ -10,8 +10,8 @@ def create_table():
             CREATE TABLE cites (
             id SERIAL PRIMARY KEY,
             type TEXT,
-            author TEXT,
             title TEXT,
+            author TEXT,
             year INTEGER,
             publisher TEXT,
             volume INTEGER,
