@@ -1,7 +1,7 @@
 from flask import render_template, redirect, request, Blueprint
 
 from logic.reference import Book
-from services.book_service import book_service
+from services.cite_service import cite_service
 
 
 routes = Blueprint("app", __name__)
@@ -20,7 +20,7 @@ def create_book():
         author = request.form["author"]
         year = request.form["year"]
         publisher = request.form["publisher"]
-        book_service.add_book(author, title, year, publisher)
+        cite_service.add_book(author, title, year, publisher)
         return redirect("/")
 
 @routes.route("/choosesource", methods=["POST"])

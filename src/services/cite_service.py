@@ -1,16 +1,16 @@
-from repositories.cite_repository import book_repository as default_book_repository
+from repositories.cite_repository import cite_repository as default_cite_repository
 from logic import reference
 
 # TODO: Make this universal service
 class CiteService:
-    def __init__(self, book_repository=default_book_repository):
-        self._book_repository = book_repository
+    def __init__(self, cite_repository=default_cite_repository):
+        self._cite_repository = cite_repository
 
     def add_book(self, author, title, year, publisher):
 
         try:
             book = reference.Book(author, title, year, publisher)
-            self._book_repository.new_book(book)
+            self._cite_repository.new_book(book)
             # TODO: communicate with website
             print("Book added")
         except Exception as e:
@@ -18,5 +18,5 @@ class CiteService:
             print(e)
 
 
-book_service = CiteService()
+cite_service = CiteService()
 
