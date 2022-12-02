@@ -496,7 +496,7 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "170b73793bc0a47bb0f2b1d870c8017accc0064734d002bcc0a2dc21268bea1f"
+content-hash = "0fb9309d25a991011ac3a59635f5980c38a993869e4d2ea98262579548a4e600"
 
 [metadata.files]
 async-generator = [

@@ -5,7 +5,6 @@ Suite Teardown  Close Browser
 Test Setup  Go To Home Page
 
 *** Test Cases ***
-*** Test Cases ***
 Adding Article With Valid Everything
     Select Radio Button  radiobutton  article
     Choose Type
