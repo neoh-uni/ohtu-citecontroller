@@ -52,11 +52,13 @@
         <ul>
         {% for article in articles %}     
             <li> {{ article.title }}</li>
-            <li> {{ article.author }}</li>
-            <li> {{ article.year }}</li>
-            <li> {{ article.journal }}</li>
-            <li> {{ article.volume }}</li>
-            <li> {{ article.pages }}</li>
+            <ul>
+              <li> {{ article.author }}</li>
+              <li> {{ article.year }}</li>
+              <li> {{ article.journal }}</li>
+              <li> {{ article.volume }}</li>
+              <li> {{ article.pages }}</li>
+            </ul>
         </ul>
         {% endfor %}
       {% endif %}
@@ -65,11 +67,13 @@
         <ul>
         {% for in_proceeding in in_proceedings %}     
             <li> {{ in_proceeding.title }}</li>
-            <li> {{ in_proceeding.author }}</li>
-            <li> {{ in_proceeding.year }}</li>
-            <li> {{ in_proceeding.journal }}</li>
-            <li> {{ in_proceeding.volume }}</li>
-            <li> {{ in_proceeding.pages }}</li>
+            <ul>
+              <li> {{ in_proceeding.author }}</li>
+              <li> {{ in_proceeding.year }}</li>
+              <li> {{ in_proceeding.journal }}</li>
+              <li> {{ in_proceeding.volume }}</li>
+              <li> {{ in_proceeding.pages }}</li>
+            </ul>
         </ul>
         {% endfor %}
       {% endif %}
