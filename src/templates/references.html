@@ -25,7 +25,7 @@
       <form action="/display_references" method ="post">
         
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="all_references" id="all" value="all">
+            <input class="form-check-input" type="checkbox" name="all_references" id="all" value=1>
             <label class="form-check-label" for="inlineCheckbox1">All references</label>
         </div>
 
@@ -39,9 +39,11 @@
         <ul>
         {% for book in books %}     
             <li> {{ book.title }}</li>
-            <li> {{ book.author }}</li>
-            <li> {{ book.year }}</li>
-            <li> {{ book.publisher }}</li>
+            <ul>
+              <li> {{ book.author }}</li>
+              <li> {{ book.year }}</li>
+              <li> {{ book.publisher }}</li>
+            </ul>
         </ul>
         {% endfor %}
       {% endif %}
