@@ -4,16 +4,20 @@ from app import create_app
 app = create_app()
 app.app_context().push()
 
-
-def create_tables():
+def create_table():
     db.session.execute(
         """
-            CREATE TABLE books (
+            CREATE TABLE cites (
             id SERIAL PRIMARY KEY,
-            author TEXT,
+            type TEXT,
             title TEXT,
+            author TEXT,
             year INTEGER,
-            publisher TEXT
+            publisher TEXT,
+            volume INTEGER,
+            booktitle TEXT,
+            journal TEXT,
+            pages TEXT
         );
     """
     )
@@ -21,10 +25,10 @@ def create_tables():
     db.session.commit()
 
 
-def drop_tables():
+def drop_table():
     db.session.execute(
         """
-        DROP TABLE IF EXISTS books;
+        DROP TABLE IF EXISTS cites;
     """
     )
 
@@ -32,8 +36,8 @@ def drop_tables():
 
 
 def initialize_database():
-    drop_tables()
-    create_tables()
+    drop_table()
+    create_table()
 
 
 if __name__ == "__main__":

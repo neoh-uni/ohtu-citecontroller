@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.1 (Python 3.10.6 on linux)" generated="20221202 10:57:25.322" rpa="false" schemaversion="3">
+<suite id="s1" name="Inproceedings" source="/home/mfsimpan/ohtu/ohtugroup2/src/tests/inproceedings.robot">
+<kw name="Open And Configure Browser" library="resource" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>browser=${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221202 10:57:25.434" level="INFO">Opening browser 'chrome' to base url 'None'.</msg>
+<status status="PASS" starttime="20221202 10:57:25.434" endtime="20221202 10:57:26.273"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221202 10:57:26.273" endtime="20221202 10:57:26.407"/>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<arg>${DELAY}</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" starttime="20221202 10:57:26.407" endtime="20221202 10:57:26.408"/>
+</kw>
+<status status="PASS" starttime="20221202 10:57:25.434" endtime="20221202 10:57:26.408"/>
+</kw>
+<test id="s1-t1" name="Adding Inproceedings With Valid Everything" line="8">
+<kw name="Go To Home Page" library="resource" type="SETUP">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${HOME URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20221202 10:57:26.410" level="INFO">Opening url 'http://citecontroller.herokuapp.com/'</msg>
+<status status="PASS" starttime="20221202 10:57:26.410" endtime="20221202 10:57:26.956"/>
+</kw>
+<status status="PASS" starttime="20221202 10:57:26.409" endtime="20221202 10:57:26.956"/>
+</kw>
+<kw name="Set Title">
+<arg>inproceeding</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>book_name</arg>
+<arg>${book_name}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221202 10:57:26.958" level="INFO">Typing text 'inproceeding' into text field 'book_name'.</msg>
+<msg timestamp="20221202 10:57:27.180" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-40.png"&gt;&lt;img src="selenium-screenshot-40.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20221202 10:57:27.180" level="FAIL">Element with locator 'book_name' not found.</msg>
+<status status="FAIL" starttime="20221202 10:57:26.957" endtime="20221202 10:57:27.181"/>
+</kw>
+<status status="FAIL" starttime="20221202 10:57:26.957" endtime="20221202 10:57:27.181"/>
+</kw>
+<kw name="Set Author">
+<arg>Inproceedingin Kirjoittaja</arg>
+<status status="NOT RUN" starttime="20221202 10:57:27.181" endtime="20221202 10:57:27.181"/>
+</kw>
+<kw name="Set Year">
+<arg>2000</arg>
+<status status="NOT RUN" starttime="20221202 10:57:27.182" endtime="20221202 10:57:27.182"/>
+</kw>
+<kw name="Set Booktitle">
+<arg>booktitle</arg>
+<status status="NOT RUN" starttime="20221202 10:57:27.182" endtime="20221202 10:57:27.182"/>
+</kw>
+<kw name="Submit Reference">
+<status status="NOT RUN" starttime="20221202 10:57:27.182" endtime="20221202 10:57:27.182"/>
+</kw>
+<kw name="Adding Should Succeed">
+<status status="NOT RUN" starttime="20221202 10:57:27.182" endtime="20221202 10:57:27.182"/>
+</kw>
+<status status="FAIL" starttime="20221202 10:57:26.408" endtime="20221202 10:57:27.182">Element with locator 'book_name' not found.</status>
+</test>
+<test id="s1-t2" name="Adding Inproceedings Without Year" line="17">
+<kw name="Go To Home Page" library="resource" type="SETUP">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${HOME URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20221202 10:57:27.183" level="INFO">Opening url 'http://citecontroller.herokuapp.com/'</msg>
+<status status="PASS" starttime="20221202 10:57:27.183" endtime="20221202 10:57:27.371"/>
+</kw>
+<status status="PASS" starttime="20221202 10:57:27.183" endtime="20221202 10:57:27.372"/>
+</kw>
+<kw name="Select Radio Button" library="SeleniumLibrary">
+<arg>radiooptions</arg>
+<arg>inproceedings</arg>
+<doc>Sets the radio button group ``group_name`` to ``value``.</doc>
+<msg timestamp="20221202 10:57:27.373" level="INFO">Selecting 'inproceedings' from radio button 'radiooptions'.</msg>
+<msg timestamp="20221202 10:57:27.572" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-41.png"&gt;&lt;img src="selenium-screenshot-41.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20221202 10:57:27.573" level="FAIL">No radio button with name 'radiooptions' and value 'inproceedings' found.</msg>
+<status status="FAIL" starttime="20221202 10:57:27.372" endtime="20221202 10:57:27.573"/>
+</kw>
+<kw name="Set Title">
+<arg>inproceeding</arg>
+<status status="NOT RUN" starttime="20221202 10:57:27.573" endtime="20221202 10:57:27.573"/>
+</kw>
+<kw name="Set Author">
+<arg>Inproceedingin Kirjoittaja</arg>
+<status status="NOT RUN" starttime="20221202 10:57:27.573" endtime="20221202 10:57:27.573"/>
+</kw>
+<kw name="Set Booktitle">
+<arg>booktitle</arg>
+<status status="NOT RUN" starttime="20221202 10:57:27.573" endtime="20221202 10:57:27.573"/>
+</kw>
+<kw name="Submit Reference">
+<status status="NOT RUN" starttime="20221202 10:57:27.573" endtime="20221202 10:57:27.573"/>
+</kw>
+<kw name="Adding Should Fail With Message">
+<arg>Inproceedings must have a year</arg>
+<status status="NOT RUN" starttime="20221202 10:57:27.574" endtime="20221202 10:57:27.574"/>
+</kw>
+<status status="FAIL" starttime="20221202 10:57:27.182" endtime="20221202 10:57:27.574">No radio button with name 'radiooptions' and value 'inproceedings' found.</status>
+</test>
+<test id="s1-t3" name="Adding Inproceedings Without Title" line="25">
+<kw name="Go To Home Page" library="resource" type="SETUP">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${HOME URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20221202 10:57:27.575" level="INFO">Opening url 'http://citecontroller.herokuapp.com/'</msg>
+<status status="PASS" starttime="20221202 10:57:27.575" endtime="20221202 10:57:27.762"/>
+</kw>
+<status status="PASS" starttime="20221202 10:57:27.574" endtime="20221202 10:57:27.762"/>
+</kw>
+<kw name="Select Radio Button" library="SeleniumLibrary">
+<arg>radiooptions</arg>
+<arg>inproceedings</arg>
+<doc>Sets the radio button group ``group_name`` to ``value``.</doc>
+<msg timestamp="20221202 10:57:27.763" level="INFO">Selecting 'inproceedings' from radio button 'radiooptions'.</msg>
+<msg timestamp="20221202 10:57:27.954" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-42.png"&gt;&lt;img src="selenium-screenshot-42.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20221202 10:57:27.954" level="FAIL">No radio button with name 'radiooptions' and value 'inproceedings' found.</msg>
+<status status="FAIL" starttime="20221202 10:57:27.763" endtime="20221202 10:57:27.954"/>
+</kw>
+<kw name="Set Author">
+<arg>Inproceedingin Kirjoittaja</arg>
+<status status="NOT RUN" starttime="20221202 10:57:27.954" endtime="20221202 10:57:27.954"/>
+</kw>
+<kw name="Set Year">
+<arg>2000</arg>
+<status status="NOT RUN" starttime="20221202 10:57:27.954" endtime="20221202 10:57:27.954"/>
+</kw>
+<kw name="Set Booktitle">
+<arg>booktitle</arg>
+<status status="NOT RUN" starttime="20221202 10:57:27.955" endtime="20221202 10:57:27.955"/>
+</kw>
+<kw name="Submit Reference">
+<status status="NOT RUN" starttime="20221202 10:57:27.955" endtime="20221202 10:57:27.955"/>
+</kw>
+<kw name="Adding Should Fail With Message">
+<arg>Inproceedings must have a title</arg>
+<status status="NOT RUN" starttime="20221202 10:57:27.955" endtime="20221202 10:57:27.955"/>
+</kw>
+<status status="FAIL" starttime="20221202 10:57:27.574" endtime="20221202 10:57:27.955">No radio button with name 'radiooptions' and value 'inproceedings' found.</status>
+</test>
+<test id="s1-t4" name="Adding Inproceedings Without Author" line="33">
+<kw name="Go To Home Page" library="resource" type="SETUP">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${HOME URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20221202 10:57:27.956" level="INFO">Opening url 'http://citecontroller.herokuapp.com/'</msg>
+<status status="PASS" starttime="20221202 10:57:27.956" endtime="20221202 10:57:28.147"/>
+</kw>
+<status status="PASS" starttime="20221202 10:57:27.955" endtime="20221202 10:57:28.148"/>
+</kw>
+<kw name="Select Radio Button" library="SeleniumLibrary">
+<arg>radiooptions</arg>
+<arg>inproceedings</arg>
+<doc>Sets the radio button group ``group_name`` to ``value``.</doc>
+<msg timestamp="20221202 10:57:28.148" level="INFO">Selecting 'inproceedings' from radio button 'radiooptions'.</msg>
+<msg timestamp="20221202 10:57:28.337" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-43.png"&gt;&lt;img src="selenium-screenshot-43.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20221202 10:57:28.338" level="FAIL">No radio button with name 'radiooptions' and value 'inproceedings' found.</msg>
+<status status="FAIL" starttime="20221202 10:57:28.148" endtime="20221202 10:57:28.338"/>
+</kw>
+<kw name="Set Title">
+<arg>inproceeding</arg>
+<status status="NOT RUN" starttime="20221202 10:57:28.338" endtime="20221202 10:57:28.338"/>
+</kw>
+<kw name="Set Year">
+<arg>2000</arg>
+<status status="NOT RUN" starttime="20221202 10:57:28.338" endtime="20221202 10:57:28.338"/>
+</kw>
+<kw name="Set Booktitle">
+<arg>booktitle</arg>
+<status status="NOT RUN" starttime="20221202 10:57:28.338" endtime="20221202 10:57:28.338"/>
+</kw>
+<kw name="Submit Reference">
+<status status="NOT RUN" starttime="20221202 10:57:28.338" endtime="20221202 10:57:28.338"/>
+</kw>
+<kw name="Adding Should Fail With Message">
+<arg>Inproceedings must have an author</arg>
+<status status="NOT RUN" starttime="20221202 10:57:28.338" endtime="20221202 10:57:28.338"/>
+</kw>
+<status status="FAIL" starttime="20221202 10:57:27.955" endtime="20221202 10:57:28.339">No radio button with name 'radiooptions' and value 'inproceedings' found.</status>
+</test>
+<test id="s1-t5" name="Adding Inproceedings Without Booktitle" line="41">
+<kw name="Go To Home Page" library="resource" type="SETUP">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${HOME URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20221202 10:57:28.339" level="INFO">Opening url 'http://citecontroller.herokuapp.com/'</msg>
+<status status="PASS" starttime="20221202 10:57:28.339" endtime="20221202 10:57:28.525"/>
+</kw>
+<status status="PASS" starttime="20221202 10:57:28.339" endtime="20221202 10:57:28.526"/>
+</kw>
+<kw name="Select Radio Button" library="SeleniumLibrary">
+<arg>radiooptions</arg>
+<arg>inproceedings</arg>
+<doc>Sets the radio button group ``group_name`` to ``value``.</doc>
+<msg timestamp="20221202 10:57:28.526" level="INFO">Selecting 'inproceedings' from radio button 'radiooptions'.</msg>
+<msg timestamp="20221202 10:57:28.723" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-44.png"&gt;&lt;img src="selenium-screenshot-44.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20221202 10:57:28.723" level="FAIL">No radio button with name 'radiooptions' and value 'inproceedings' found.</msg>
+<status status="FAIL" starttime="20221202 10:57:28.526" endtime="20221202 10:57:28.724"/>
+</kw>
+<kw name="Set Title">
+<arg>Inproceeding</arg>
+<status status="NOT RUN" starttime="20221202 10:57:28.724" endtime="20221202 10:57:28.724"/>
+</kw>
+<kw name="Set Author">
+<arg>Inproceedingin Kirjoittaja</arg>
+<status status="NOT RUN" starttime="20221202 10:57:28.724" endtime="20221202 10:57:28.724"/>
+</kw>
+<kw name="Set Year">
+<arg>2000</arg>
+<status status="NOT RUN" starttime="20221202 10:57:28.724" endtime="20221202 10:57:28.724"/>
+</kw>
+<kw name="Submit Reference">
+<status status="NOT RUN" starttime="20221202 10:57:28.724" endtime="20221202 10:57:28.724"/>
+</kw>
+<kw name="Adding Should Fail With Message">
+<arg>Inproceedings must have a booktitle</arg>
+<status status="NOT RUN" starttime="20221202 10:57:28.724" endtime="20221202 10:57:28.724"/>
+</kw>
+<status status="FAIL" starttime="20221202 10:57:28.339" endtime="20221202 10:57:28.724">No radio button with name 'radiooptions' and value 'inproceedings' found.</status>
+</test>
+<test id="s1-t6" name="Adding Inproceedings With Invalid Year" line="50">
+<kw name="Go To Home Page" library="resource" type="SETUP">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${HOME URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20221202 10:57:28.725" level="INFO">Opening url 'http://citecontroller.herokuapp.com/'</msg>
+<status status="PASS" starttime="20221202 10:57:28.725" endtime="20221202 10:57:28.912"/>
+</kw>
+<status status="PASS" starttime="20221202 10:57:28.725" endtime="20221202 10:57:28.912"/>
+</kw>
+<kw name="Select Radio Button" library="SeleniumLibrary">
+<arg>radiooptions</arg>
+<arg>inproceedings</arg>
+<doc>Sets the radio button group ``group_name`` to ``value``.</doc>
+<msg timestamp="20221202 10:57:28.913" level="INFO">Selecting 'inproceedings' from radio button 'radiooptions'.</msg>
+<msg timestamp="20221202 10:57:29.106" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-45.png"&gt;&lt;img src="selenium-screenshot-45.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20221202 10:57:29.107" level="FAIL">No radio button with name 'radiooptions' and value 'inproceedings' found.</msg>
+<status status="FAIL" starttime="20221202 10:57:28.912" endtime="20221202 10:57:29.107"/>
+</kw>
+<kw name="Set Title">
+<arg>Inproceeding</arg>
+<status status="NOT RUN" starttime="20221202 10:57:29.107" endtime="20221202 10:57:29.107"/>
+</kw>
+<kw name="Set Author">
+<arg>Inproceedingin Kirjoittaja</arg>
+<status status="NOT RUN" starttime="20221202 10:57:29.107" endtime="20221202 10:57:29.107"/>
+</kw>
+<kw name="Set Year">
+<arg>2</arg>
+<status status="NOT RUN" starttime="20221202 10:57:29.107" endtime="20221202 10:57:29.107"/>
+</kw>
+<kw name="Set Booktitle">
+<arg>booktitle</arg>
+<status status="NOT RUN" starttime="20221202 10:57:29.107" endtime="20221202 10:57:29.107"/>
+</kw>
+<kw name="Submit Reference">
+<status status="NOT RUN" starttime="20221202 10:57:29.107" endtime="20221202 10:57:29.107"/>
+</kw>
+<kw name="Adding Should Fail With Message">
+<arg>Given year is not in range 500, 2027</arg>
+<status status="NOT RUN" starttime="20221202 10:57:29.108" endtime="20221202 10:57:29.108"/>
+</kw>
+<status status="FAIL" starttime="20221202 10:57:28.725" endtime="20221202 10:57:29.108">No radio button with name 'radiooptions' and value 'inproceedings' found.</status>
+</test>
+<test id="s1-t7" name="Adding Inproceedings With Invalid Title" line="59">
+<kw name="Go To Home Page" library="resource" type="SETUP">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${HOME URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20221202 10:57:29.109" level="INFO">Opening url 'http://citecontroller.herokuapp.com/'</msg>
+<status status="PASS" starttime="20221202 10:57:29.109" endtime="20221202 10:57:29.299"/>
+</kw>
+<status status="PASS" starttime="20221202 10:57:29.108" endtime="20221202 10:57:29.300"/>
+</kw>
+<kw name="Select Radio Button" library="SeleniumLibrary">
+<arg>radiooptions</arg>
+<arg>inproceedings</arg>
+<doc>Sets the radio button group ``group_name`` to ``value``.</doc>
+<msg timestamp="20221202 10:57:29.300" level="INFO">Selecting 'inproceedings' from radio button 'radiooptions'.</msg>
+<msg timestamp="20221202 10:57:29.507" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-46.png"&gt;&lt;img src="selenium-screenshot-46.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20221202 10:57:29.508" level="FAIL">No radio button with name 'radiooptions' and value 'inproceedings' found.</msg>
+<status status="FAIL" starttime="20221202 10:57:29.300" endtime="20221202 10:57:29.508"/>
+</kw>
+<kw name="Set Title">
+<arg>1</arg>
+<status status="NOT RUN" starttime="20221202 10:57:29.508" endtime="20221202 10:57:29.508"/>
+</kw>
+<kw name="Set Author">
+<arg>Inproceedingin Kirjoittaja</arg>
+<status status="NOT RUN" starttime="20221202 10:57:29.508" endtime="20221202 10:57:29.508"/>
+</kw>
+<kw name="Set Year">
+<arg>2000</arg>
+<status status="NOT RUN" starttime="20221202 10:57:29.508" endtime="20221202 10:57:29.508"/>
+</kw>
+<kw name="Set Booktitle">
+<arg>booktitle</arg>
+<status status="NOT RUN" starttime="20221202 10:57:29.509" endtime="20221202 10:57:29.509"/>
+</kw>
+<kw name="Submit Reference">
+<status status="NOT RUN" starttime="20221202 10:57:29.509" endtime="20221202 10:57:29.509"/>
+</kw>
+<kw name="Adding Should Fail With Message">
+<arg>Given value is not a string.</arg>
+<status status="NOT RUN" starttime="20221202 10:57:29.509" endtime="20221202 10:57:29.509"/>
+</kw>
+<status status="FAIL" starttime="20221202 10:57:29.108" endtime="20221202 10:57:29.509">No radio button with name 'radiooptions' and value 'inproceedings' found.</status>
+</test>
+<test id="s1-t8" name="Adding Inproceedings With Invalid Author" line="68">
+<kw name="Go To Home Page" library="resource" type="SETUP">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${HOME URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20221202 10:57:29.510" level="INFO">Opening url 'http://citecontroller.herokuapp.com/'</msg>
+<status status="PASS" starttime="20221202 10:57:29.510" endtime="20221202 10:57:29.699"/>
+</kw>
+<status status="PASS" starttime="20221202 10:57:29.509" endtime="20221202 10:57:29.700"/>
+</kw>
+<kw name="Select Radio Button" library="SeleniumLibrary">
+<arg>radiooptions</arg>
+<arg>inproceedings</arg>
+<doc>Sets the radio button group ``group_name`` to ``value``.</doc>
+<msg timestamp="20221202 10:57:29.700" level="INFO">Selecting 'inproceedings' from radio button 'radiooptions'.</msg>
+<msg timestamp="20221202 10:57:29.891" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-47.png"&gt;&lt;img src="selenium-screenshot-47.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20221202 10:57:29.891" level="FAIL">No radio button with name 'radiooptions' and value 'inproceedings' found.</msg>
+<status status="FAIL" starttime="20221202 10:57:29.700" endtime="20221202 10:57:29.892"/>
+</kw>
+<kw name="Set Title">
+<arg>Inproceeding</arg>
+<status status="NOT RUN" starttime="20221202 10:57:29.892" endtime="20221202 10:57:29.892"/>
+</kw>
+<kw name="Set Author">
+<arg>Author</arg>
+<status status="NOT RUN" starttime="20221202 10:57:29.892" endtime="20221202 10:57:29.892"/>
+</kw>
+<kw name="Set Year">
+<arg>2000</arg>
+<status status="NOT RUN" starttime="20221202 10:57:29.892" endtime="20221202 10:57:29.892"/>
+</kw>
+<kw name="Set Booktitle">
+<arg>booktitle</arg>
+<status status="NOT RUN" starttime="20221202 10:57:29.892" endtime="20221202 10:57:29.892"/>
+</kw>
+<kw name="Submit Reference">
+<status status="NOT RUN" starttime="20221202 10:57:29.892" endtime="20221202 10:57:29.892"/>
+</kw>
+<kw name="Adding Should Fail With Message">
+<arg>First name and surname is required</arg>
+<status status="NOT RUN" starttime="20221202 10:57:29.892" endtime="20221202 10:57:29.892"/>
+</kw>
+<status status="FAIL" starttime="20221202 10:57:29.509" endtime="20221202 10:57:29.893">No radio button with name 'radiooptions' and value 'inproceedings' found.</status>
+</test>
+<test id="s1-t9" name="Adding Inproceedings With Invalid Booktitle" line="77">
+<kw name="Go To Home Page" library="resource" type="SETUP">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${HOME URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20221202 10:57:29.893" level="INFO">Opening url 'http://citecontroller.herokuapp.com/'</msg>
+<status status="PASS" starttime="20221202 10:57:29.893" endtime="20221202 10:57:30.079"/>
+</kw>
+<status status="PASS" starttime="20221202 10:57:29.893" endtime="20221202 10:57:30.079"/>
+</kw>
+<kw name="Select Radio Button" library="SeleniumLibrary">
+<arg>radiooptions</arg>
+<arg>inproceedings</arg>
+<doc>Sets the radio button group ``group_name`` to ``value``.</doc>
+<msg timestamp="20221202 10:57:30.080" level="INFO">Selecting 'inproceedings' from radio button 'radiooptions'.</msg>
+<msg timestamp="20221202 10:57:30.268" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-48.png"&gt;&lt;img src="selenium-screenshot-48.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20221202 10:57:30.269" level="FAIL">No radio button with name 'radiooptions' and value 'inproceedings' found.</msg>
+<status status="FAIL" starttime="20221202 10:57:30.080" endtime="20221202 10:57:30.269"/>
+</kw>
+<kw name="Set Title">
+<arg>Inproceeding</arg>
+<status status="NOT RUN" starttime="20221202 10:57:30.269" endtime="20221202 10:57:30.269"/>
+</kw>
+<kw name="Set Author">
+<arg>Inproceedingin Kirjoittaja</arg>
+<status status="NOT RUN" starttime="20221202 10:57:30.269" endtime="20221202 10:57:30.269"/>
+</kw>
+<kw name="Set Year">
+<arg>2000</arg>
+<status status="NOT RUN" starttime="20221202 10:57:30.269" endtime="20221202 10:57:30.269"/>
+</kw>
+<kw name="Set Booktitle">
+<arg>2</arg>
+<status status="NOT RUN" starttime="20221202 10:57:30.269" endtime="20221202 10:57:30.269"/>
+</kw>
+<kw name="Submit Reference">
+<status status="NOT RUN" starttime="20221202 10:57:30.269" endtime="20221202 10:57:30.270"/>
+</kw>
+<kw name="Adding Should Fail With Message">
+<arg>Given value is not a string.</arg>
+<status status="NOT RUN" starttime="20221202 10:57:30.270" endtime="20221202 10:57:30.270"/>
+</kw>
+<status status="FAIL" starttime="20221202 10:57:29.893" endtime="20221202 10:57:30.270">No radio button with name 'radiooptions' and value 'inproceedings' found.</status>
+</test>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20221202 10:57:30.270" endtime="20221202 10:57:30.329"/>
+</kw>
+<status status="FAIL" starttime="20221202 10:57:25.322" endtime="20221202 10:57:30.329"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="9" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="9" skip="0" id="s1" name="Inproceedings">Inproceedings</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,7 +1,5 @@
 from flask import render_template, redirect, request, Blueprint
-
-from logic.reference import Book
-from services.book_service import book_service
+from services.cite_service import cite_service
 
 
 routes = Blueprint("app", __name__)
@@ -13,26 +11,48 @@ def index():
 
 
 # lukee formin tiedot
-@routes.route("/createbook", methods=["post"])
+@routes.route("/createbook", methods=["POST"])
 def create_book():
     if request.method == "POST":
         title = request.form["title"]
         author = request.form["author"]
         year = request.form["year"]
         publisher = request.form["publisher"]
-        book_service.add_book(author, title, year, publisher)
+        cite_service.add_book(author, title, year, publisher)
         return redirect("/")
 
-@routes.app("/choosesource", methods=["POST"])
+@routes.route("/createarticle", methods=["POST"])
+def create_article():
+    if request.method == "POST":
+        title = request.form["title"]
+        author = request.form["author"]
+        year = request.form["year"]
+        journal = request.form["journal"]
+        volume = request.form["volume"]
+        pages = request.form["pages"]
+        cite_service.add_article(author, title, year, journal, volume, pages)
+        return redirect("/")
+
+@routes.route("/createinproceedings", methods=["POST"])
+def create_inproceedings():
+    if request.method == "POST":
+        title = request.form["title"]
+        author = request.form["author"]
+        year = request.form["year"]
+        booktitle = request.form["booktitle"]
+        cite_service.add_inproceedings(author, title, year, booktitle)
+        return redirect("/")
+
+@routes.route("/choosesource", methods=["POST"])
 def choose_source_type():
 
     source_type = request.form["radiobutton"]
 
     if source_type == "book":
-        return render_template("test.html", book=True)
+        return render_template("index.html", book=True)
 
     if source_type == "article":
-        return render_template("test.html", article=True)
+        return render_template("index.html", article=True)
 
     if source_type == "in_proceedings":
-        return render_template("test.html", in_proceedings=True)
+        return render_template("index.html", in_proceedings=True)
