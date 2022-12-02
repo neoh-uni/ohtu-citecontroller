@@ -53,3 +53,4 @@ class CiteService:
         return self._cite_repository.get_inproceedings()
         
 cite_service = CiteService()
+ 

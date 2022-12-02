@@ -20,7 +20,7 @@ def create_book():
         publisher = request.form["publisher"]
         msg = cite_service.add_book(author, title, year, publisher)
         return render_template("index.html", message=msg)
-
+ 
 
 @routes.route("/createarticle", methods=["POST"])
 def create_article():
