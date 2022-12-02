@@ -1,7 +1,6 @@
 *** Settings ***
 Library  SeleniumLibrary
 
-
 *** Variables ***
 ${SERVER}  citecontroller.herokuapp.com/
 ${BROWSER}  headlesschrome
