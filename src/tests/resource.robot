@@ -1,10 +1,10 @@
 *** Settings ***
 Library  SeleniumLibrary
-Library  ../AppLibrary.py
+
 
 *** Variables ***
 ${SERVER}  citecontroller.herokuapp.com/
-${BROWSER}  headlesschrome
+${BROWSER}  chrome
 ${DELAY}  0
 ${HOME URL}  http://${SERVER}
 

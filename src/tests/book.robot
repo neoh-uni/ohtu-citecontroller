@@ -13,6 +13,7 @@ Adding Book With Valid Everything
     Submit Reference
     Adding Should Succeed
 
+#JOKU KENTTÄ TYHJÄ
 Adding Book Without Year
     Set Title  kirja
     Set Author  Kirjan Kirjoittaja
@@ -41,6 +42,39 @@ Adding Book Without Publisher
     Submit Reference
     Adding Should Fail With Message  Book must have a publisher
 
+# JOKU KENTTÄ INVALID
+Adding Book With Invalid Year
+    Set Title  kirja
+    Set Author  Kirjan Kirjoittaja
+    Set Year    2
+    Set Publisher  julkaisija
+    Submit Reference
+    Adding Should Fail With Message  Given year is not in range 500, 2027
+
+Adding Book With Invalid Title
+    Set Title  4
+    Set Author  Kirjan Kirjoittaja
+    Set Year    2000
+    Set Publisher  julkaisija
+    Submit Reference
+    Adding Should Fail With Message  Given value is not a string.
+
+Adding Book With Invalid Author
+    Set Title  kirja
+    Set Author  Author
+    Set Year    2000
+    Set Publisher  julkaisija
+    Submit Reference
+    Adding Should Fail With Message  First name and surname is required
+
+Adding Book With Invalid Publisher
+    Set Title  kirja
+    Set Author  Kirjan Kirjoittaja
+    Set Year    2000
+    Set Publisher  3
+    Submit Reference
+    Adding Should Fail With Message  Given value is not a string.
+
 *** Keywords ***
 Adding Should Succeed
     Page Should Contain  Reference added
@@ -62,9 +96,24 @@ Set Year
     Input Text  inputYear  ${year}
 
 Set Publisher
-    [Arguments]  ${year}
+    [Arguments]  ${publisher}
     Input Text  inputPublisher  ${publisher}
 
+Set Journal
+    [Arguments]  ${journal}
+    Input Text  inputPublisher  ${journal}
+
+Set Booktitle
+    [Arguments]  ${booktitle}
+    Input Text  inputPublisher  ${booktitle}
+
+Set Pages
+    [Arguments]  ${pages}
+    Input Text  inputPublisher  ${pages}
+
+Set Volume
+    [Arguments]  ${volume}
+    Input Text  inputPublisher  ${volume}
 
 
 Submit Reference
