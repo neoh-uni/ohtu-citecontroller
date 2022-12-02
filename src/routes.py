@@ -65,7 +65,7 @@ def references():
 @routes.route("/display_references", methods=["POST"])
 def display_references():
 
-    if request.form["all_references"] == "checked":
+    if request.form["all_references"] == "1":
         books = cite_service.get_books()
         articles = cite_service.get_articles()
         in_proceedings = cite_service.get_inproceedings()
