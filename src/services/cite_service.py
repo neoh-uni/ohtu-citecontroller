@@ -18,7 +18,7 @@ class CiteService:
 
     def add_article(self, author, title, year, journal, volume, pages):
         try:
-            article = reference.Article(author, title, year, journal, volume, pages)
+            article = reference.Article(author, journal, title, year, volume, pages)
             self._cite_repository.new_article(article)
             # TODO: communicate with website
             print("Article added")
