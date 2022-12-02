@@ -147,16 +147,15 @@
       </form>
       {% endif %}
 
-      {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <ul>
-        {% for message in messages %}
-          <li>{{ message }}</li>
-        {% endfor %}
-        </ul>
+      {% if message %}
+        <p>{{ message }}</p>
       {% endif %}
-      {% endwith %}
+
+
       
     </div>
   </div>
 </div>
+
+
+

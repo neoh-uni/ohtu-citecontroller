@@ -18,8 +18,9 @@ def create_book():
         author = request.form["author"]
         year = request.form["year"]
         publisher = request.form["publisher"]
-        cite_service.add_book(author, title, year, publisher)
-        return redirect("/")
+        msg = cite_service.add_book(author, title, year, publisher)
+        return render_template("index.html", message=msg)
+
 
 @routes.route("/createarticle", methods=["POST"])
 def create_article():
