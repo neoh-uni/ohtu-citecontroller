@@ -36,6 +36,9 @@
       </form>
       
       {% if books %}
+
+        <p>Books</p>
+        <p></p>
         <ul>
         {% for book in books %}     
             <li> {{ book.title }}</li>
@@ -49,6 +52,8 @@
       {% endif %}
 
       {% if articles %}
+        <p>Articles</p>
+        <p></p>
         <ul>
         {% for article in articles %}     
             <li> {{ article.title }}</li>
@@ -64,6 +69,8 @@
       {% endif %}
 
       {% if in_proceedings %}
+        <p>In proceedings</p>
+        <p></p>
         <ul>
         {% for in_proceeding in in_proceedings %}     
             <li> {{ in_proceeding.title }}</li>
