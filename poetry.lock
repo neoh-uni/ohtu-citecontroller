@@ -319,8 +319,16 @@ python-versions = ">=3.7"
 cli = ["click (>=5.0)"]
 
 [[package]]
+name = "robotframework"
+version = "6.0.1"
+description = "Generic automation framework for acceptance testing and robotic process automation (RPA)"
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
 name = "selenium"
-version = "4.6.1"
+version = "4.7.0"
 description = ""
 category = "dev"
 optional = false
@@ -488,7 +496,7 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "57940a88f592a6b9bac77f891400eaff40cf714347108afeda79279ff4eb6a81"
+content-hash = "170b73793bc0a47bb0f2b1d870c8017accc0064734d002bcc0a2dc21268bea1f"
 
 [metadata.files]
 async-generator = [
@@ -883,8 +891,12 @@ python-dotenv = [
     {file = "python-dotenv-0.21.0.tar.gz", hash = "sha256:b77d08274639e3d34145dfa6c7008e66df0f04b7be7a75fd0d5292c191d79045"},
     {file = "python_dotenv-0.21.0-py3-none-any.whl", hash = "sha256:1684eb44636dd462b66c3ee016599815514527ad99965de77f43e0944634a7e5"},
 ]
+robotframework = [
+    {file = "robotframework-6.0.1-py3-none-any.whl", hash = "sha256:5f665413845dfea603de1ed0d0ba8928748ccd2f9a558889822916d778731fbb"},
+    {file = "robotframework-6.0.1.zip", hash = "sha256:b2d9a82912dfd27aae7afaad64771c58f5d948ca9d64e3ae72b16721b5e022ea"},
+]
 selenium = [
-    {file = "selenium-4.6.1-py3-none-any.whl", hash = "sha256:2384829279d41c7f5b338ce87453cc4e120099b6c093318207376c19f5d2c254"},
+    {file = "selenium-4.7.0-py3-none-any.whl", hash = "sha256:771cb63b821a2aea01b0cdb623caa5b5c35b9a19f44d0d4f32a44b037a324b10"},
 ]
 setuptools = [
     {file = "setuptools-65.6.3-py3-none-any.whl", hash = "sha256:57f6f22bde4e042978bcd50176fdb381d7c21a9efa4041202288d3737a0c6a54"},
