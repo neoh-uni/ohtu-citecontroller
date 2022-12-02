@@ -90,12 +90,12 @@ class Article:
     journal: str = field(validator=[validators.instance_of(str), check_len])
     title: str = field(validator=[validators.instance_of(str), check_len])
     year: int = field(converter=int, validator=[validators.instance_of(int), check_year])
+    volume: str = field(default=None, validator=[check_str, check_len])
+    pages: str = field(default=None, validator=[check_str, check_len])
 
     month: Optional[str] = field(default=None, validator=[check_str, check_len])
     note: Optional[str] = field(default=None, validator=[check_str, check_len])
     number: Optional[str] = field(default=None, validator=[check_str, check_len])
-    pages: Optional[str] = field(default=None, validator=[check_str, check_len])
-    volume: Optional[str] = field(default=None, validator=[check_str, check_len])
 
 
 @define
