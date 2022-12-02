@@ -56,3 +56,18 @@ def choose_source_type():
 
     if source_type == "in_proceedings":
         return render_template("index.html", in_proceedings=True)
+
+@routes.route("/references", methods=["GET"])
+def references():
+
+    render_template("references.html")
+
+@routes.route("/display_references", methods=["POST"])
+def display_references():
+
+    if request.form["all_references"] == "1":
+        books = "Fill in"
+        articles = "Fill in"
+        in_proceedings = "Fill in"
+
+        return render_template("references.html", books=books, articles=articles, in_proceedings=in_proceedings)
