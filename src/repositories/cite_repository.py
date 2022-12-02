@@ -31,5 +31,16 @@ class CiteRepository:
         )
         db.session.commit()
 
-
+    def get_books(self):
+        sql = """SELECT * FROM cites WHERE type='book'"""
+        return db.session.execute(sql).fetchall()
+        
+    def get_articles(self):
+        sql = """SELECT * FROM cites WHERE type='article'"""
+        return db.session.execute(sql).fetchall()
+        
+    def get_inproceedings(self):    
+        sql = """SELECT * FROM cites WHERE type='inproceedings'"""
+        return db.session.execute(sql).fetchall()
+        
 cite_repository = CiteRepository()

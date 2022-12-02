@@ -36,5 +36,20 @@ class CiteService:
             # TODO: communicate error with website
             print(e)
 
+    def get_all(self):
+        return list(
+        self._cite_repository.get_books(),
+        self._cite_repository.get_articles(),
+        self._cite_repository.get_inproceedings()
+        )
 
+    def get_books(self):
+        return self._cite_repository.get_books()
+        
+    def get_articles(self):
+        return self._cite_repository.get_articles()
+
+    def get_inproceedings(self):
+        return self._cite_repository.get_inproceedings()
+        
 cite_service = CiteService()

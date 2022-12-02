@@ -59,15 +59,14 @@ def choose_source_type():
 
 @routes.route("/references", methods=["GET"])
 def references():
-
-    render_template("references.html")
+    return render_template("references.html")
 
 @routes.route("/display_references", methods=["POST"])
 def display_references():
 
-    if request.form["all_references"] == "1":
-        books = "Fill in"
-        articles = "Fill in"
-        in_proceedings = "Fill in"
+    if request.form["all_references"] == "all":
+        books = cite_service.get_books()
+        articles = cite_service.get_articles()
+        in_proceedings = cite_service.get_inproceedings()
 
         return render_template("references.html", books=books, articles=articles, in_proceedings=in_proceedings)
