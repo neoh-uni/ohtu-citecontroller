@@ -65,20 +65,11 @@ def references():
 @routes.route("/display_references", methods=["POST"])
 def display_references():
 
-    books=None
-    articles=None
-    in_proceedings=None
-
-    if request.form["books"] == "checked" or request.form["all_references"] == "checked":
+    if request.form["all_references"] == "checked":
         books = cite_service.get_books()
-
-    if request.form["articles"] == "checked" or request.form["all_references"] == "checked":
         articles = cite_service.get_articles()
-
-    if request.form["in_proceedings"] == "checked" or request.form["all_references"] == "checked":
         in_proceedings = cite_service.get_inproceedings()
 
-    
-    return render_template("references.html", books=books, articles=articles, in_proceedings=in_proceedings)
+        return render_template("references.html", books=books, articles=articles, in_proceedings=in_proceedings)
 
     
