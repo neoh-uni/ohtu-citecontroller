@@ -6,6 +6,8 @@ Test Setup  Go To Home Page
 
 *** Test Cases ***
 Adding Inproceedings With Valid Everything
+    Select Radio Button  radiobutton  in_proceedings
+    Choose Type
     Set Title  inproceeding
     Set Author  Inproceedingin Kirjoittaja
     Set Year    2000
@@ -15,40 +17,45 @@ Adding Inproceedings With Valid Everything
 
 #JOKU KENTTÄ TYHJÄ
 Adding Inproceedings Without Year
-    Select Radio Button  radiooptions  inproceedings
+    Select Radio Button  radiobutton  in_proceedings
+    Choose Type
     Set Title  inproceeding
     Set Author  Inproceedingin Kirjoittaja
     Set Booktitle  booktitle
     Submit Reference
-    Adding Should Fail With Message  Inproceedings must have a year
+    Adding Should Fail With Message  in_proceedings must have a year
 
 Adding Inproceedings Without Title
-    Select Radio Button  radiooptions  inproceedings
+    Select Radio Button  radiobutton  in_proceedings
+    Choose Type
     Set Author  Inproceedingin Kirjoittaja
     Set Year    2000
     Set Booktitle  booktitle
     Submit Reference
-    Adding Should Fail With Message  Inproceedings must have a title
+    Adding Should Fail With Message  in_proceedings must have a title
 
 Adding Inproceedings Without Author
-    Select Radio Button  radiooptions  inproceedings
+    Select Radio Button  radiobutton  in_proceedings
+    Choose Type
     Set Title  inproceeding
     Set Year    2000
     Set Booktitle  booktitle
     Submit Reference
-    Adding Should Fail With Message  Inproceedings must have an author
+    Adding Should Fail With Message  in_proceedings must have an author
 
 Adding Inproceedings Without Booktitle
-    Select Radio Button  radiooptions  inproceedings
+    Select Radio Button  radiobutton  in_proceedings
+    Choose Type
     Set Title  Inproceeding
     Set Author  Inproceedingin Kirjoittaja
     Set Year    2000
     Submit Reference
-    Adding Should Fail With Message  Inproceedings must have a booktitle
+    Adding Should Fail With Message  in_proceedings must have a booktitle
 
 # JOKU KENTTÄ INVALID
 Adding Inproceedings With Invalid Year
-    Select Radio Button  radiooptions  inproceedings
+    Select Radio Button  radiobutton  in_proceedings
+    Choose Type
     Set Title  Inproceeding
     Set Author  Inproceedingin Kirjoittaja
     Set Year    2
@@ -57,7 +64,8 @@ Adding Inproceedings With Invalid Year
     Adding Should Fail With Message  Given year is not in range 500, 2027
 
 Adding Inproceedings With Invalid Title
-    Select Radio Button  radiooptions  inproceedings
+    Select Radio Button  radiobutton  in_proceedings
+    Choose Type
     Set Title  1
     Set Author  Inproceedingin Kirjoittaja
     Set Year    2000
@@ -66,7 +74,8 @@ Adding Inproceedings With Invalid Title
     Adding Should Fail With Message  Given value is not a string.
 
 Adding Inproceedings With Invalid Author
-    Select Radio Button  radiooptions  inproceedings
+    Select Radio Button  radiobutton  in_proceedings
+    Choose Type
     Set Title  Inproceeding
     Set Author  Author
     Set Year    2000
@@ -75,7 +84,8 @@ Adding Inproceedings With Invalid Author
     Adding Should Fail With Message  First name and surname is required
 
 Adding Inproceedings With Invalid Booktitle
-    Select Radio Button  radiooptions  inproceedings
+    Select Radio Button  radiobutton  in_proceedings
+    Choose Type
     Set Title  Inproceeding
     Set Author  Inproceedingin Kirjoittaja
     Set Year    2000
@@ -92,20 +102,23 @@ Adding Should Fail With Message
     Page Should Contain  ${message}
 
 Set Title
-    [Arguments]  ${book_name}
-    Input Text  book_name  ${book_name}
+    [Arguments]  ${title}
+    Input Text  title  ${title}
 
 Set Author
     [Arguments]  ${author}
-    Input Text  inputAuthorname  ${author}
+    Input Text  author  ${author}
 
 Set Year
     [Arguments]  ${year}
-    Input Text  inputYear  ${year}
+    Input Text  year  ${year}
 
 Set Booktitle
-    [Arguments]  ${Booktitle}
-    Input Text  inputBooktitle  ${Booktitle}
+    [Arguments]  ${booktitle}
+    Input Text  booktitle  ${booktitle}
 
 Submit Reference
     Click Button  Create source
+
+Choose Type
+    Click Button  choose type

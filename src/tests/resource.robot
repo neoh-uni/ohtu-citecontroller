@@ -4,7 +4,7 @@ Library  SeleniumLibrary
 
 *** Variables ***
 ${SERVER}  citecontroller.herokuapp.com/
-${BROWSER}  chrome
+${BROWSER}  headlesschrome
 ${DELAY}  0
 ${HOME URL}  http://${SERVER}
 

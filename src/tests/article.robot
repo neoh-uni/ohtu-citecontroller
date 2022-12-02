@@ -7,6 +7,8 @@ Test Setup  Go To Home Page
 *** Test Cases ***
 *** Test Cases ***
 Adding Article With Valid Everything
+    Select Radio Button  radiobutton  article
+    Choose Type
     Set Title  Artikkeli
     Set Author  Artikkelin Kirjoittaja
     Set Year    2000
@@ -18,6 +20,8 @@ Adding Article With Valid Everything
 
 #JOKU KENTTÄ TYHJÄ
 Adding Article Without Year
+    Select Radio Button  radiobutton  article
+    Choose Type
     Set Title  Artikkeli
     Set Author  Artikkelin Kirjoittaja
     Set Journal  Journal
@@ -27,6 +31,8 @@ Adding Article Without Year
     Adding Should Fail With Message  Article must have a year
 
 Adding Article Without Title
+    Select Radio Button  radiobutton  article
+    Choose Type
     Set Author  Artikkelin Kirjoittaja
     Set Year    2000
     Set Journal  Journal
@@ -36,6 +42,8 @@ Adding Article Without Title
     Adding Should Fail With Message  Article must have a Title
 
 Adding Article Without Author
+    Select Radio Button  radiobutton  article
+    Choose Type
     Set Title  Artikkeli
     Set Year    2000
     Set Journal  Journal
@@ -45,6 +53,8 @@ Adding Article Without Author
     Adding Should Fail With Message  Article must have an author
 
 Adding Article Without Journal
+    Select Radio Button  radiobutton  article
+    Choose Type
     Set Title  Artikkeli
     Set Author  Artikkelin Kirjoittaja
     Set Year    2000
@@ -55,6 +65,8 @@ Adding Article Without Journal
 
 # JOKU KENTTÄ INVALID
 Adding Article With Invalid Year
+    Select Radio Button  radiobutton  article
+    Choose Type
     Set Title  Artikkeli
     Set Author  Artikkelin Kirjoittaja
     Set Year    2
@@ -65,6 +77,8 @@ Adding Article With Invalid Year
     Adding Should Fail With Message  Given year is not in range 500, 2027
 
 Adding Article With Invalid Title
+    Select Radio Button  radiobutton  article
+    Choose Type
     Set Title  1
     Set Author  Artikkelin Kirjoittaja
     Set Year    2000
@@ -75,6 +89,8 @@ Adding Article With Invalid Title
     Adding Should Fail With Message  Given value is not a string.
 
 Adding Article With Invalid Author
+    Select Radio Button  radiobutton  article
+    Choose Type
     Set Title  Artikkeli
     Set Author  Author
     Set Year    2000
@@ -85,6 +101,8 @@ Adding Article With Invalid Author
     Adding Should Fail With Message  First name and surname is required
 
 Adding Article With Invalid Journal
+    Select Radio Button  radiobutton  article
+    Choose Type
     Set Title  Artikkeli
     Set Author  Artikkelin Kirjoittaja
     Set Year    2000
@@ -95,6 +113,8 @@ Adding Article With Invalid Journal
     Adding Should Fail With Message  Given value is not a string.
 
 Adding Article With Invalid Pages
+    Select Radio Button  radiobutton  article
+    Choose Type
     Set Title  Artikkeli
     Set Author  Artikkelin Kirjoittaja
     Set Year    2000
@@ -105,6 +125,8 @@ Adding Article With Invalid Pages
     Adding Should Fail With Message  message
 
 Adding Article With Invalid Volume
+    Select Radio Button  radiobutton  article
+    Choose Type
     Set Title  Artikkeli
     Set Author  Artikkelin Kirjoittaja
     Set Year    2000
@@ -123,29 +145,32 @@ Adding Should Fail With Message
     Page Should Contain  ${message}
 
 Set Title
-    [Arguments]  ${Article_name}
-    Input Text  Article_name  ${Article_name}
+    [Arguments]  ${article}
+    Input Text  article  ${article}
 
 Set Author
     [Arguments]  ${author}
-    Input Text  inputAuthorname  ${author}
+    Input Text  author  ${author}
 
 Set Year
     [Arguments]  ${year}
-    Input Text  inputYear  ${year}
+    Input Text  year  ${year}
 
 Set Journal
     [Arguments]  ${journal}
-    Input Text  inputJournal  ${journal}
+    Input Text  journal  ${journal}
 
 Set Pages
     [Arguments]  ${pages}
-    Input Text  inputJournal  ${pages}
+    Input Text  pages  ${pages}
 
 Set Volume
     [Arguments]  ${volume}
-    Input Text  inputJournal  ${volume}
+    Input Text  volume  ${volume}
 
 
 Submit Reference
     Click Button  Create source
+
+Choose Type
+    Click Button  choose type
