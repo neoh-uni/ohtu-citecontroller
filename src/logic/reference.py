@@ -46,6 +46,11 @@ def check_str(instance, attribute, given_str):
     if given_str is not None and not isinstance(given_str, str):
         raise ValueError("Given value is not a string.")
 
+def convert_year(given_str):
+    try:
+        return int(given_str)
+    except ValueError:
+        raise ValueError("Year was not given as an integer")
 
 @define
 class Book:
@@ -60,7 +65,7 @@ class Book:
 
     author: str = field(validator=[validators.instance_of(str), check_name, check_len])
     title: str = field(validator=[validators.instance_of(str), check_len])
-    year: int = field(converter=int, validator=[validators.instance_of(int), check_year])
+    year: str = field(converter=convert_year, validator=[validators.instance_of(int), check_year])
     publisher: str = field(validator=[validators.instance_of(str), check_len])
 
     address: Optional[str] = field(default=None, validator=[check_str, check_len])
@@ -89,7 +94,7 @@ class Article:
     author: str = field(validator=[validators.instance_of(str), check_name, check_len])
     journal: str = field(validator=[validators.instance_of(str), check_len])
     title: str = field(validator=[validators.instance_of(str), check_len])
-    year: int = field(converter=int, validator=[validators.instance_of(int), check_year])
+    year: str = field(converter=convert_year, validator=[validators.instance_of(int), check_year])
     volume: str = field(default=None, validator=[check_str, check_len])
     pages: str = field(default=None, validator=[check_str, check_len])
 
@@ -111,7 +116,7 @@ class Inproceedings:
 
     author: str = field(validator=[validators.instance_of(str), check_name, check_len])
     title: str = field(validator=[validators.instance_of(str), check_len])
-    year: int = field(converter=int, validator=[validators.instance_of(int), check_year])
+    year: str = field(converter=convert_year, validator=[validators.instance_of(int), check_year])
     booktitle: str = field(validator=[validators.instance_of(str), check_len])
 
     address: Optional[str] = field(default=None, validator=[check_str, check_len])
