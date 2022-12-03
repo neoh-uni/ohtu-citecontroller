@@ -32,7 +32,7 @@ jobs:
     - name: Install dependencies
       run: poetry install
     - name: Run tests
-      run: poetry run pytest src
+      run: coverage run --branch -m src/pytest
       env:
         DATABASE_URL: postgresql://postgres:postgres@localhost/postgres
     - name: Setup chromedriver
