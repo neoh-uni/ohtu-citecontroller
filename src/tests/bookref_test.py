@@ -23,7 +23,7 @@ class TestBook(unittest.TestCase):
             note="viesti sinulle",
             number="+3581234567",
             series="sarjat",
-            volume="volume99",
+            volume="99",
         )
         self.error_str = "a" * 5001
 
@@ -62,7 +62,7 @@ class TestBook(unittest.TestCase):
         self.assertEqual(self.valid_book2.series, "sarjat")
 
     def test_book_volume(self):
-        self.assertEqual(self.valid_book2.volume, "volume99")
+        self.assertEqual(self.valid_book2.volume, 99)
 
     def test_class_errors_without_args(self):
         self.assertRaises(TypeError, reference.Book)

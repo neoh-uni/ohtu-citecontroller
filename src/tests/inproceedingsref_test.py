@@ -25,7 +25,7 @@ class TestInproceedings(unittest.TestCase):
             pages="15000",
             publisher="HYY",
             series="sarjat",
-            volume="volyymi==800",
+            volume="800",
         )
         self.error_str = "a" * 5001
 
@@ -70,8 +70,8 @@ class TestInproceedings(unittest.TestCase):
     def test_inproceedings_series(self):
         self.assertEqual(self.valid_inproceedings2.series, "sarjat")
 
-    def test_inproceedings_volume(self):
-        self.assertEqual(self.valid_inproceedings2.volume, "volyymi==800")
+    def test_inproceedings_volume_to_int(self):
+        self.assertEqual(self.valid_inproceedings2.volume, 800)
 
     # Test Error raisers
     def test_class_errors_without_args(self):
@@ -148,7 +148,7 @@ class TestInproceedings(unittest.TestCase):
             author="Nonplayer character",
             title="Game of the Year",
             year=2020,
-            booktitle="1",
+            booktitle=1,
             volume=1,
         )
         self.assertRaises(
