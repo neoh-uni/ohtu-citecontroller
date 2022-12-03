@@ -23,18 +23,10 @@ optional = false
 python-versions = ">=3.5"
 
 [[package]]
-name = "attr"
-version = "0.3.2"
-description = "Simple decorator to set attributes of target function or class in a DRY way."
-category = "main"
-optional = false
-python-versions = "*"
-
-[[package]]
 name = "attrs"
 version = "22.1.0"
 description = "Classes Without Boilerplate"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.5"
 
@@ -645,7 +637,7 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "686167edf516bd081c9c72cad91c36f332f7a1dc18f75a99cfd757d59c03ae8d"
+content-hash = "fece3121c66c01d0bbe2a9521d16c3fe35d96964fcf7081cc9c7154a7ad8d7f0"
 
 [metadata.files]
 astroid = [
@@ -655,10 +647,6 @@ astroid = [
 async-generator = [
     {file = "async_generator-1.10-py3-none-any.whl", hash = "sha256:01c7bf666359b4967d2cda0000cc2e4af16a0ae098cbffcb8472fb9e8ad6585b"},
     {file = "async_generator-1.10.tar.gz", hash = "sha256:6ebb3d106c12920aaae42ccb6f787ef5eefdcdd166ea3d628fa8476abe712144"},
-]
-attr = [
-    {file = "attr-0.3.2-py2.py3-none-any.whl", hash = "sha256:4f4bffeea8c27387bde446675a7ac24f3b8fea1075f12d849b5f5c5181fc8336"},
-    {file = "attr-0.3.2.tar.gz", hash = "sha256:1ceebca768181cdcce9827611b1d728e592be5d293911539ea3d0b0bfa1146f4"},
 ]
 attrs = [
     {file = "attrs-22.1.0-py2.py3-none-any.whl", hash = "sha256:86efa402f67bf2df34f51a335487cf46b1ec130d02b8d39fd248abfd30da551c"},
