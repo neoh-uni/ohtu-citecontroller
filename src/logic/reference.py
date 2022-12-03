@@ -142,5 +142,3 @@ class Inproceedings:
     series: Optional[str] = field(default=None, validator=[check_str, check_len])
     volume: Optional[str] = field(default=None, converter=convert_volume)
 
-b = Book(author="hehe man", title="Lollipop", year="1999", publisher="mega deth", volume="99")
-print(b)
