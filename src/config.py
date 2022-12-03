@@ -13,6 +13,6 @@ ENV = os.getenv("FLASK_ENV") or "production"
 
 if DATABASE_URL is None:
     raise Exception(
-        f"Database URI is not defined with the DATABASE_URL environment variable"
+        "Database URI is not defined with the DATABASE_URL environment variable"
     )
 DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://")

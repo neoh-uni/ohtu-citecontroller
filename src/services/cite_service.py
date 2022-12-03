@@ -10,31 +10,25 @@ class CiteService:
         try:
             book = reference.Book(author, title, year, publisher)
             self._cite_repository.new_book(book)
-            # TODO: communicate with website
             return "Book added"
-        except Exception as e:
-            # TODO: communicate error with website
-            return e
+        except ValueError as err:
+            return err
 
     def add_article(self, author, title, year, journal, volume, pages):
         try:
             article = reference.Article(author, journal, title, year, volume, pages)
             self._cite_repository.new_article(article)
-            # TODO: communicate with website
             return "Article added"
-        except Exception as e:
-            # TODO: communicate error with website
-            return e
+        except ValueError as err:
+            return err
 
     def add_inproceedings(self, author, title, year, booktitle):
         try:
             inproceedings = reference.Inproceedings(author, title, year, booktitle)
             self._cite_repository.new_inproceedings(inproceedings)
-            # TODO: communicate with website
             return "Inproceedings added"
-        except Exception as e:
-            # TODO: communicate error with website
-            return e
+        except ValueError as err:
+            return err
 
     def get_all(self):
         return list(

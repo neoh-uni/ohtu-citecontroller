@@ -1,7 +1,7 @@
 """
 Author: Niklas
-See from types: wikipedia https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
-e.g. booklet, inbook, incollection, manual, mastersthesis/phdhesis, misc, proceedings, tech report, unpublished
+See more types from: wikipedia https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
+e.g. booklet, inbook, incollection, manual, mastersthesis/phdhesis,...
 """
 from typing import Optional
 from datetime import datetime
@@ -54,6 +54,13 @@ def convert_year(given_str):
         raise ValueError("Year was not given as an integer") from exc
 
 
+def convert_volume(given_str):
+    try:
+        return int(given_str)
+    except ValueError as exc:
+        raise ValueError("Volume was not given as an integer") from exc
+
+
 @define
 class Book:
     """
@@ -101,7 +108,9 @@ class Article:
     year: str = field(
         converter=convert_year, validator=[validators.instance_of(int), check_year]
     )
-    volume: str = field(default=None, validator=[check_str, check_len])
+    volume: str = field(
+        converter=convert_volume, validator=[validators.instance_of(int), check_len]
+    )
     pages: str = field(default=None, validator=[check_str, check_len])
 
     month: Optional[str] = field(default=None, validator=[check_str, check_len])
@@ -116,7 +125,7 @@ class Inproceedings:
         author = {Vihavainen, Arto and Paksula, Matti and Luukkainen, Matti},
         title = {Extreme Apprenticeship Method in Teaching Programming for Beginners.},
         year = {2011},
-        booktitle = {SIGCSE '11: Proceedings of the 42nd SIGCSE technical symposium 
+        booktitle = {SIGCSE '11: Proceedings of the 42nd SIGCSE technical symposium
         on Computer science education},
     }
     """
