@@ -8,11 +8,11 @@ authors = ["Alexander, Joonas, Meeri, Neoh, Noora, Juuso"]
 python = "^3.8"
 Flask = "^2.2.2"
 coverage = "^6.5.0"
-attr = "^0.3.2"
 gunicorn = "^20.1.0"
 flask-sqlalchemy = "^3.0.2"
 python-dotenv = "^0.21.0"
 psycopg2-binary = "^2.9.5"
+attrs = "^22.1.0"
 
 
 [tool.poetry.group.dev.dependencies]
