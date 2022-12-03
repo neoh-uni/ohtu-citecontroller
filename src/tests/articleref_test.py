@@ -161,3 +161,37 @@ class TestArticle(unittest.TestCase):
             pages="44--66",
         )
 
+    def test_error_with_int_when_exptd_str_optionals(self):
+        self.assertRaises(
+            ValueError,
+            reference.Article,
+            author="Pro Hackerman",
+            title="What is Opsec?",
+            journal="AI News",
+            year=2009,
+            volume="3",
+            pages="44--66",
+            month=3,
+        )
+        self.assertRaises(
+            ValueError,
+            reference.Article,
+            author="Pro Hackerman",
+            title="What is Opsec?",
+            journal="AI News",
+            year=2009,
+            volume="3",
+            pages="44--66",
+            note=3,
+        )
+        self.assertRaises(
+            ValueError,
+            reference.Article,
+            author="Pro Hackerman",
+            title="What is Opsec?",
+            journal="AI News",
+            year=2009,
+            volume="3",
+            pages="44--66",
+            number=3,
+        )
