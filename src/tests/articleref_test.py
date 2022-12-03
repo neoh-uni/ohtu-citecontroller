@@ -19,6 +19,7 @@ class TestArticle(unittest.TestCase):
             year=2015,
             volume="3",
             pages="44--66",
+            #optionals
             month="6",
             note="heloust this is a note",
             number="12380",
@@ -45,6 +46,8 @@ class TestArticle(unittest.TestCase):
     def test_article_pages(self):
         self.assertEqual(self.valid_article.pages, "44--66")
     
+
+    #Optionals
     def test_article_note(self):
         self.assertEqual(self.valid_article2.note, "heloust this is a note")
 
@@ -56,6 +59,7 @@ class TestArticle(unittest.TestCase):
         self.assertNotEqual(self.valid_article2.number, 12380)
         self.assertEqual(self.valid_article2.number, "12380")
 
+    #ERROR raisesrs
     def test_class_errors_without_args(self):
         self.assertRaises(TypeError, reference.Article)
 
@@ -157,14 +161,3 @@ class TestArticle(unittest.TestCase):
             pages="44--66",
         )
 
-    def test_error_year_with_str(self):
-        self.assertRaises(
-            TypeError,
-            reference.Article,
-            author="Pro Hackerman",
-            title=1,
-            journal="AI News",
-            year="2009",
-            volume="3",
-            pages="44--66",
-        )
