@@ -15,7 +15,7 @@ class TestBook(unittest.TestCase):
             title="What is DevOps?",
             publisher="unigrafia",
             year=2011,
-            #optionals
+            # optionals
             address="Revontulentie 5",
             edition="99",
             editor="Esko Editti",
@@ -23,7 +23,7 @@ class TestBook(unittest.TestCase):
             note="viesti sinulle",
             number="+3581234567",
             series="sarjat",
-            volume="volume99",
+            volume="99",
         )
         self.error_str = "a" * 5001
 
@@ -38,14 +38,14 @@ class TestBook(unittest.TestCase):
 
     def test_book_title(self):
         self.assertEqual(self.valid_book.title, "What is DevOps?")
-    
-    #Test Optionals Setup
+
+    # Test Optionals Setup
     def test_book_address(self):
         self.assertEqual(self.valid_book2.address, "Revontulentie 5")
-    
+
     def test_book_edition(self):
         self.assertEqual(self.valid_book2.edition, "99")
-    
+
     def test_book_editor(self):
         self.assertEqual(self.valid_book2.editor, "Esko Editti")
 
@@ -61,13 +61,13 @@ class TestBook(unittest.TestCase):
     def test_book_series(self):
         self.assertEqual(self.valid_book2.series, "sarjat")
 
-    def test_book_volume(self):
-        self.assertEqual(self.valid_book2.volume, "volume99")
+    def test_book_volume_to_int(self):
+        self.assertEqual(self.valid_book2.volume, 99)
 
     def test_class_errors_without_args(self):
         self.assertRaises(TypeError, reference.Book)
 
-    #Test Error raisers
+    # Test Error raisers
     def test_error_with_unexpected_len_args(self):
         self.assertRaises(
             ValueError,
@@ -108,7 +108,7 @@ class TestBook(unittest.TestCase):
 
     def test_error_with_int_when_exptd_str(self):
         self.assertRaises(
-            TypeError,
+            ValueError,
             reference.Book,
             author=1,
             title="What is DevOps?",
@@ -116,7 +116,7 @@ class TestBook(unittest.TestCase):
             year=2000,
         )
         self.assertRaises(
-            TypeError,
+            ValueError,
             reference.Book,
             author="Pro Coder",
             title=2,
@@ -124,7 +124,7 @@ class TestBook(unittest.TestCase):
             year=2000,
         )
         self.assertRaises(
-            TypeError,
+            ValueError,
             reference.Book,
             author="Pro Coder",
             title="What is DevOps?",
@@ -140,7 +140,7 @@ class TestBook(unittest.TestCase):
             title="What is DevOps?",
             publisher="unigrafia",
             year=2000,
-            month=99
+            month=99,
         )
         self.assertRaises(
             ValueError,
@@ -149,5 +149,5 @@ class TestBook(unittest.TestCase):
             title="What is DevOps?",
             publisher="unigrafia",
             year=2000,
-            note=2000
+            note=2000,
         )

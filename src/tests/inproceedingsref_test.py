@@ -8,14 +8,14 @@ class TestInproceedings(unittest.TestCase):
             author="Nonplayer character",
             title="Game of the Year",
             year=2020,
-            booktitle="diipa2' daapa"
+            booktitle="diipa2' daapa",
         )
         self.valid_inproceedings2 = reference.Inproceedings(
             author="Nonplayer characted",
             title="Game of the Year",
             year=2020,
             booktitle="diipa2' daapa",
-            #optionals
+            # optionals
             address="Osoite 6500",
             editor="Jarkko Jarkkonen",
             month="Kesäkuu",
@@ -25,8 +25,8 @@ class TestInproceedings(unittest.TestCase):
             pages="15000",
             publisher="HYY",
             series="sarjat",
-            volume="volyymi==800",
-        )  
+            volume="800",
+        )
         self.error_str = "a" * 5001
 
     def test_inproceedings_author(self):
@@ -38,15 +38,14 @@ class TestInproceedings(unittest.TestCase):
     def test_inproceedings_year(self):
         self.assertEqual(self.valid_inproceedings.year, 2020)
         self.assertNotEqual(self.valid_inproceedings.year, "2020")
-    
+
     def test_inproceedings_booktitle(self):
         self.assertLessEqual(self.valid_inproceedings.booktitle, "diipa2' daapa")
 
-
-    #Test optional args setup
+    # Test optional args setup
     def test_inproceedings_adress(self):
         self.assertEqual(self.valid_inproceedings2.address, "Osoite 6500")
-        
+
     def test_inproceedings_editor(self):
         self.assertEqual(self.valid_inproceedings2.editor, "Jarkko Jarkkonen")
 
@@ -71,10 +70,10 @@ class TestInproceedings(unittest.TestCase):
     def test_inproceedings_series(self):
         self.assertEqual(self.valid_inproceedings2.series, "sarjat")
 
-    def test_inproceedings_volume(self):
-        self.assertEqual(self.valid_inproceedings2.volume, "volyymi==800")
-    
-    #Test Error raisers
+    def test_inproceedings_volume_to_int(self):
+        self.assertEqual(self.valid_inproceedings2.volume, 800)
+
+    # Test Error raisers
     def test_class_errors_without_args(self):
         self.assertRaises(TypeError, reference.Inproceedings)
 
@@ -118,7 +117,7 @@ class TestInproceedings(unittest.TestCase):
 
     def test_error_with_int_when_exptd_str(self):
         self.assertRaises(
-            TypeError,
+            ValueError,
             reference.Inproceedings,
             author="Nonplayer character",
             title=1,
@@ -126,7 +125,7 @@ class TestInproceedings(unittest.TestCase):
             booktitle="diipa2' daapa",
         )
         self.assertRaises(
-            TypeError,
+            ValueError,
             reference.Inproceedings,
             author=1,
             title="Game of the Year",
@@ -134,14 +133,14 @@ class TestInproceedings(unittest.TestCase):
             booktitle="diipa2' daapa",
         )
         self.assertRaises(
-            TypeError,
+            ValueError,
             reference.Inproceedings,
             author="Nonplayer character",
             title="Game of the Year",
             year=2020,
             booktitle=1,
         )
-        
+
     def test_error_with_int_when_exptd_str_optionals(self):
         self.assertRaises(
             ValueError,
@@ -149,7 +148,7 @@ class TestInproceedings(unittest.TestCase):
             author="Nonplayer character",
             title="Game of the Year",
             year=2020,
-            booktitle="1",
+            booktitle=1,
             volume=1,
         )
         self.assertRaises(

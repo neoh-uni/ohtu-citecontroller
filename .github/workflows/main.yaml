@@ -32,9 +32,15 @@ jobs:
     - name: Install dependencies
       run: poetry install
     - name: Run tests
-      run: poetry run pytest src
+      run: poetry run coverage run --branch -m pytest
       env:
         DATABASE_URL: postgresql://postgres:postgres@localhost/postgres
+    - name: Coverage report
+      run: poetry run coverage xml
+    - name: Coverage report to Codecov
+      run: bash <(curl -s https://codecov.io/bash)
+    - name: Pylint test
+      run: poetry run pylint src
     - name: Setup chromedriver
       uses: nanasess/setup-chromedriver@master
     - name: Configure chromedriver
