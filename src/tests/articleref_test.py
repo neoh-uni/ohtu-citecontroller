@@ -117,10 +117,10 @@ class TestArticle(unittest.TestCase):
             journal="AI News",
             year=2009,
             volume=3,
-            pages="44--66",
+            pages=44,
         )
         self.assertRaises(
-            TypeError,
+            ValueError,
             reference.Article,
             author="Pro Hackerman",
             title="What is Opsec?",
@@ -140,7 +140,7 @@ class TestArticle(unittest.TestCase):
             pages=2000,
         )
         self.assertRaises(
-            TypeError,
+            ValueError,
             reference.Article,
             author="Pro Hackerman",
             title=1,
@@ -150,7 +150,7 @@ class TestArticle(unittest.TestCase):
             pages="44--66",
         )
         self.assertRaises(
-            TypeError,
+            ValueError,
             reference.Article,
             author=12,
             title="mitä ikinä",

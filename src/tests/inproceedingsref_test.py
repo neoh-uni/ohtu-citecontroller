@@ -117,7 +117,7 @@ class TestInproceedings(unittest.TestCase):
 
     def test_error_with_int_when_exptd_str(self):
         self.assertRaises(
-            TypeError,
+            ValueError,
             reference.Inproceedings,
             author="Nonplayer character",
             title=1,
@@ -125,7 +125,7 @@ class TestInproceedings(unittest.TestCase):
             booktitle="diipa2' daapa",
         )
         self.assertRaises(
-            TypeError,
+            ValueError,
             reference.Inproceedings,
             author=1,
             title="Game of the Year",
@@ -133,7 +133,7 @@ class TestInproceedings(unittest.TestCase):
             booktitle="diipa2' daapa",
         )
         self.assertRaises(
-            TypeError,
+            ValueError,
             reference.Inproceedings,
             author="Nonplayer character",
             title="Game of the Year",
