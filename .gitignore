@@ -1,6 +1,5 @@
 .xml
-.png
+*.png
 .pytest_cache
 .env
 __pycache__
-./*.png

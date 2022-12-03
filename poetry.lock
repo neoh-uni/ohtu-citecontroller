@@ -327,6 +327,27 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
+name = "robotframework-pythonlibcore"
+version = "4.0.0"
+description = "Tools to ease creating larger test libraries for Robot Framework using Python."
+category = "dev"
+optional = false
+python-versions = ">=3.7, <4"
+
+[[package]]
+name = "robotframework-seleniumlibrary"
+version = "6.0.0"
+description = "Web testing library for Robot Framework"
+category = "dev"
+optional = false
+python-versions = ">=3.6, <4"
+
+[package.dependencies]
+robotframework = ">=3.2.2"
+robotframework-pythonlibcore = ">=2.2.1"
+selenium = ">=4.0.0"
+
+[[package]]
 name = "selenium"
 version = "4.7.0"
 description = ""
@@ -496,7 +517,7 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "0fb9309d25a991011ac3a59635f5980c38a993869e4d2ea98262579548a4e600"
+content-hash = "6b466c7de1e4c957b851905b07bc5dfe2d149d5a6e148337a3b986417634f63f"
 
 [metadata.files]
 async-generator = [
@@ -894,6 +915,14 @@ python-dotenv = [
 robotframework = [
     {file = "robotframework-6.0.1-py3-none-any.whl", hash = "sha256:5f665413845dfea603de1ed0d0ba8928748ccd2f9a558889822916d778731fbb"},
     {file = "robotframework-6.0.1.zip", hash = "sha256:b2d9a82912dfd27aae7afaad64771c58f5d948ca9d64e3ae72b16721b5e022ea"},
+]
+robotframework-pythonlibcore = [
+    {file = "robotframework-pythonlibcore-4.0.0.tar.gz", hash = "sha256:6028f4323b2ba30e1521f978e2e959107adb8590b5d3f2923af3c712315d494c"},
+    {file = "robotframework_pythonlibcore-4.0.0-py2.py3-none-any.whl", hash = "sha256:0bea30b41241f155f95f61a52ed622ad1638e06aee58a96f046ddf0f16106689"},
+]
+robotframework-seleniumlibrary = [
+    {file = "robotframework-seleniumlibrary-6.0.0.tar.gz", hash = "sha256:ef6d5f1b481513cb6e3d15d78b0dcbabc53aa0866d8d23844b899ac824a0ea82"},
+    {file = "robotframework_seleniumlibrary-6.0.0-py2.py3-none-any.whl", hash = "sha256:8825aabc8d6f01525d3a005bf11d78bfb630ef01ba7d02b05fe9886b0c98e31d"},
 ]
 selenium = [
     {file = "selenium-4.7.0-py3-none-any.whl", hash = "sha256:771cb63b821a2aea01b0cdb623caa5b5c35b9a19f44d0d4f32a44b037a324b10"},
