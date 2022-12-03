@@ -55,6 +55,8 @@ def convert_year(given_str):
 
 
 def convert_volume(given_str):
+    if given_str is None:
+        return None
     try:
         return int(given_str)
     except ValueError as exc:
@@ -84,7 +86,7 @@ class Book:
     note: Optional[str] = field(default=None, validator=[check_str, check_len])
     number: Optional[str] = field(default=None, validator=[check_str, check_len])
     series: Optional[str] = field(default=None, validator=[check_str, check_len])
-    volume: Optional[str] = field(default=None, validator=[check_str, check_len])
+    volume: Optional[str] = field(default=None, converter=convert_volume)
 
 
 @define
@@ -138,4 +140,7 @@ class Inproceedings:
     pages: Optional[str] = field(default=None, validator=[check_str, check_len])
     publisher: Optional[str] = field(default=None, validator=[check_str, check_len])
     series: Optional[str] = field(default=None, validator=[check_str, check_len])
-    volume: Optional[str] = field(default=None, validator=[check_str, check_len])
+    volume: Optional[str] = field(default=None, converter=convert_volume)
+
+b = Book(author="hehe man", title="Lollipop", year="1999", publisher="mega deth", volume="99")
+print(b)
