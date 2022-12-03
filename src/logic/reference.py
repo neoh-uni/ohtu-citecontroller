@@ -74,9 +74,7 @@ class Book:
 
     author: str = field(validator=[validators.instance_of(str), check_name, check_len])
     title: str = field(validator=[validators.instance_of(str), check_len])
-    year: int = field(
-        converter=convert_year, validator=[validators.instance_of(int), check_year]
-    )
+    year: int = field(converter=convert_year, validator=[check_year])
     publisher: str = field(validator=[validators.instance_of(str), check_len])
 
     address: Optional[str] = field(default=None, validator=[check_str, check_len])
@@ -105,12 +103,8 @@ class Article:
     author: str = field(validator=[validators.instance_of(str), check_name, check_len])
     journal: str = field(validator=[validators.instance_of(str), check_len])
     title: str = field(validator=[validators.instance_of(str), check_len])
-    year: int = field(
-        converter=convert_year, validator=[validators.instance_of(int), check_year]
-    )
-    volume: int = field(
-        converter=convert_volume, validator=[validators.instance_of(int), check_len]
-    )
+    year: int = field(converter=convert_year, validator=[check_year])
+    volume: int = field(converter=convert_volume)
     pages: str = field(default=None, validator=[check_str, check_len])
 
     month: Optional[str] = field(default=None, validator=[check_str, check_len])
@@ -132,9 +126,7 @@ class Inproceedings:
 
     author: str = field(validator=[validators.instance_of(str), check_name, check_len])
     title: str = field(validator=[validators.instance_of(str), check_len])
-    year: int = field(
-        converter=convert_year, validator=[validators.instance_of(int), check_year]
-    )
+    year: int = field(converter=convert_year, validator=[check_year])
     booktitle: str = field(validator=[validators.instance_of(str), check_len])
 
     address: Optional[str] = field(default=None, validator=[check_str, check_len])
