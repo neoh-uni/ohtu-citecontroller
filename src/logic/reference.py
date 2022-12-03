@@ -72,10 +72,10 @@ class Book:
     }
     """
 
-    author: str = field(validator=[validators.instance_of(str), check_name, check_len])
-    title: str = field(validator=[validators.instance_of(str), check_len])
+    author: str = field(validator=[check_str, check_name, check_len])
+    title: str = field(validator=[check_str, check_len])
     year: int = field(converter=convert_year, validator=[check_year])
-    publisher: str = field(validator=[validators.instance_of(str), check_len])
+    publisher: str = field(validator=[check_str, check_len])
 
     address: Optional[str] = field(default=None, validator=[check_str, check_len])
     edition: Optional[str] = field(default=None, validator=[check_str, check_len])
@@ -100,9 +100,9 @@ class Article:
     }
     """
 
-    author: str = field(validator=[validators.instance_of(str), check_name, check_len])
-    journal: str = field(validator=[validators.instance_of(str), check_len])
-    title: str = field(validator=[validators.instance_of(str), check_len])
+    author: str = field(validator=[check_str, check_name, check_len])
+    journal: str = field(validator=[check_str, check_len])
+    title: str = field(validator=[check_str, check_len])
     year: int = field(converter=convert_year, validator=[check_year])
     volume: int = field(converter=convert_volume)
     pages: str = field(default=None, validator=[check_str, check_len])
@@ -124,10 +124,10 @@ class Inproceedings:
     }
     """
 
-    author: str = field(validator=[validators.instance_of(str), check_name, check_len])
-    title: str = field(validator=[validators.instance_of(str), check_len])
+    author: str = field(validator=[check_str, check_name, check_len])
+    title: str = field(validator=[check_str, check_len])
     year: int = field(converter=convert_year, validator=[check_year])
-    booktitle: str = field(validator=[validators.instance_of(str), check_len])
+    booktitle: str = field(validator=[check_str, check_len])
 
     address: Optional[str] = field(default=None, validator=[check_str, check_len])
     editor: Optional[str] = field(default=None, validator=[check_str, check_len])
