@@ -39,9 +39,9 @@ class TestArticle(unittest.TestCase):
         self.assertEqual(self.valid_article.year, 2015)
         self.assertNotEqual(self.valid_article.year, "2015")
 
-    def test_article_volume(self):
-        self.assertEqual(self.valid_article.volume, "3")
-        self.assertNotEqual(self.valid_article.volume, 3)
+    def test_article_volume_conversion_to_int(self):
+        self.assertEqual(self.valid_article.volume, 3)
+        self.assertNotEqual(self.valid_article.volume, "3")
 
     def test_article_pages(self):
         self.assertEqual(self.valid_article.pages, "44--66")
