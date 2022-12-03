@@ -42,5 +42,10 @@ class CiteRepository:
     def get_inproceedings(self):    
         sql = """SELECT * FROM cites WHERE type='inproceedings'"""
         return db.session.execute(sql).fetchall()
-        
+
+    def delete_all(self):
+        sql = """DELETE FROM cites"""
+        db.session.execute(sql)
+        db.session.commit()
+
 cite_repository = CiteRepository()
