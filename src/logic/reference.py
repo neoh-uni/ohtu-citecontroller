@@ -3,12 +3,12 @@ Author: Niklas
 See from types: wikipedia https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
 e.g. booklet, inbook, incollection, manual, mastersthesis/phdhesis, misc, proceedings, tech report, unpublished
 """
-from attrs import define, validators, field
 from typing import Optional
 from datetime import datetime
+from attrs import define, validators, field
 
 
-def check_year(instance, attribute, given_year):
+def check_year(instance_unused, attribute_unused, given_year):
     """
     Checks that publishment year is in a reasonable range;
     e.g [500, current year + 5]
@@ -18,7 +18,7 @@ def check_year(instance, attribute, given_year):
         raise ValueError(f"Given year is not in range [500, {year_now+5}]")
 
 
-def check_name(instance, attribute, given_name):
+def check_name(instance_unused, attribute_unused, given_name):
     """
     Check that name is in proper format:
     - Firstname + ... + Surname
@@ -33,7 +33,7 @@ def check_name(instance, attribute, given_name):
             raise ValueError("Name has to consists only of alphabet letters")
 
 
-def check_len(instance, attribute, given_str):
+def check_len(instance_unused, attribute_unused, given_str):
     """
     BibTeX has a 5000 character limit for each field?
     e.g. https://clemson.libguides.com/LaTeX
@@ -42,15 +42,17 @@ def check_len(instance, attribute, given_str):
         raise ValueError("Str length exceeds BibTeX field character limit of 5000")
 
 
-def check_str(instance, attribute, given_str):
+def check_str(instance_unused, attribute_unused, given_str):
     if given_str is not None and not isinstance(given_str, str):
         raise ValueError("Given value is not a string.")
+
 
 def convert_year(given_str):
     try:
         return int(given_str)
-    except ValueError:
-        raise ValueError("Year was not given as an integer")
+    except ValueError as exc:
+        raise ValueError("Year was not given as an integer") from exc
+
 
 @define
 class Book:
@@ -65,7 +67,9 @@ class Book:
 
     author: str = field(validator=[validators.instance_of(str), check_name, check_len])
     title: str = field(validator=[validators.instance_of(str), check_len])
-    year: str = field(converter=convert_year, validator=[validators.instance_of(int), check_year])
+    year: str = field(
+        converter=convert_year, validator=[validators.instance_of(int), check_year]
+    )
     publisher: str = field(validator=[validators.instance_of(str), check_len])
 
     address: Optional[str] = field(default=None, validator=[check_str, check_len])
@@ -94,7 +98,9 @@ class Article:
     author: str = field(validator=[validators.instance_of(str), check_name, check_len])
     journal: str = field(validator=[validators.instance_of(str), check_len])
     title: str = field(validator=[validators.instance_of(str), check_len])
-    year: str = field(converter=convert_year, validator=[validators.instance_of(int), check_year])
+    year: str = field(
+        converter=convert_year, validator=[validators.instance_of(int), check_year]
+    )
     volume: str = field(default=None, validator=[check_str, check_len])
     pages: str = field(default=None, validator=[check_str, check_len])
 
@@ -110,13 +116,16 @@ class Inproceedings:
         author = {Vihavainen, Arto and Paksula, Matti and Luukkainen, Matti},
         title = {Extreme Apprenticeship Method in Teaching Programming for Beginners.},
         year = {2011},
-        booktitle = {SIGCSE '11: Proceedings of the 42nd SIGCSE technical symposium on Computer science education},
+        booktitle = {SIGCSE '11: Proceedings of the 42nd SIGCSE technical symposium 
+        on Computer science education},
     }
     """
 
     author: str = field(validator=[validators.instance_of(str), check_name, check_len])
     title: str = field(validator=[validators.instance_of(str), check_len])
-    year: str = field(converter=convert_year, validator=[validators.instance_of(int), check_year])
+    year: str = field(
+        converter=convert_year, validator=[validators.instance_of(int), check_year]
+    )
     booktitle: str = field(validator=[validators.instance_of(str), check_len])
 
     address: Optional[str] = field(default=None, validator=[check_str, check_len])

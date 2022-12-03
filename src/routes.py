@@ -20,7 +20,7 @@ def create_book():
         publisher = request.form["publisher"]
         msg = cite_service.add_book(author, title, year, publisher)
         return render_template("index.html", message=msg)
- 
+
 
 @routes.route("/createarticle", methods=["POST"])
 def create_article():
@@ -34,6 +34,7 @@ def create_article():
         cite_service.add_article(author, title, year, journal, volume, pages)
         return redirect("/")
 
+
 @routes.route("/createinproceedings", methods=["POST"])
 def create_inproceedings():
     if request.method == "POST":
@@ -43,6 +44,7 @@ def create_inproceedings():
         booktitle = request.form["booktitle"]
         cite_service.add_inproceedings(author, title, year, booktitle)
         return redirect("/")
+
 
 @routes.route("/choosesource", methods=["POST"])
 def choose_source_type():
@@ -58,9 +60,11 @@ def choose_source_type():
     if source_type == "in_proceedings":
         return render_template("index.html", in_proceedings=True)
 
+
 @routes.route("/references", methods=["GET"])
 def references():
     return render_template("references.html")
+
 
 @routes.route("/display_references", methods=["POST"])
 def display_references():
@@ -70,6 +74,9 @@ def display_references():
         articles = cite_service.get_articles()
         in_proceedings = cite_service.get_inproceedings()
 
-        return render_template("references.html", books=books, articles=articles, in_proceedings=in_proceedings)
-
-    
+        return render_template(
+            "references.html",
+            books=books,
+            articles=articles,
+            in_proceedings=in_proceedings,
+        )

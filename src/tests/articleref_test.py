@@ -19,7 +19,7 @@ class TestArticle(unittest.TestCase):
             year=2015,
             volume="3",
             pages="44--66",
-            #optionals
+            # optionals
             month="6",
             note="heloust this is a note",
             number="12380",
@@ -45,21 +45,20 @@ class TestArticle(unittest.TestCase):
 
     def test_article_pages(self):
         self.assertEqual(self.valid_article.pages, "44--66")
-    
 
-    #Optionals
+    # Optionals
     def test_article_note(self):
         self.assertEqual(self.valid_article2.note, "heloust this is a note")
 
     def test_article_month(self):
         self.assertNotEqual(self.valid_article2.month, 6)
         self.assertEqual(self.valid_article2.month, "6")
-    
+
     def test_article_number(self):
         self.assertNotEqual(self.valid_article2.number, 12380)
         self.assertEqual(self.valid_article2.number, "12380")
 
-    #ERROR raisesrs
+    # ERROR raisesrs
     def test_class_errors_without_args(self):
         self.assertRaises(TypeError, reference.Article)
 
@@ -72,7 +71,7 @@ class TestArticle(unittest.TestCase):
             journal=self.error_str,
             year=2015,
             volume="3",
-            pages="44--66"
+            pages="44--66",
         )
 
     def test_error_with_nonalph_author(self):
