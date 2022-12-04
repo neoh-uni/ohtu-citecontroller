@@ -2,10 +2,10 @@ from app import db
 
 
 class CiteRepository:
-    def new_book(self, book):
+    def new_book(self, book, bibi):
 
-        sql = """INSERT INTO cites (type, author, title, year, publisher)
-                 VALUES (:type, :author, :title, :year, :publisher)"""
+        sql = """INSERT INTO cites (type, author, title, year, publisher, bibitex)
+                 VALUES (:type, :author, :title, :year, :publisher, :bibitex)"""
         db.session.execute(
             sql,
             {
@@ -14,6 +14,7 @@ class CiteRepository:
                 "title": book.title,
                 "year": book.year,
                 "publisher": book.publisher,
+                "bibitex": bibi
             },
         )
         db.session.commit()

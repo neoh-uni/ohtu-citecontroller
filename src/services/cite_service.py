@@ -1,3 +1,4 @@
+from attrs import asdict
 from repositories.cite_repository import cite_repository as default_cite_repository
 from logic import reference
 
@@ -9,7 +10,8 @@ class CiteService:
     def add_book(self, author, title, year, publisher):
         try:
             book = reference.Book(author, title, year, publisher)
-            self._cite_repository.new_book(book)
+            bibi = self.to_bibitex(book, "book")
+            self._cite_repository.new_book(book, bibi)
             return "Book added"
         except ValueError as err:
             return err
@@ -45,6 +47,16 @@ class CiteService:
 
     def get_inproceedings(self):
         return self._cite_repository.get_inproceedings()
+
+    def to_bibitex(self, ref, ref_type):
+        non_none_attrs = [(name, value) for name,value in asdict(ref).items() if value is not None]
+
+        bibi = f"@{ref_type}{{CITEACRONYM,\n"
+        for (attribute, value) in non_none_attrs:
+            bibi += "    "+attribute+" = {"+str(value)+"},\n"
+        bibi += "}"
+        return bibi
+
 
 
 cite_service = CiteService()

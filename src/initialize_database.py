@@ -18,7 +18,8 @@ def create_table():
             volume INTEGER,
             booktitle TEXT,
             journal TEXT,
-            pages TEXT
+            pages TEXT,
+            bibitex TEXT
         );
     """
     )
