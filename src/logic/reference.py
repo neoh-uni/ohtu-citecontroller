@@ -5,7 +5,7 @@ e.g. booklet, inbook, incollection, manual, mastersthesis/phdhesis,...
 """
 from typing import Optional
 from datetime import datetime
-from attrs import define, validators, field
+from attrs import define, field
 
 
 def check_year(instance_unused, attribute_unused, given_year):
@@ -24,6 +24,7 @@ def check_name(instance_unused, attribute_unused, given_name):
     - Firstname + ... + Surname
     - str made of [Aa-Zz]
     """
+    given_name = given_name.replace(".", "").replace(",", "")
     split_name = given_name.split()
     len_n = len(split_name)
     if len_n < 2:
@@ -141,4 +142,3 @@ class Inproceedings:
     publisher: Optional[str] = field(default=None, validator=[check_str, check_len])
     series: Optional[str] = field(default=None, validator=[check_str, check_len])
     volume: Optional[str] = field(default=None, converter=convert_volume)
-
