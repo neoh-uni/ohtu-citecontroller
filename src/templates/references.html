@@ -39,11 +39,10 @@
 
       {% if books %}
 
-      <p>Books</p>
-      <p></p>
+      <h3>Books</h3>
       <ul>
         {% for book in books %}
-        <li> {{ book.title }}</li>
+        <h5> {{ book.title }}</h5>
         <ul>
           <li> {{ book.author }}</li>
           <li> {{ book.year }}</li>
@@ -51,41 +50,42 @@
           <li>
             <pre>{{ book.bibitex }}</pre>
           </li>
+
         </ul>
+        {% endfor %}
       </ul>
-      {% endfor %}
       {% endif %}
 
       {% if articles %}
-      <p>Articles</p>
-      <p></p>
+      <h3>Articles</h3>
       <ul>
         {% for article in articles %}
-        <li> {{ article.title }}</li>
+        <h5> {{ article.title }}</h5>
         <ul>
           <li> {{ article.author }}</li>
           <li> {{ article.year }}</li>
           <li> {{ article.journal }}</li>
           <li> {{ article.volume }}</li>
           <li> {{ article.pages }}</li>
+
         </ul>
+        {% endfor %}
       </ul>
-      {% endfor %}
       {% endif %}
 
       {% if in_proceedings %}
-      <p>In proceedings</p>
-      <p></p>
+      <h3>In proceedings</h3>
       <ul>
         {% for in_proceeding in in_proceedings %}
-        <li> {{ in_proceeding.title }}</li>
+        <h5> {{ in_proceeding.title }}</h5>
         <ul>
           <li> {{ in_proceeding.author }}</li>
           <li> {{ in_proceeding.year }}</li>
           <li> {{ in_proceeding.booktitle }}</li>
+
         </ul>
+        {% endfor %}
       </ul>
-      {% endfor %}
       {% endif %}
 
       {% with messages = get_flashed_messages() %}
