@@ -2,10 +2,11 @@
 Library  SeleniumLibrary
 
 *** Variables ***
-${SERVER}  citecontroller.herokuapp.com/
+${SERVER}  citecontroller.herokuapp.com
 ${BROWSER}  headlesschrome
 ${DELAY}  0
 ${HOME URL}  http://${SERVER}
+${REFERENCES URL}  http://${SERVER}/references
 
 *** Keywords ***
 Open And Configure Browser
@@ -15,3 +16,7 @@ Open And Configure Browser
 
 Go To Home Page
     Go To  ${HOME URL}
+
+Go To References Page
+    Go To  ${REFERENCES URL}
+    
