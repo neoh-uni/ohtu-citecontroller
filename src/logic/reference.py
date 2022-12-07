@@ -8,7 +8,7 @@ from datetime import datetime
 from attrs import define, field
 
 def check_notempty(instance_unused, attribute_unused, given_str):
-    if given_str == None:
+    if given_str is "":
         raise ValueError("All fields must have a value")
 
 
@@ -53,6 +53,8 @@ def check_str(instance_unused, attribute_unused, given_str):
 
 
 def convert_year(given_str):
+    if given_str == "":
+        return ""
     try:
         return int(given_str)
     except ValueError as exc:
@@ -60,6 +62,8 @@ def convert_year(given_str):
 
 
 def convert_volume(given_str):
+    if given_str is None:
+        return None
     try:
         return int(given_str)
     except ValueError as exc:
