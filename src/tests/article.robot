@@ -27,7 +27,7 @@ Adding Article Without Year
     Set Volume  6
     Set Pages  20-22
     Submit Reference
-    Adding Should Fail With Message  Article must have a year
+    Adding Should Fail With Message  Year was not given as an integer
 
 Adding Article Without Title
     Select Radio Button  radiobutton  article
@@ -38,7 +38,7 @@ Adding Article Without Title
     Set Volume  6
     Set Pages  20-22
     Submit Reference
-    Adding Should Fail With Message  Article must have a Title
+    Adding Should Fail With Message  Article must have a title
 
 Adding Article Without Author
     Select Radio Button  radiobutton  article
@@ -60,7 +60,7 @@ Adding Article Without Journal
     Set Volume  6
     Set Pages  20-22
     Submit Reference
-    Adding Should Fail With Message  Article must have a Journal
+    Adding Should Fail With Message  Article must have a journal
 
 # JOKU KENTTÄ INVALID
 Adding Article With Invalid Year
@@ -73,7 +73,7 @@ Adding Article With Invalid Year
     Set Volume  6
     Set Pages  20-22
     Submit Reference
-    Adding Should Fail With Message  Given year is not in range 500, 2027
+    Adding Should Fail With Message  Given year is not in range [500, 2027]
 
 Adding Article With Invalid Title
     Select Radio Button  radiobutton  article
@@ -137,7 +137,7 @@ Adding Article With Invalid Volume
 
 *** Keywords ***
 Adding Should Succeed
-    Page Should Contain  Reference added
+    Page Should Contain  Article added
 
 Adding Should Fail With Message
     [Arguments]  ${message}
@@ -145,7 +145,7 @@ Adding Should Fail With Message
 
 Set Title
     [Arguments]  ${article}
-    Input Text  article  ${article}
+    Input Text  title  ${article}
 
 Set Author
     [Arguments]  ${author}

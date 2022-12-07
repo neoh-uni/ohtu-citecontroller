@@ -28,7 +28,8 @@ class CiteService:
     def add_inproceedings(self, author, title, year, booktitle):
         try:
             inproceedings = reference.Inproceedings(author, title, year, booktitle)
-            self._cite_repository.new_inproceedings(inproceedings)
+            bibi = self.to_bibitex(inproceedings, "inproceedings")
+            self._cite_repository.new_inproceedings(inproceedings, bibi)
             return "Inproceedings added"
         except ValueError as err:
             return err

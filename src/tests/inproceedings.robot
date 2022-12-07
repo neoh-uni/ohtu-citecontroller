@@ -23,7 +23,7 @@ Adding Inproceedings Without Year
     Set Author  Inproceedingin Kirjoittaja
     Set Booktitle  booktitle
     Submit Reference
-    Adding Should Fail With Message  in_proceedings must have a year
+    Adding Should Fail With Message  Year was not given as an integer
 
 Adding Inproceedings Without Title
     Select Radio Button  radiobutton  in_proceedings
@@ -32,7 +32,7 @@ Adding Inproceedings Without Title
     Set Year    2000
     Set Booktitle  booktitle
     Submit Reference
-    Adding Should Fail With Message  in_proceedings must have a title
+    Adding Should Fail With Message  In proceeding must have a title
 
 Adding Inproceedings Without Author
     Select Radio Button  radiobutton  in_proceedings
@@ -41,7 +41,7 @@ Adding Inproceedings Without Author
     Set Year    2000
     Set Booktitle  booktitle
     Submit Reference
-    Adding Should Fail With Message  in_proceedings must have an author
+    Adding Should Fail With Message  In proceeding must have an author
 
 Adding Inproceedings Without Booktitle
     Select Radio Button  radiobutton  in_proceedings
@@ -50,7 +50,7 @@ Adding Inproceedings Without Booktitle
     Set Author  Inproceedingin Kirjoittaja
     Set Year    2000
     Submit Reference
-    Adding Should Fail With Message  in_proceedings must have a booktitle
+    Adding Should Fail With Message  In proceeding must have a booktitle
 
 # JOKU KENTTÄ INVALID
 Adding Inproceedings With Invalid Year
@@ -61,17 +61,17 @@ Adding Inproceedings With Invalid Year
     Set Year    2
     Set Booktitle  booktitle
     Submit Reference
-    Adding Should Fail With Message  Given year is not in range 500, 2027
+    Adding Should Fail With Message  Given year is not in range [500, 2027]
 
-Adding Inproceedings With Invalid Title
-    Select Radio Button  radiobutton  in_proceedings
-    Choose Type
-    Set Title  1
-    Set Author  Inproceedingin Kirjoittaja
-    Set Year    2000
-    Set Booktitle  booktitle
-    Submit Reference
-    Adding Should Fail With Message  Given value is not a string.
+#Adding Inproceedings With Invalid Title
+#    Select Radio Button  radiobutton  in_proceedings
+#    Choose Type
+#    Set Title  1
+#    Set Author  Inproceedingin Kirjoittaja
+#    Set Year    2000
+#    Set Booktitle  booktitle
+#    Submit Reference
+#    Adding Should Fail With Message  Given value is not a string.
 
 Adding Inproceedings With Invalid Author
     Select Radio Button  radiobutton  in_proceedings
@@ -91,11 +91,11 @@ Adding Inproceedings With Invalid Booktitle
     Set Year    2000
     Set Booktitle  2
     Submit Reference
-    Adding Should Fail With Message  Given value is not a string.
+    Adding Should Fail With Message  Given value is not a string
 
 *** Keywords ***
 Adding Should Succeed
-    Page Should Contain  Reference added
+    Page Should Contain  Inproceedings added
 
 Adding Should Fail With Message
     [Arguments]  ${message}

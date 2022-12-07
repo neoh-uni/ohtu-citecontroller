@@ -45,7 +45,7 @@ def check_len(instance_unused, attribute_unused, given_str):
 
 def check_str(instance_unused, attribute_unused, given_str):
     if given_str is not None and not isinstance(given_str, str):
-        raise ValueError("Given value is not a string.")
+        raise ValueError("Given value is not a string")
 
 
 def convert_year(given_str):

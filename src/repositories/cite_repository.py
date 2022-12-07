@@ -37,9 +37,9 @@ class CiteRepository:
         )
         db.session.commit()
 
-    def new_inproceedings(self, inproceedings):
-        sql = """INSERT INTO cites (type, author, title, year, booktitle)
-                VALUES (:type, :author, :title, :year, :booktitle)"""
+    def new_inproceedings(self, inproceedings, bibi):
+        sql = """INSERT INTO cites (type, author, title, year, booktitle, bibitex)
+                VALUES (:type, :author, :title, :year, :booktitle, :bibitex)"""
         db.session.execute(
             sql,
             {
@@ -48,6 +48,7 @@ class CiteRepository:
                 "title": inproceedings.title,
                 "year": inproceedings.year,
                 "booktitle": inproceedings.booktitle,
+                "bibitex": bibi
             },
         )
         db.session.commit()
