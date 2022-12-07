@@ -47,11 +47,11 @@
       <h3>Books</h3>
       <ul>
         {% for book in books %}
-        <h5> {{ book.title }}</h5>
+        <h5> Title: {{ book.title }}</h5>
         <ul>
-          <li> {{ book.author }}</li>
-          <li> {{ book.year }}</li>
-          <li> {{ book.publisher }}</li>
+          <p> Author: {{ book.author }}</p>
+          <p> Year: {{ book.year }}</li>
+          <p> Publisher: {{ book.publisher }}</li>
           <li>
             <pre>{{ book.bibitex }}</pre>
           </li>
@@ -66,13 +66,13 @@
       <h3>Articles</h3>
       <ul>
         {% for article in articles %}
-        <h5> {{ article.title }}</h5>
+        <h5> Title: {{ article.title }}</h5>
         <ul>
-          <li> {{ article.author }}</li>
-          <li> {{ article.year }}</li>
-          <li> {{ article.journal }}</li>
-          <li> {{ article.volume }}</li>
-          <li> {{ article.pages }}</li>
+          <p> Author: {{ article.author }}</p>
+          <p> Year: {{ article.year }}</p>
+          <p> Journal: {{ article.journal }}</p>
+          <p> Volume: {{ article.volume }}</p>
+          <p> Pages: {{ article.pages }}</p>
           <li>
             <pre>{{ article.bibitex }}</pre>
           </li>
@@ -86,11 +86,11 @@
       <h3>In proceedings</h3>
       <ul>
         {% for in_proceeding in in_proceedings %}
-        <h5> {{ in_proceeding.title }}</h5>
+        <h5> Title: {{ in_proceeding.title }}</h5>
         <ul>
-          <li> {{ in_proceeding.author }}</li>
-          <li> {{ in_proceeding.year }}</li>
-          <li> {{ in_proceeding.booktitle }}</li>
+          <p> Author: {{ in_proceeding.author }}</p>
+          <p> Year: {{ in_proceeding.year }}</p>
+          <p> Booktitle: {{ in_proceeding.booktitle }}</p>
           <li>
             <pre>{{ in_proceeding.bibitex }}</pre>
           </li>
