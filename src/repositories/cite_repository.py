@@ -19,9 +19,9 @@ class CiteRepository:
         )
         db.session.commit()
 
-    def new_article(self, article):
-        sql = """INSERT INTO cites (type, author, title, year, journal, volume, pages)
-                VALUES (:type, :author, :title, :year, :journal, :volume, :pages)"""
+    def new_article(self, article, bibi):
+        sql = """INSERT INTO cites (type, author, title, year, journal, volume, pages, bibitex)
+                VALUES (:type, :author, :title, :year, :journal, :volume, :pages, :bibitex)"""
         db.session.execute(
             sql,
             {
@@ -32,6 +32,7 @@ class CiteRepository:
                 "journal": article.journal,
                 "volume": article.volume,
                 "pages": article.pages,
+                "bibitex": bibi
             },
         )
         db.session.commit()

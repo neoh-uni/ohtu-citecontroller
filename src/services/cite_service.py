@@ -19,7 +19,8 @@ class CiteService:
     def add_article(self, author, title, year, journal, volume, pages):
         try:
             article = reference.Article(author, journal, title, year, volume, pages)
-            self._cite_repository.new_article(article)
+            bibi = self.to_bibitex(article, "article")
+            self._cite_repository.new_article(article, bibi)
             return "Article added"
         except ValueError as err:
             return err
