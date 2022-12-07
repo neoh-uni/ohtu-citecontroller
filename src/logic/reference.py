@@ -48,8 +48,6 @@ def check_len(instance_unused, attribute_unused, given_str):
 
 
 def check_str(instance_unused, attribute_unused, given_str):
-    if given_str is None:
-        raise ValueError("All fields must have a value")
     if given_str is not None and not isinstance(given_str, str):
         raise ValueError("Given value is not a string")
 
@@ -81,7 +79,7 @@ class Book:
 
     author: str = field(validator=[check_notempty, check_str, check_name, check_len])
     title: str = field(validator=[check_notempty, check_str, check_len])
-    year: int = field(validator=[check_notempty], converter=convert_year, validator=[check_year])
+    year: int = field(converter=convert_year, validator=[check_year])
     publisher: str = field(validator=[check_notempty, check_str, check_len])
 
     address: Optional[str] = field(default=None, validator=[check_str, check_len])
@@ -110,8 +108,8 @@ class Article:
     author: str = field(validator=[check_notempty, check_str, check_name, check_len])
     journal: str = field(validator=[check_notempty, check_str, check_len])
     title: str = field(validator=[check_notempty, check_str, check_len])
-    year: int = field(validator=[check_notempty], converter=convert_year, validator=[check_year])
-    volume: int = field(validator=[check_notempty], converter=convert_volume)
+    year: int = field(converter=convert_year, validator=[check_year])
+    volume: int = field(converter=convert_volume)
     pages: str = field(default=None, validator=[check_notempty, check_str, check_len])
 
     month: Optional[str] = field(default=None, validator=[check_str, check_len])
@@ -133,7 +131,7 @@ class Inproceedings:
 
     author: str = field(validator=[check_notempty, check_str, check_name, check_len])
     title: str = field(validator=[check_notempty, check_str, check_len])
-    year: int = field(validator=[check_notempty], converter=convert_year, validator=[check_year])
+    year: int = field(converter=convert_year, validator=[check_year])
     booktitle: str = field(validator=[check_notempty, check_str, check_len])
 
     address: Optional[str] = field(default=None, validator=[check_str, check_len])
