@@ -52,9 +52,9 @@
           <p>Author: {{ book.author }}</p>
           <p>Year: {{ book.year }}</li>
           <p>Publisher: {{ book.publisher }}</li>
-          <li>
-            <pre>Bibitex: {{ book.bibitex }}</pre>
-          </li>
+          <p>
+            Bibitex: <pre>{{ book.bibitex }}</pre>
+          </p>
 
         </ul>
         {% endfor %}
@@ -73,9 +73,9 @@
           <p>Journal: {{ article.journal }}</p>
           <p>Volume: {{ article.volume }}</p>
           <p>Pages: {{ article.pages }}</p>
-          <li>
-            <pre>Bibitex: {{ article.bibitex }}</pre>
-          </li>
+          <p>
+            Bibitex: <pre>{{ article.bibitex }}</pre>
+          </p>
 
         </ul>
         {% endfor %}
@@ -91,9 +91,9 @@
           <p>Author: {{ in_proceeding.author }}</p>
           <p>Year: {{ in_proceeding.year }}</p>
           <p>Booktitle: {{ in_proceeding.booktitle }}</p>
-          <li>
-            <pre>Bibitex: {{ in_proceeding.bibitex }}</pre>
-          </li>
+          <p>
+            Bibitex: <pre>{{ in_proceeding.bibitex }}</pre>
+          </p>
 
         </ul>
         {% endfor %}
