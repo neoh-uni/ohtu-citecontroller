@@ -38,8 +38,7 @@ class TestCiteRepocitory(unittest.TestCase):
 
     def test_new_inproceedings(self):
         cite_repository.new_inproceedings(
-            Inproceedings("Test Author", "Title", "2022", "Booktitle")
-        )
+            Inproceedings("Test Author", "Title", "2022", "Booktitle"), "b{bikoodia")
         inproceedings = cite_repository.get_inproceedings()
 
         self.assertEqual(len(inproceedings), 1)
@@ -49,6 +48,7 @@ class TestCiteRepocitory(unittest.TestCase):
                 inproceedings[0].title,
                 inproceedings[0].year,
                 inproceedings[0].booktitle,
+                inproceedings[0].bibitex
             ],
-            ["Test Author", "Title", 2022, "Booktitle"],
+            ["Test Author", "Title", 2022, "Booktitle", "b{bikoodia"],
         )
