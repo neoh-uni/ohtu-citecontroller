@@ -23,7 +23,7 @@ Adding Book Without Year
     Set Author  Kirjan Kirjoittaja
     Set Publisher  julkaisija
     Submit Reference
-    Adding Should Fail With Message  Year was not given as an integer
+    Adding Should Fail With Message  All fields must have a value
 
 Adding Book Without Title
     Select Radio Button  radiobutton  book
@@ -32,7 +32,7 @@ Adding Book Without Title
     Set Year    2000
     Set Publisher  julkaisija
     Submit Reference
-    Adding Should Fail With Message  Book must have a Title
+    Adding Should Fail With Message  All fields must have a value
 
 Adding Book Without Author
     Select Radio Button  radiobutton  book
@@ -41,7 +41,7 @@ Adding Book Without Author
     Set Year    2000
     Set Publisher  julkaisija
     Submit Reference
-    Adding Should Fail With Message  First name and surname is required
+    Adding Should Fail With Message  All fields must have a value
 
 Adding Book Without Publisher
     Select Radio Button  radiobutton  book
@@ -50,7 +50,7 @@ Adding Book Without Publisher
     Set Author  Kirjan Kirjoittaja
     Set Year    2000
     Submit Reference
-    Adding Should Fail With Message  Book must have a publisher
+    Adding Should Fail With Message  All fields must have a value
 
 # JOKU KENTTÄ INVALID
 Adding Book With Invalid Year

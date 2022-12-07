@@ -109,7 +109,7 @@ Adding Article With Invalid Journal
     Set Volume  6
     Set Pages  20-22
     Submit Reference
-    Adding Should Fail With Message  Given value is not a string.
+    Adding Should Fail With Message  Given value is not a string
 
 Adding Article With Invalid Pages
     Select Radio Button  radiobutton  article

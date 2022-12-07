@@ -41,7 +41,7 @@ Adding Inproceedings Without Author
     Set Year    2000
     Set Booktitle  booktitle
     Submit Reference
-    Adding Should Fail With Message  First name and surname is required
+    Adding Should Fail With Message  All fields must have a value
 
 Adding Inproceedings Without Booktitle
     Select Radio Button  radiobutton  in_proceedings
@@ -50,7 +50,7 @@ Adding Inproceedings Without Booktitle
     Set Author  Inproceedingin Kirjoittaja
     Set Year    2000
     Submit Reference
-    Adding Should Fail With Message  In proceeding must have a booktitle
+    Adding Should Fail With Message  All fields must have a value
 
 # JOKU KENTTÄ INVALID
 Adding Inproceedings With Invalid Year

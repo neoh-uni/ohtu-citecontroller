@@ -62,8 +62,8 @@ def convert_year(given_str):
 
 
 def convert_volume(given_str):
-    if given_str is None:
-        return None
+    if given_str == "":
+        return ""
     try:
         return int(given_str)
     except ValueError as exc:
@@ -113,7 +113,7 @@ class Article:
     journal: str = field(validator=[check_notempty, check_str, check_len])
     title: str = field(validator=[check_notempty, check_str, check_len])
     year: int = field(converter=convert_year, validator=[check_year])
-    volume: int = field(converter=convert_volume)
+    volume: int = field(converter=convert_volume, validator=[check_notempty])
     pages: str = field(default=None, validator=[check_notempty, check_str, check_len])
 
     month: Optional[str] = field(default=None, validator=[check_str, check_len])
