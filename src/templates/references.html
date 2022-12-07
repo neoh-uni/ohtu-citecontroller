@@ -26,17 +26,22 @@
       <form action="/display_references" method="post">
 
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" name="all_references" id="all" value="1">
-          <label class="form-check-label" for="inlineCheckbox1">All references</label>
+          <input class="form-check-input" type="radio" name="radiobutton" id="all" value="all" checked="checked">
+          <label class="form-check-label" for="inlineRadio1">All references</label>
         </div>
 
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="radiobutton" id="bibitex" value="bibitext">
+          <label class="form-check-label" for="inlineRadio2">Bibitex only</label>
+        </div>
 
         <div class="form-group col-6">
           <input type="submit" class="btn btn-primary" value="choose type">
         </div>
 
       </form>
-
+      
+      {% if all %}
       {% if books %}
 
       <h3>Books</h3>
@@ -56,6 +61,7 @@
       </ul>
       {% endif %}
 
+      
       {% if articles %}
       <h3>Articles</h3>
       <ul>
@@ -92,6 +98,49 @@
         </ul>
         {% endfor %}
       </ul>
+      {% endif %}
+      {% endif %}
+
+      {% if bibitex %}
+      {% if books %}
+
+      <h3>Books</h3>
+      <ul>
+        {% for book in books %}
+        <ul>
+            <pre>{{ book.bibitex }}</pre>
+          </li>
+
+        </ul>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+      
+      {% if articles %}
+      <h3>Articles</h3>
+      <ul>
+        {% for article in articles %}
+        <ul>
+          <pre>{{ article.bibitex }}</pre>
+        </ul>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+      {% if in_proceedings %}
+      <h3>In proceedings</h3>
+      <ul>
+        {% for in_proceeding in in_proceedings %}
+        <ul>
+          <li>
+            <pre>{{ in_proceeding.bibitex }}</pre>
+          </li>
+
+        </ul>
+        {% endfor %}
+      </ul>
+      {% endif %}
       {% endif %}
 
       {% with messages = get_flashed_messages() %}
