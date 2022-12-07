@@ -47,13 +47,13 @@
       <h3>Books</h3>
       <ul>
         {% for book in books %}
-        <h5> Title: {{ book.title }}</h5>
+        <h5>Title: {{ book.title }}</h5>
         <ul>
-          <p> Author: {{ book.author }}</p>
-          <p> Year: {{ book.year }}</li>
-          <p> Publisher: {{ book.publisher }}</li>
+          <p>Author: {{ book.author }}</p>
+          <p>Year: {{ book.year }}</li>
+          <p>Publisher: {{ book.publisher }}</li>
           <li>
-            <pre>{{ book.bibitex }}</pre>
+            <pre>Bibitex: {{ book.bibitex }}</pre>
           </li>
 
         </ul>
@@ -66,15 +66,15 @@
       <h3>Articles</h3>
       <ul>
         {% for article in articles %}
-        <h5> Title: {{ article.title }}</h5>
+        <h5>Title: {{ article.title }}</h5>
         <ul>
-          <p> Author: {{ article.author }}</p>
-          <p> Year: {{ article.year }}</p>
-          <p> Journal: {{ article.journal }}</p>
-          <p> Volume: {{ article.volume }}</p>
-          <p> Pages: {{ article.pages }}</p>
+          <p>Author: {{ article.author }}</p>
+          <p>Year: {{ article.year }}</p>
+          <p>Journal: {{ article.journal }}</p>
+          <p>Volume: {{ article.volume }}</p>
+          <p>Pages: {{ article.pages }}</p>
           <li>
-            <pre>{{ article.bibitex }}</pre>
+            <pre>Bibitex: {{ article.bibitex }}</pre>
           </li>
 
         </ul>
@@ -86,13 +86,13 @@
       <h3>In proceedings</h3>
       <ul>
         {% for in_proceeding in in_proceedings %}
-        <h5> Title: {{ in_proceeding.title }}</h5>
+        <h5>Title: {{ in_proceeding.title }}</h5>
         <ul>
-          <p> Author: {{ in_proceeding.author }}</p>
-          <p> Year: {{ in_proceeding.year }}</p>
-          <p> Booktitle: {{ in_proceeding.booktitle }}</p>
+          <p>Author: {{ in_proceeding.author }}</p>
+          <p>Year: {{ in_proceeding.year }}</p>
+          <p>Booktitle: {{ in_proceeding.booktitle }}</p>
           <li>
-            <pre>{{ in_proceeding.bibitex }}</pre>
+            <pre>Bibitex: {{ in_proceeding.bibitex }}</pre>
           </li>
 
         </ul>
