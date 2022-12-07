@@ -23,7 +23,7 @@ Adding Inproceedings Without Year
     Set Author  Inproceedingin Kirjoittaja
     Set Booktitle  booktitle
     Submit Reference
-    Adding Should Fail With Message  Year was not given as an integer
+    Adding Should Fail With Message  All fields must have a value
 
 Adding Inproceedings Without Title
     Select Radio Button  radiobutton  in_proceedings
@@ -32,7 +32,7 @@ Adding Inproceedings Without Title
     Set Year    2000
     Set Booktitle  booktitle
     Submit Reference
-    Adding Should Fail With Message  In proceeding must have a title
+    Adding Should Fail With Message  All fields must have a value
 
 Adding Inproceedings Without Author
     Select Radio Button  radiobutton  in_proceedings
@@ -41,7 +41,7 @@ Adding Inproceedings Without Author
     Set Year    2000
     Set Booktitle  booktitle
     Submit Reference
-    Adding Should Fail With Message  In proceeding must have an author
+    Adding Should Fail With Message  First name and surname is required
 
 Adding Inproceedings Without Booktitle
     Select Radio Button  radiobutton  in_proceedings
@@ -83,15 +83,15 @@ Adding Inproceedings With Invalid Author
     Submit Reference
     Adding Should Fail With Message  First name and surname is required
 
-Adding Inproceedings With Invalid Booktitle
-    Select Radio Button  radiobutton  in_proceedings
-    Choose Type
-    Set Title  Inproceeding
-    Set Author  Inproceedingin Kirjoittaja
-    Set Year    2000
-    Set Booktitle  2
-    Submit Reference
-    Adding Should Fail With Message  Given value is not a string
+#Adding Inproceedings With Invalid Booktitle
+#    Select Radio Button  radiobutton  in_proceedings
+#    Choose Type
+#    Set Title  Inproceeding
+#    Set Author  Inproceedingin Kirjoittaja
+#    Set Year    2000
+#    Set Booktitle  2
+#    Submit Reference
+#    Adding Should Fail With Message  Given value is not a string
 
 *** Keywords ***
 Adding Should Succeed

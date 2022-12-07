@@ -2,7 +2,7 @@ from attrs import asdict
 from repositories.cite_repository import cite_repository as default_cite_repository
 from logic import reference
 
-# TODO: Make this universal service
+
 class CiteService:
     def __init__(self, cite_repository=default_cite_repository):
         self._cite_repository = cite_repository

@@ -14,6 +14,8 @@ def check_year(instance_unused, attribute_unused, given_year):
     e.g [500, current year + 5]
     """
     year_now = datetime.now().year
+    if given_year is None:
+        raise ValueError("All fields must have a value")
     if (given_year > year_now + 5) or (given_year < 500):
         raise ValueError(f"Given year is not in range [500, {year_now+5}]")
 
@@ -44,6 +46,8 @@ def check_len(instance_unused, attribute_unused, given_str):
 
 
 def check_str(instance_unused, attribute_unused, given_str):
+    if len(given_str) is None:
+        raise ValueError("All fields must have a value")
     if given_str is not None and not isinstance(given_str, str):
         raise ValueError("Given value is not a string")
 

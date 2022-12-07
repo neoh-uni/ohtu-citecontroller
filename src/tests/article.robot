@@ -49,7 +49,7 @@ Adding Article Without Author
     Set Volume  6
     Set Pages  20-22
     Submit Reference
-    Adding Should Fail With Message  Article must have an author
+    Adding Should Fail With Message  First name and surname required
 
 Adding Article Without Journal
     Select Radio Button  radiobutton  article
