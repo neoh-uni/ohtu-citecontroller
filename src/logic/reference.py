@@ -5,7 +5,11 @@ e.g. booklet, inbook, incollection, manual, mastersthesis/phdhesis,...
 """
 from typing import Optional
 from datetime import datetime
-from attrs import define, validators, field
+from attrs import define, field
+
+def check_notempty(instance_unused, attribute_unused, given_str):
+    if given_str is "":
+        raise ValueError("All fields must have a value")
 
 
 def check_year(instance_unused, attribute_unused, given_year):
@@ -24,6 +28,7 @@ def check_name(instance_unused, attribute_unused, given_name):
     - Firstname + ... + Surname
     - str made of [Aa-Zz]
     """
+    given_name = given_name.replace(".", "").replace(",", "")
     split_name = given_name.split()
     len_n = len(split_name)
     if len_n < 2:
@@ -44,10 +49,12 @@ def check_len(instance_unused, attribute_unused, given_str):
 
 def check_str(instance_unused, attribute_unused, given_str):
     if given_str is not None and not isinstance(given_str, str):
-        raise ValueError("Given value is not a string.")
+        raise ValueError("Given value is not a string")
 
 
 def convert_year(given_str):
+    if given_str == "":
+        return ""
     try:
         return int(given_str)
     except ValueError as exc:
@@ -55,8 +62,8 @@ def convert_year(given_str):
 
 
 def convert_volume(given_str):
-    if given_str is None:
-        return None
+    if given_str == "":
+        return ""
     try:
         return int(given_str)
     except ValueError as exc:
@@ -74,10 +81,10 @@ class Book:
     }
     """
 
-    author: str = field(validator=[check_str, check_name, check_len])
-    title: str = field(validator=[check_str, check_len])
+    author: str = field(validator=[check_notempty, check_str, check_name, check_len])
+    title: str = field(validator=[check_notempty, check_str, check_len])
     year: int = field(converter=convert_year, validator=[check_year])
-    publisher: str = field(validator=[check_str, check_len])
+    publisher: str = field(validator=[check_notempty, check_str, check_len])
 
     address: Optional[str] = field(default=None, validator=[check_str, check_len])
     edition: Optional[str] = field(default=None, validator=[check_str, check_len])
@@ -102,12 +109,12 @@ class Article:
     }
     """
 
-    author: str = field(validator=[check_str, check_name, check_len])
-    journal: str = field(validator=[check_str, check_len])
-    title: str = field(validator=[check_str, check_len])
+    author: str = field(validator=[check_notempty, check_str, check_name, check_len])
+    journal: str = field(validator=[check_notempty, check_str, check_len])
+    title: str = field(validator=[check_notempty, check_str, check_len])
     year: int = field(converter=convert_year, validator=[check_year])
-    volume: int = field(converter=convert_volume)
-    pages: str = field(default=None, validator=[check_str, check_len])
+    volume: int = field(converter=convert_volume, validator=[check_notempty])
+    pages: str = field(default=None, validator=[check_notempty, check_str, check_len])
 
     month: Optional[str] = field(default=None, validator=[check_str, check_len])
     note: Optional[str] = field(default=None, validator=[check_str, check_len])
@@ -126,10 +133,10 @@ class Inproceedings:
     }
     """
 
-    author: str = field(validator=[check_str, check_name, check_len])
-    title: str = field(validator=[check_str, check_len])
+    author: str = field(validator=[check_notempty, check_str, check_name, check_len])
+    title: str = field(validator=[check_notempty, check_str, check_len])
     year: int = field(converter=convert_year, validator=[check_year])
-    booktitle: str = field(validator=[check_str, check_len])
+    booktitle: str = field(validator=[check_notempty, check_str, check_len])
 
     address: Optional[str] = field(default=None, validator=[check_str, check_len])
     editor: Optional[str] = field(default=None, validator=[check_str, check_len])
@@ -141,6 +148,3 @@ class Inproceedings:
     publisher: Optional[str] = field(default=None, validator=[check_str, check_len])
     series: Optional[str] = field(default=None, validator=[check_str, check_len])
     volume: Optional[str] = field(default=None, converter=convert_volume)
-
-b = Book(author="hehe man", title="Lollipop", year="1999", publisher="mega deth", volume="99")
-print(b)

@@ -1,4 +1,6 @@
-.xml
+report.html
+log.html
+*.xml
 *.png
 .pytest_cache
 .env

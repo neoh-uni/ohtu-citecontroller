@@ -14,10 +14,10 @@ def index():
 @routes.route("/createbook", methods=["POST"])
 def create_book():
     if request.method == "POST":
-        title = request.form["title"]
-        author = request.form["author"]
-        year = request.form["year"]
-        publisher = request.form["publisher"]
+        title = request.form["title"].strip()
+        author = request.form["author"].strip()
+        year = request.form["year"].strip()
+        publisher = request.form["publisher"].strip()
         msg = cite_service.add_book(author, title, year, publisher)
         return render_template("index.html", message=msg)
 
@@ -31,8 +31,8 @@ def create_article():
         journal = request.form["journal"]
         volume = request.form["volume"]
         pages = request.form["pages"]
-        cite_service.add_article(author, title, year, journal, volume, pages)
-        return redirect("/")
+        msg = cite_service.add_article(author, title, year, journal, volume, pages)
+        return render_template("index.html", message=msg)
 
 
 @routes.route("/createinproceedings", methods=["POST"])
@@ -42,8 +42,8 @@ def create_inproceedings():
         author = request.form["author"]
         year = request.form["year"]
         booktitle = request.form["booktitle"]
-        cite_service.add_inproceedings(author, title, year, booktitle)
-        return redirect("/")
+        msg = cite_service.add_inproceedings(author, title, year, booktitle)
+        return render_template("index.html", message=msg)
 
 
 @routes.route("/choosesource", methods=["POST"])

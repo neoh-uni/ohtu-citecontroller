@@ -23,7 +23,7 @@ Adding Book Without Year
     Set Author  Kirjan Kirjoittaja
     Set Publisher  julkaisija
     Submit Reference
-    Adding Should Fail With Message  Book must have a year
+    Adding Should Fail With Message  All fields must have a value
 
 Adding Book Without Title
     Select Radio Button  radiobutton  book
@@ -32,7 +32,7 @@ Adding Book Without Title
     Set Year    2000
     Set Publisher  julkaisija
     Submit Reference
-    Adding Should Fail With Message  Book must have a Title
+    Adding Should Fail With Message  All fields must have a value
 
 Adding Book Without Author
     Select Radio Button  radiobutton  book
@@ -41,7 +41,7 @@ Adding Book Without Author
     Set Year    2000
     Set Publisher  julkaisija
     Submit Reference
-    Adding Should Fail With Message  Book must have an author
+    Adding Should Fail With Message  All fields must have a value
 
 Adding Book Without Publisher
     Select Radio Button  radiobutton  book
@@ -50,7 +50,7 @@ Adding Book Without Publisher
     Set Author  Kirjan Kirjoittaja
     Set Year    2000
     Submit Reference
-    Adding Should Fail With Message  Book must have a publisher
+    Adding Should Fail With Message  All fields must have a value
 
 # JOKU KENTTÄ INVALID
 Adding Book With Invalid Year
@@ -61,17 +61,7 @@ Adding Book With Invalid Year
     Set Year    2
     Set Publisher  julkaisija
     Submit Reference
-    Adding Should Fail With Message  Given year is not in range 500, 2027
-
-Adding Book With Invalid Title
-    Select Radio Button  radiobutton  book
-    Choose Type
-    Set Title  4
-    Set Author  Kirjan Kirjoittaja
-    Set Year    2000
-    Set Publisher  julkaisija
-    Submit Reference
-    Adding Should Fail With Message  Given value is not a string.
+    Adding Should Fail With Message  Given year is not in range [500, 2027]
 
 Adding Book With Invalid Author
     Select Radio Button  radiobutton  book
@@ -82,20 +72,11 @@ Adding Book With Invalid Author
     Set Publisher  julkaisija
     Submit Reference
     Adding Should Fail With Message  First name and surname is required
-
-Adding Book With Invalid Publisher
-    Select Radio Button  radiobutton  book
-    Choose Type
-    Set Title  kirja
-    Set Author  Kirjan Kirjoittaja
-    Set Year    2000
-    Set Publisher  3
-    Submit Reference
-    Adding Should Fail With Message  Given value is not a string.
+    
 
 *** Keywords ***
 Adding Should Succeed
-    Page Should Contain  Reference added
+    Page Should Contain  Book added
 
 Adding Should Fail With Message
     [Arguments]  ${message}

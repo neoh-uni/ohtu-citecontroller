@@ -27,7 +27,7 @@ Adding Article Without Year
     Set Volume  6
     Set Pages  20-22
     Submit Reference
-    Adding Should Fail With Message  Article must have a year
+    Adding Should Fail With Message  All fields must have a value
 
 Adding Article Without Title
     Select Radio Button  radiobutton  article
@@ -38,7 +38,7 @@ Adding Article Without Title
     Set Volume  6
     Set Pages  20-22
     Submit Reference
-    Adding Should Fail With Message  Article must have a Title
+    Adding Should Fail With Message  All fields must have a value
 
 Adding Article Without Author
     Select Radio Button  radiobutton  article
@@ -49,7 +49,7 @@ Adding Article Without Author
     Set Volume  6
     Set Pages  20-22
     Submit Reference
-    Adding Should Fail With Message  Article must have an author
+    Adding Should Fail With Message  All fields must have a value
 
 Adding Article Without Journal
     Select Radio Button  radiobutton  article
@@ -60,7 +60,7 @@ Adding Article Without Journal
     Set Volume  6
     Set Pages  20-22
     Submit Reference
-    Adding Should Fail With Message  Article must have a Journal
+    Adding Should Fail With Message  All fields must have a value
 
 # JOKU KENTTÄ INVALID
 Adding Article With Invalid Year
@@ -73,19 +73,7 @@ Adding Article With Invalid Year
     Set Volume  6
     Set Pages  20-22
     Submit Reference
-    Adding Should Fail With Message  Given year is not in range 500, 2027
-
-Adding Article With Invalid Title
-    Select Radio Button  radiobutton  article
-    Choose Type
-    Set Title  1
-    Set Author  Artikkelin Kirjoittaja
-    Set Year    2000
-    Set Journal  Journal
-    Set Volume  6
-    Set Pages  20-22
-    Submit Reference
-    Adding Should Fail With Message  Given value is not a string.
+    Adding Should Fail With Message  Given year is not in range [500, 2027]
 
 Adding Article With Invalid Author
     Select Radio Button  radiobutton  article
@@ -99,45 +87,10 @@ Adding Article With Invalid Author
     Submit Reference
     Adding Should Fail With Message  First name and surname is required
 
-Adding Article With Invalid Journal
-    Select Radio Button  radiobutton  article
-    Choose Type
-    Set Title  Artikkeli
-    Set Author  Artikkelin Kirjoittaja
-    Set Year    2000
-    Set Journal  3
-    Set Volume  6
-    Set Pages  20-22
-    Submit Reference
-    Adding Should Fail With Message  Given value is not a string.
-
-Adding Article With Invalid Pages
-    Select Radio Button  radiobutton  article
-    Choose Type
-    Set Title  Artikkeli
-    Set Author  Artikkelin Kirjoittaja
-    Set Year    2000
-    Set Journal  Journal
-    Set Volume  6
-    Set Pages  abc
-    Submit Reference
-    Adding Should Fail With Message  message
-
-Adding Article With Invalid Volume
-    Select Radio Button  radiobutton  article
-    Choose Type
-    Set Title  Artikkeli
-    Set Author  Artikkelin Kirjoittaja
-    Set Year    2000
-    Set Journal  Journal
-    Set Volume  abc
-    Set Pages  20-22
-    Submit Reference
-    Adding Should Fail With Message  message
 
 *** Keywords ***
 Adding Should Succeed
-    Page Should Contain  Reference added
+    Page Should Contain  Article added
 
 Adding Should Fail With Message
     [Arguments]  ${message}
@@ -145,7 +98,7 @@ Adding Should Fail With Message
 
 Set Title
     [Arguments]  ${article}
-    Input Text  article  ${article}
+    Input Text  title  ${article}
 
 Set Author
     [Arguments]  ${author}

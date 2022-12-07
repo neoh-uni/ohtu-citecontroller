@@ -8,13 +8,13 @@ class TestCiteRepocitory(unittest.TestCase):
         cite_repository.delete_all()
 
     def test_new_book(self):
-        cite_repository.new_book(Book("Test Author", "Title", "2022", "Publisher"))
+        cite_repository.new_book(Book("Test Author", "Title", "2022", "Publisher"),"b{bikoodia")
         books = cite_repository.get_books()
 
         self.assertEqual(len(books), 1)
         self.assertEqual(
-            [books[0].author, books[0].title, books[0].year, books[0].publisher],
-            ["Test Author", "Title", 2022, "Publisher"],
+            [books[0].author, books[0].title, books[0].year, books[0].publisher, books[0].bibitex],
+            ["Test Author", "Title", 2022, "Publisher", "b{bikoodia"],
         )
 
     def test_new_article(self):
