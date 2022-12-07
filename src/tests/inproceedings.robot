@@ -63,16 +63,6 @@ Adding Inproceedings With Invalid Year
     Submit Reference
     Adding Should Fail With Message  Given year is not in range [500, 2027]
 
-#Adding Inproceedings With Invalid Title
-#    Select Radio Button  radiobutton  in_proceedings
-#    Choose Type
-#    Set Title  1
-#    Set Author  Inproceedingin Kirjoittaja
-#    Set Year    2000
-#    Set Booktitle  booktitle
-#    Submit Reference
-#    Adding Should Fail With Message  Given value is not a string.
-
 Adding Inproceedings With Invalid Author
     Select Radio Button  radiobutton  in_proceedings
     Choose Type
@@ -82,16 +72,6 @@ Adding Inproceedings With Invalid Author
     Set Booktitle  booktitle
     Submit Reference
     Adding Should Fail With Message  First name and surname is required
-
-#Adding Inproceedings With Invalid Booktitle
-#    Select Radio Button  radiobutton  in_proceedings
-#    Choose Type
-#    Set Title  Inproceeding
-#    Set Author  Inproceedingin Kirjoittaja
-#    Set Year    2000
-#    Set Booktitle  2
-#    Submit Reference
-#    Adding Should Fail With Message  Given value is not a string
 
 *** Keywords ***
 Adding Should Succeed
