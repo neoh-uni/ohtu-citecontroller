@@ -53,8 +53,8 @@ def check_str(instance_unused, attribute_unused, given_str):
 
 
 def convert_year(given_str):
-    if given_str == "":
-        return ""
+    if given_str is None:
+        return None
     try:
         return int(given_str)
     except ValueError as exc:
