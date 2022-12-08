@@ -69,14 +69,27 @@ def references():
 @routes.route("/display_references", methods=["POST"])
 def display_references():
 
-    if request.form["all_references"] == "1":
-        books = cite_service.get_books()
-        articles = cite_service.get_articles()
-        in_proceedings = cite_service.get_inproceedings()
+    books = cite_service.get_books()
+    articles = cite_service.get_articles()
+    in_proceedings = cite_service.get_inproceedings()
 
+    display_type = request.form["radiobutton"]
+
+    if display_type == "all":
         return render_template(
             "references.html",
             books=books,
             articles=articles,
-            in_proceedings=in_proceedings,
+            in_proceedings=in_proceedings, 
+            all=True
         )
+    
+    if display_type == "bibitext":
+        return render_template(
+            "references.html",
+            books=books,
+            articles=articles,
+            in_proceedings=in_proceedings, 
+            bibitex=True
+        )
+    
