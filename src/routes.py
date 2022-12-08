@@ -16,10 +16,11 @@ def index():
 def create_book():
     if request.method == "POST":
         book_required_fields = ["author", "publisher", "title", "year"]
-        clf, req_fields = check_field_remove_whitespace(
+        all_fields = check_field(
             request.form, book_required_fields
         )
-        if req_fields:
+        if all_fields:
+            clf = remove_whitespace(request.form)
             msg = cite_service.add_book(
                 author=clf["author"],
                 publisher=clf["publisher"],
@@ -43,11 +44,11 @@ def create_article():
             "year",
         ]
 
-        clf, req_fields = check_field_remove_whitespace(
+        all_fields = check_field(
             request.form, article_required_fields
         )
-
-        if req_fields:
+        if all_fields:
+            clf = remove_whitespace(request.form)
             msg = cite_service.add_article(
                 author=clf["author"],
                 journal=clf["journal"],
@@ -66,10 +67,11 @@ def create_inproceedings():
     if request.method == "POST":
         inproc_required_fields = ["author", "booktitle", "title", "year"]
 
-        clf, req_fields = check_field_remove_whitespace(
+        all_fields = check_field(
             request.form, inproc_required_fields
         )
-        if req_fields:
+        if all_fields:
+            clf = remove_whitespace(request.form)
             msg = cite_service.add_inproceedings(
                 author=clf["author"],
                 booktitle=clf["booktitle"],
@@ -129,9 +131,13 @@ def display_references():
         )
 
 
-def check_field_remove_whitespace(form: dict, check_list: list):
+def check_field(form: dict, check_list: list):
     for att in check_list:
         if form[att] == "":
-            return form, False
-        form[att].strip()
-    return form, True
+            return False
+    return True
+
+def remove_whitespace(form: dict):
+    print(form)
+    clean_form = {key: value.strip() for key, value in form.items()}
+    return clean_form
