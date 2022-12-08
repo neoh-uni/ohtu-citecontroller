@@ -109,7 +109,7 @@ class Article:
     journal: str = field(validator=[check_str, check_len])
     title: str = field(validator=[check_str, check_len])
     year: int = field(converter=convert_year, validator=[check_year])
-    volume: int = field(converter=convert_volume, validator=[check_year])
+    volume: int = field(converter=convert_volume)
     pages: str = field(default=None, validator=[check_str, check_len])
 
     month: Optional[str] = field(default=None, validator=[check_str, check_len])
