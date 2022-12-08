@@ -2,10 +2,10 @@ from app import db
 
 
 class CiteRepository:
-    def new_book(self, book):
+    def new_book(self, book, bibi):
 
-        sql = """INSERT INTO cites (type, author, title, year, publisher)
-                 VALUES (:type, :author, :title, :year, :publisher)"""
+        sql = """INSERT INTO cites (type, author, title, year, publisher, bibitex)
+                 VALUES (:type, :author, :title, :year, :publisher, :bibitex)"""
         db.session.execute(
             sql,
             {
@@ -14,13 +14,14 @@ class CiteRepository:
                 "title": book.title,
                 "year": book.year,
                 "publisher": book.publisher,
+                "bibitex": bibi
             },
         )
         db.session.commit()
 
-    def new_article(self, article):
-        sql = """INSERT INTO cites (type, author, title, year, journal, volume, pages)
-                VALUES (:type, :author, :title, :year, :journal, :volume, :pages)"""
+    def new_article(self, article, bibi):
+        sql = """INSERT INTO cites (type, author, title, year, journal, volume, pages, bibitex)
+                VALUES (:type, :author, :title, :year, :journal, :volume, :pages, :bibitex)"""
         db.session.execute(
             sql,
             {
@@ -31,13 +32,14 @@ class CiteRepository:
                 "journal": article.journal,
                 "volume": article.volume,
                 "pages": article.pages,
+                "bibitex": bibi
             },
         )
         db.session.commit()
 
-    def new_inproceedings(self, inproceedings):
-        sql = """INSERT INTO cites (type, author, title, year, booktitle)
-                VALUES (:type, :author, :title, :year, :booktitle)"""
+    def new_inproceedings(self, inproceedings, bibi):
+        sql = """INSERT INTO cites (type, author, title, year, booktitle, bibitex)
+                VALUES (:type, :author, :title, :year, :booktitle, :bibitex)"""
         db.session.execute(
             sql,
             {
@@ -46,6 +48,7 @@ class CiteRepository:
                 "title": inproceedings.title,
                 "year": inproceedings.year,
                 "booktitle": inproceedings.booktitle,
+                "bibitex": bibi
             },
         )
         db.session.commit()

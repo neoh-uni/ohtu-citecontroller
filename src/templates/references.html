@@ -2,7 +2,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> <link rel="stylesheet" href="test.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="test.css">
 <title>Source manager for LaTex</title>
 <div class="container">
   <nav class="navbar navbar-expand-sm navbar-light">
@@ -20,82 +21,140 @@
         Here you can see all currently stored references.
       </p>
 
-      
+
       <h5>Choose what references to display</h5>
-      <form action="/display_references" method ="post">
-        
+      <form action="/display_references" method="post">
+
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="all_references" id="all" value="1">
-            <label class="form-check-label" for="inlineCheckbox1">All references</label>
+          <input class="form-check-input" type="radio" name="radiobutton" id="all" value="all" checked="checked">
+          <label class="form-check-label" for="inlineRadio1">All references</label>
         </div>
 
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="radiobutton" id="bibitex" value="bibitext">
+          <label class="form-check-label" for="inlineRadio2">Bibitex only</label>
+        </div>
 
         <div class="form-group col-6">
-            <input type="submit" class="btn btn-primary" value="choose type">
-            </div>
+          <input type="submit" class="btn btn-primary" value="choose type">
+        </div>
 
       </form>
       
+      {% if all %}
       {% if books %}
 
-        <p>Books</p>
-        <p></p>
+      <h3>Books</h3>
+      <ul>
+        {% for book in books %}
+        <h5>Title: {{ book.title }}</h5>
         <ul>
-        {% for book in books %}     
-            <li> {{ book.title }}</li>
-            <ul>
-              <li> {{ book.author }}</li>
-              <li> {{ book.year }}</li>
-              <li> {{ book.publisher }}</li>
-            </ul>
+          <li>Author: {{ book.author }}</li>
+          <li>Year: {{ book.year }}</li>
+          <li>Publisher: {{ book.publisher }}</li>
+          <p>
+            Bibitex:
+            <pre>{{ book.bibitex }}</pre>
+          </p>
+
         </ul>
         {% endfor %}
+      </ul>
       {% endif %}
 
+      
       {% if articles %}
-        <p>Articles</p>
-        <p></p>
+      <h3>Articles</h3>
+      <ul>
+        {% for article in articles %}
+        <h5>Title: {{ article.title }}</h5>
         <ul>
-        {% for article in articles %}     
-            <li> {{ article.title }}</li>
-            <ul>
-              <li> {{ article.author }}</li>
-              <li> {{ article.year }}</li>
-              <li> {{ article.journal }}</li>
-              <li> {{ article.volume }}</li>
-              <li> {{ article.pages }}</li>
-            </ul>
+          <li>Author: {{ article.author }}</li>
+          <li>Year: {{ article.year }}</li>
+          <li>Journal: {{ article.journal }}</li>
+          <li>Volume: {{ article.volume }}</li>
+          <li>Pages: {{ article.pages }}</li>
+          <p>
+            Bibitex:
+            <pre>{{ article.bibitex }}</pre>
+          </p>
+
         </ul>
         {% endfor %}
+      </ul>
       {% endif %}
 
       {% if in_proceedings %}
-        <p>In proceedings</p>
-        <p></p>
+      <h3>In proceedings</h3>
+      <ul>
+        {% for in_proceeding in in_proceedings %}
+        <h5>Title: {{ in_proceeding.title }}</h5>
         <ul>
-        {% for in_proceeding in in_proceedings %}     
-            <li> {{ in_proceeding.title }}</li>
-            <ul>
-              <li> {{ in_proceeding.author }}</li>
-              <li> {{ in_proceeding.year }}</li>
-              <li> {{ in_proceeding.journal }}</li>
-              <li> {{ in_proceeding.volume }}</li>
-              <li> {{ in_proceeding.pages }}</li>
-            </ul>
+          <li>Author: {{ in_proceeding.author }}</li>
+          <li>Year: {{ in_proceeding.year }}</li>
+          <li>Booktitle: {{ in_proceeding.booktitle }}</li>
+          <p>
+            Bibitex:
+            <pre>{{ in_proceeding.bibitex }}</pre>
+          </p>
+
         </ul>
         {% endfor %}
+      </ul>
+      {% endif %}
+      {% endif %}
+
+      {% if bibitex %}
+      {% if books %}
+
+      <ul>
+        {% for book in books %}
+        <ul>
+            <pre>{{ book.bibitex }}</pre>
+          </li>
+
+        </ul>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+      
+      {% if articles %}
+
+      <ul>
+        {% for article in articles %}
+        <ul>
+          <pre>{{ article.bibitex }}</pre>
+        </ul>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+      {% if in_proceedings %}
+
+      <ul>
+        {% for in_proceeding in in_proceedings %}
+        <ul>
+          <li>
+            <pre>{{ in_proceeding.bibitex }}</pre>
+          </li>
+
+        </ul>
+        {% endfor %}
+      </ul>
+      {% endif %}
       {% endif %}
 
       {% with messages = get_flashed_messages() %}
       {% if messages %}
-        <ul>
+      <ul>
         {% for message in messages %}
-          <li>{{ message }}</li>
+        <li>{{ message }}</li>
         {% endfor %}
-        </ul>
+      </ul>
       {% endif %}
       {% endwith %}
-      
+
     </div>
   </div>
 </div>

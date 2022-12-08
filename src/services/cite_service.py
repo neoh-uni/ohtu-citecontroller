@@ -1,7 +1,8 @@
+from attrs import asdict
 from repositories.cite_repository import cite_repository as default_cite_repository
 from logic import reference
 
-# TODO: Make this universal service
+
 class CiteService:
     def __init__(self, cite_repository=default_cite_repository):
         self._cite_repository = cite_repository
@@ -9,7 +10,8 @@ class CiteService:
     def add_book(self, author, title, year, publisher):
         try:
             book = reference.Book(author, title, year, publisher)
-            self._cite_repository.new_book(book)
+            bibi = self.to_bibitex(book, "book")
+            self._cite_repository.new_book(book, bibi)
             return "Book added"
         except ValueError as err:
             return err
@@ -17,7 +19,8 @@ class CiteService:
     def add_article(self, author, title, year, journal, volume, pages):
         try:
             article = reference.Article(author, journal, title, year, volume, pages)
-            self._cite_repository.new_article(article)
+            bibi = self.to_bibitex(article, "article")
+            self._cite_repository.new_article(article, bibi)
             return "Article added"
         except ValueError as err:
             return err
@@ -25,7 +28,8 @@ class CiteService:
     def add_inproceedings(self, author, title, year, booktitle):
         try:
             inproceedings = reference.Inproceedings(author, title, year, booktitle)
-            self._cite_repository.new_inproceedings(inproceedings)
+            bibi = self.to_bibitex(inproceedings, "inproceedings")
+            self._cite_repository.new_inproceedings(inproceedings, bibi)
             return "Inproceedings added"
         except ValueError as err:
             return err
@@ -45,6 +49,16 @@ class CiteService:
 
     def get_inproceedings(self):
         return self._cite_repository.get_inproceedings()
+
+    def to_bibitex(self, ref, ref_type):
+        non_none_attrs = [(name, value) for name,value in asdict(ref).items() if value is not None]
+
+        bibi = f"@{ref_type}{{CITEACRONYM,\n"
+        for (attribute, value) in non_none_attrs:
+            bibi += "    "+attribute+" = {"+str(value)+"},\n"
+        bibi += "}"
+        return bibi
+
 
 
 cite_service = CiteService()

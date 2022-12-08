@@ -7,14 +7,14 @@ class TestBook(unittest.TestCase):
         self.valid_book = reference.Book(
             author="Pro Coder",
             title="What is DevOps?",
-            publisher="unigrafia",
             year=2011,
+            publisher="unigrafia",
         )
         self.valid_book2 = reference.Book(
             author="Pro Coder",
             title="What is DevOps?",
-            publisher="unigrafia",
             year=2011,
+            publisher="unigrafia",
             # optionals
             address="Revontulentie 5",
             edition="99",
@@ -74,8 +74,8 @@ class TestBook(unittest.TestCase):
             reference.Book,
             author="Pro Coder",
             title="What is DevOps?",
-            publisher=self.error_str,
             year=2011,
+            publisher=self.error_str,
         )
 
     def test_error_with_nonalph_name(self):
@@ -84,8 +84,8 @@ class TestBook(unittest.TestCase):
             reference.Book,
             author="Pro C0der",
             title="What is DevOps?",
-            publisher="unigrafia",
             year=2011,
+            publisher="unigrafia",
         )
 
     def test_error_with_nonvalid_year(self):
@@ -94,16 +94,17 @@ class TestBook(unittest.TestCase):
             reference.Book,
             author="Pro Coder",
             title="What is DevOps?",
-            publisher="unigrafia",
             year=300,
+            publisher="unigrafia",
         )
         self.assertRaises(
             ValueError,
             reference.Book,
             author="Pro Coder",
             title="What is DevOps?",
-            publisher="unigrafia",
             year=5000,
+            publisher="unigrafia",
+
         )
 
     def test_error_with_int_when_exptd_str(self):
@@ -112,24 +113,24 @@ class TestBook(unittest.TestCase):
             reference.Book,
             author=1,
             title="What is DevOps?",
-            publisher="unigrafia",
             year=2000,
+            publisher="unigrafia",
         )
         self.assertRaises(
             ValueError,
             reference.Book,
             author="Pro Coder",
             title=2,
-            publisher="unigrafia",
             year=2000,
+            publisher="unigrafia",
         )
         self.assertRaises(
             ValueError,
             reference.Book,
             author="Pro Coder",
             title="What is DevOps?",
-            publisher=3,
             year=2000,
+            publisher=3,
         )
 
     def test_error_with_int_when_exptd_str_optionals(self):
@@ -138,8 +139,8 @@ class TestBook(unittest.TestCase):
             reference.Book,
             author="Pro Coder",
             title="What is DevOps?",
-            publisher="unigrafia",
             year=2000,
+            publisher="unigrafia",
             month=99,
         )
         self.assertRaises(
@@ -147,7 +148,7 @@ class TestBook(unittest.TestCase):
             reference.Book,
             author="Pro Coder",
             title="What is DevOps?",
-            publisher="unigrafia",
             year=2000,
+            publisher="unigrafia",
             note=2000,
         )
