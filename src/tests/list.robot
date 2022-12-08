@@ -10,7 +10,7 @@ See List
     Go To References Page
     Select Radio Button  radiobutton  all
     Click Button  choose type
-    Page Should Contain  Title: Kirja
+    Page Should Contain  Title: kirja
 
 *** Keywords ***
 Set Title
