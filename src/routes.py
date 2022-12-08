@@ -25,12 +25,12 @@ def create_book():
 @routes.route("/createarticle", methods=["POST"])
 def create_article():
     if request.method == "POST":
-        title = request.form["title"]
-        author = request.form["author"]
-        year = request.form["year"]
-        journal = request.form["journal"]
-        volume = request.form["volume"]
-        pages = request.form["pages"]
+        title = request.form["title"].strip()
+        author = request.form["author"].strip()
+        year = request.form["year"].strip()
+        journal = request.form["journal"].strip()
+        volume = request.form["volume"].strip()
+        pages = request.form["pages"].strip()
         msg = cite_service.add_article(author, title, year, journal, volume, pages)
         return render_template("index.html", message=msg)
 
@@ -38,10 +38,10 @@ def create_article():
 @routes.route("/createinproceedings", methods=["POST"])
 def create_inproceedings():
     if request.method == "POST":
-        title = request.form["title"]
-        author = request.form["author"]
-        year = request.form["year"]
-        booktitle = request.form["booktitle"]
+        title = request.form["title"].strip()
+        author = request.form["author"].strip()
+        year = request.form["year"].strip()
+        booktitle = request.form["booktitle"].strip()
         msg = cite_service.add_inproceedings(author, title, year, booktitle)
         return render_template("index.html", message=msg)
 
@@ -80,16 +80,15 @@ def display_references():
             "references.html",
             books=books,
             articles=articles,
-            in_proceedings=in_proceedings, 
-            all=True
+            in_proceedings=in_proceedings,
+            all=True,
         )
-    
+
     if display_type == "bibitext":
         return render_template(
             "references.html",
             books=books,
             articles=articles,
-            in_proceedings=in_proceedings, 
-            bibitex=True
+            in_proceedings=in_proceedings,
+            bibitex=True,
         )
-    
