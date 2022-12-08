@@ -138,6 +138,5 @@ def check_field(form: dict, check_list: list):
     return True
 
 def remove_whitespace(form: dict):
-    print(form)
     clean_form = {key: value.strip() for key, value in form.items()}
     return clean_form
