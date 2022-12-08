@@ -1,4 +1,4 @@
-from flask import render_template, redirect, request, Blueprint
+from flask import render_template, redirect, request, Blueprint, flash
 from services.cite_service import cite_service
 
 
@@ -92,3 +92,25 @@ def display_references():
             in_proceedings=in_proceedings,
             bibitex=True,
         )
+
+@routes.route("/search", methods=["POST"])
+def search():
+
+    keyword = request.form["keyword"]
+
+    books = cite_service.book_search2(keyword)
+    articles = cite_service.article_search2(keyword)
+    in_proceedings = cite_service.in_proceedings_search2(keyword)
+
+    if books is None and articles is None and in_proceedings is None:
+        flash("No searches found")
+        return render_template("references.html")
+    else:
+        return render_template(
+            "references.html",
+            books=books, 
+            articles=articles,
+            in_proceedings=in_proceedings,
+            all=True
+        )
+

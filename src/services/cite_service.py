@@ -1,7 +1,7 @@
 from attrs import asdict
 from repositories.cite_repository import cite_repository as default_cite_repository
 from logic import reference
-
+import re
 
 class CiteService:
     def __init__(self, cite_repository=default_cite_repository):
@@ -59,6 +59,59 @@ class CiteService:
         bibi += "}"
         return bibi
 
+    def book_search(self, keyword):
+
+        return self._cite_repository.book_search(keyword)
+
+    def article_search(self, keyword):
+
+        return self._cite_repository.article_search(keyword)
+
+    def in_proceedings_search(self, keyword):
+
+        return self._cite_repository.in_proceedings_search(keyword)
+
+
+    def book_search2(self, keyword):
+
+        books = self._cite_repository.get_bibitex("book")
+        result = []
+        for book in books:
+            if self.match(keyword, book[1]):
+                result.append(self._cite_repository.get_by_id(book[0]))
+
+        return result
+
+    
+    def article_search2(self, keyword):
+
+        articles = self._cite_repository.get_bibitex("article")
+        result = []
+        for article in articles:
+            if self.match(keyword, article[1]):
+                result.append(self._cite_repository.get_by_id(article[0]))
+
+        return result
+
+
+    def in_proceedings_search2(self, keyword):
+
+        in_proceedings = self._cite_repository.get_bibitex("inproceedings")
+        result = []
+
+        for in_proceeding in in_proceedings:
+            if self.match(keyword, in_proceeding[1]):
+                result.append(self._cite_repository.get_by_id(in_proceeding[0]))
+
+        return result 
+
+    def match(self, keyword, bibitex):
+        
+        if keyword.lower() in bibitex.lower():
+            print(keyword, bibitex)
+            return True
+        
+        return False
 
 
 cite_service = CiteService()
