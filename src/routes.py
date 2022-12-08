@@ -1,6 +1,7 @@
-from flask import render_template, redirect, request, Blueprint
+from flask import render_template, request, Blueprint
 from services.cite_service import cite_service
 
+MISSING_FIELD = "All fields must have a value"
 
 routes = Blueprint("app", __name__)
 
@@ -14,35 +15,69 @@ def index():
 @routes.route("/createbook", methods=["POST"])
 def create_book():
     if request.method == "POST":
-        title = request.form["title"].strip()
-        author = request.form["author"].strip()
-        year = request.form["year"].strip()
-        publisher = request.form["publisher"].strip()
-        msg = cite_service.add_book(author, title, year, publisher)
+        book_required_fields = ["author", "publisher", "title", "year"]
+        clf, req_fields = check_field_remove_whitespace(
+            request.form, book_required_fields
+        )
+        if req_fields:
+            msg = cite_service.add_book(
+                author=clf["author"],
+                publisher=clf["publisher"],
+                title=clf["title"],
+                year=clf["year"],
+            )
+        else:
+            msg = MISSING_FIELD
         return render_template("index.html", message=msg)
 
 
 @routes.route("/createarticle", methods=["POST"])
 def create_article():
     if request.method == "POST":
-        title = request.form["title"].strip()
-        author = request.form["author"].strip()
-        year = request.form["year"].strip()
-        journal = request.form["journal"].strip()
-        volume = request.form["volume"].strip()
-        pages = request.form["pages"].strip()
-        msg = cite_service.add_article(author, title, year, journal, volume, pages)
+        article_required_fields = [
+            "author",
+            "journal",
+            "pages",
+            "title",
+            "volume",
+            "year",
+        ]
+
+        clf, req_fields = check_field_remove_whitespace(
+            request.form, article_required_fields
+        )
+
+        if req_fields:
+            msg = cite_service.add_article(
+                author=clf["author"],
+                journal=clf["journal"],
+                pages=clf["pages"],
+                title=clf["title"],
+                year=clf["volume"],
+                volume=["year"],
+            )
+        else:
+            msg = MISSING_FIELD
         return render_template("index.html", message=msg)
 
 
 @routes.route("/createinproceedings", methods=["POST"])
 def create_inproceedings():
     if request.method == "POST":
-        title = request.form["title"].strip()
-        author = request.form["author"].strip()
-        year = request.form["year"].strip()
-        booktitle = request.form["booktitle"].strip()
-        msg = cite_service.add_inproceedings(author, title, year, booktitle)
+        inproc_required_fields = ["author", "booktitle", "title", "year"]
+
+        clf, req_fields = check_field_remove_whitespace(
+            request.form, inproc_required_fields
+        )
+        if req_fields:
+            msg = cite_service.add_inproceedings(
+                author=clf["author"],
+                booktitle=clf["booktitle"],
+                title=clf["title"],
+                year=clf["year"],
+            )
+        else:
+            msg = MISSING_FIELD
         return render_template("index.html", message=msg)
 
 
@@ -92,3 +127,11 @@ def display_references():
             in_proceedings=in_proceedings,
             bibitex=True,
         )
+
+
+def check_field_remove_whitespace(form: dict, check_list: list):
+    for att in check_list:
+        if form[att] == "":
+            return form, False
+        form[att].strip()
+    return form, True
