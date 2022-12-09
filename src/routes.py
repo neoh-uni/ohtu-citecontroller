@@ -54,8 +54,8 @@ def create_article():
                 journal=clf["journal"],
                 pages=clf["pages"],
                 title=clf["title"],
-                year=clf["volume"],
-                volume=["year"],
+                year=clf["year"],
+                volume=clf["volume"],
             )
         else:
             msg = MISSING_FIELD
