@@ -25,6 +25,7 @@
           <input type="submit" class="btn btn-primary" value="choose type">
         </div>
 
+
       </form>
       
       {% if all %}
@@ -91,12 +92,15 @@
       {% endif %}
 
       {% if bibitex %}
+      <div class="form-group col-6">
+        <input type="submit" class="btn btn-primary" onclick=copyToClipboard() value="copy this bibtex?">
+      </div>
       {% if books %}
 
       <ul>
         {% for book in books %}
         <ul>
-            <pre>{{ book.bibitex }}</pre>
+            <pre id="bok-to-copy">{{ book.bibitex }}</pre>
           </li>
 
         </ul>
@@ -110,7 +114,7 @@
       <ul>
         {% for article in articles %}
         <ul>
-          <pre>{{ article.bibitex }}</pre>
+          <pre id="art-to-copy">{{ article.bibitex }}</pre>
         </ul>
         {% endfor %}
       </ul>
@@ -122,7 +126,8 @@
         {% for in_proceeding in in_proceedings %}
         <ul>
           <li>
-            <pre>{{ in_proceeding.bibitex }}</pre>
+            <pre id="inp-to-copy"></pre>>{{ in_proceeding.bibitex }}</pre>
+            <p>{{ in_proceeding.bibtex }}</p>
           </li>
 
         </ul>
@@ -176,4 +181,38 @@
 
   </div>
 </div>
+
+<script>
+  // author juuso s
+  // huomioikaa että tämä ensimmäinen js mitä työstän
+  
+    function copyToClipboard() {
+  
+      // näillä if statementeillä koitin väistää tilannetta jossa jokin kenttä puuttuu
+      var all = '';
+      if (document.getElementById("bok-to-copy") != null)
+        var bok = document.getElementById("bok-to-copy").innerText
+        var all = all + bok;
+      if (document.getElementById("art-to-copy") != null)
+        var art = document.getElementById("art-to-copy").innerText
+        var all = all + art;
+      if (document.getElementById("inp-to-copy") != null)
+        var inp = document.getElementById("inp-to-copy").innerText
+        var all = all + inp;
+  
+      var tempTextArea = document.createElement("textarea");
+  
+      tempTextArea.value = all;
+  
+      document.body.appendChild(tempTextArea);
+  
+      tempTextArea.select();
+  
+      document.execCommand("copy");
+  
+  
+      document.body.removeChild(tempTextArea);
+    }
+</script>
+
 {% endblock %}
