@@ -75,7 +75,7 @@ class DoiService:
 
         check_str = lower_str.split("/")
         if "doi.org" in check_str:
-            return "/".join(check_str[3:4]), is_arxiv
+            return "/".join(check_str[3:5]), is_arxiv
         return doi, is_arxiv
 
     def get_request(self, api_url: str) -> dict:
