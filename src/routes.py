@@ -1,5 +1,6 @@
-from flask import render_template, redirect, request, Blueprint, flash
+from flask import render_template, request, Blueprint, flash
 from services.cite_service import cite_service
+from services.doi_service import doi_service
 
 MISSING_FIELD = "All fields must have a value"
 
@@ -11,14 +12,19 @@ def index():
     return render_template("index.html")
 
 
+@routes.route("/doi", methods=["POST"])
+def doi_to_bibtex():
+    doi = request.form["doi"]
+    doi_data = doi_service.get_doi_data(doi)
+    return render_template("index.html", **doi_data)
+
+
 # lukee formin tiedot
 @routes.route("/createbook", methods=["POST"])
 def create_book():
     if request.method == "POST":
         book_required_fields = ["author", "publisher", "title", "year"]
-        all_fields = check_field(
-            request.form, book_required_fields
-        )
+        all_fields = check_field(request.form, book_required_fields)
         if all_fields:
             clf = remove_whitespace(request.form)
             msg = cite_service.add_book(
@@ -38,24 +44,20 @@ def create_article():
         article_required_fields = [
             "author",
             "journal",
-            "pages",
             "title",
-            "volume",
             "year",
         ]
 
-        all_fields = check_field(
-            request.form, article_required_fields
-        )
+        all_fields = check_field(request.form, article_required_fields)
         if all_fields:
             clf = remove_whitespace(request.form)
             msg = cite_service.add_article(
                 author=clf["author"],
                 journal=clf["journal"],
-                pages=clf["pages"],
                 title=clf["title"],
                 year=clf["year"],
-                volume=clf["volume"],
+                volume=clf["volume"],  # opt
+                pages=clf["pages"],  # opt
             )
         else:
             msg = MISSING_FIELD
@@ -67,9 +69,7 @@ def create_inproceedings():
     if request.method == "POST":
         inproc_required_fields = ["author", "booktitle", "title", "year"]
 
-        all_fields = check_field(
-            request.form, inproc_required_fields
-        )
+        all_fields = check_field(request.form, inproc_required_fields)
         if all_fields:
             clf = remove_whitespace(request.form)
             msg = cite_service.add_inproceedings(
@@ -149,14 +149,16 @@ def search():
             books=books,
             articles=articles,
             in_proceedings=in_proceedings,
-            all=True
+            all=True,
         )
+
 
 def check_field(form: dict, check_list: list):
     for att in check_list:
         if form[att] == "":
             return False
     return True
+
 
 def remove_whitespace(form: dict):
     clean_form = {key: value.strip() for key, value in form.items()}

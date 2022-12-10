@@ -104,7 +104,6 @@ class TestBook(unittest.TestCase):
             title="What is DevOps?",
             year=5000,
             publisher="unigrafia",
-
         )
 
     def test_error_with_int_when_exptd_str(self):

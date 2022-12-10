@@ -14,7 +14,7 @@ class CiteRepository:
                 "title": book.title,
                 "year": book.year,
                 "publisher": book.publisher,
-                "bibitex": bibi
+                "bibitex": bibi,
             },
         )
         db.session.commit()
@@ -32,7 +32,7 @@ class CiteRepository:
                 "journal": article.journal,
                 "volume": article.volume,
                 "pages": article.pages,
-                "bibitex": bibi
+                "bibitex": bibi,
             },
         )
         db.session.commit()
@@ -48,7 +48,7 @@ class CiteRepository:
                 "title": inproceedings.title,
                 "year": inproceedings.year,
                 "booktitle": inproceedings.booktitle,
-                "bibitex": bibi
+                "bibitex": bibi,
             },
         )
         db.session.commit()
@@ -64,7 +64,6 @@ class CiteRepository:
     def get_inproceedings(self):
         sql = """SELECT * FROM cites WHERE type='inproceedings'"""
         return db.session.execute(sql).fetchall()
-
 
     def book_search(self, keyword):
 
@@ -90,11 +89,11 @@ class CiteRepository:
             if find[0] not in result_ids:
                 final_result.append(find)
                 result_ids.append(find[0])
-        
+
         return final_result
 
     def article_search(self, keyword):
-        
+
         result = []
         is_int = False
         try:
@@ -106,13 +105,12 @@ class CiteRepository:
         if is_int:
             result.append(self.search_field("id", int(keyword), "article"))
             result.append(self.search_field("year", int(keyword), "article"))
-        
+
         result.append(self.search_field("title", keyword, "article"))
         result.append(self.search_field("author", keyword, "article"))
         result.append(self.search_field("volume", keyword, "article"))
         result.append(self.search_field("journal", keyword, "article"))
         result.append(self.search_field("pages", keyword, "article"))
-
 
         result_ids = []
         final_result = []
@@ -120,7 +118,7 @@ class CiteRepository:
             if find[0] not in result_ids:
                 final_result.append(find)
                 result_ids.append(find[0])
-        
+
         return final_result
 
     def in_proceedings_search(self, keyword):
@@ -147,33 +145,30 @@ class CiteRepository:
             if find[0] not in result_ids:
                 final_result.append(find)
                 result_ids.append(find[0])
-        
+
         return final_result
 
     def search_field(self, field, keyword, type):
-        
+
         sql = f"SELECT * FROM cites WHERE {field} LIKE '{keyword}' AND type = {type}"
         result = db.session.execute(sql)
-        
+
         return result
-
-
 
     def delete_all(self):
         sql = """DELETE FROM cites"""
         db.session.execute(sql)
         db.session.commit()
 
-    
     def get_bibitex(self, type):
-        
-        sql = "SELECT id, bibitex FROM cites WHERE type =:type"
-        return db.session.execute(sql, {"type":type}).fetchall()
 
+        sql = "SELECT id, bibitex FROM cites WHERE type =:type"
+        return db.session.execute(sql, {"type": type}).fetchall()
 
     def get_by_id(self, id):
 
         sql = "SELECT * FROM cites WHERE id =:id"
-        return db.session.execute(sql, {"id":id}).fetchone()
+        return db.session.execute(sql, {"id": id}).fetchone()
+
 
 cite_repository = CiteRepository()

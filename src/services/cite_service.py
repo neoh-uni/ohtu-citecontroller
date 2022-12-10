@@ -1,7 +1,8 @@
 from attrs import asdict
 from repositories.cite_repository import cite_repository as default_cite_repository
 from logic import reference
-import re
+import requests
+
 
 class CiteService:
     def __init__(self, cite_repository=default_cite_repository):
@@ -34,6 +35,17 @@ class CiteService:
         except ValueError as err:
             return err
 
+    def get_doi_data(self, doi: str):
+        # datacite_url = f"https://api.datacite.org/works/{doi}"
+        crossref_url = f"https://api.crossref.org/works/{doi}"
+        response = requests.get(crossref_url)
+        if response == "Resource not found.":
+            data = {"ref": "books", "title": "Resource not found."}
+        else:
+            data = response.json()
+        bibtex = data["data"]["attributes"]
+        print(bibtex)
+
     def get_all(self):
         return list(
             self._cite_repository.get_books(),
@@ -51,11 +63,13 @@ class CiteService:
         return self._cite_repository.get_inproceedings()
 
     def to_bibitex(self, ref, ref_type):
-        non_none_attrs = [(name, value) for name,value in asdict(ref).items() if value is not None]
+        non_none_attrs = [
+            (name, value) for name, value in asdict(ref).items() if value is not None
+        ]
 
         bibi = f"@{ref_type}{{CITEACRONYM,\n"
         for (attribute, value) in non_none_attrs:
-            bibi += "    "+attribute+" = {"+str(value)+"},\n"
+            bibi += "    " + attribute + " = {" + str(value) + "},\n"
         bibi += "}"
         return bibi
 
@@ -71,7 +85,6 @@ class CiteService:
 
         return self._cite_repository.in_proceedings_search(keyword)
 
-
     def book_search2(self, keyword):
 
         books = self._cite_repository.get_bibitex("book")
@@ -82,7 +95,6 @@ class CiteService:
 
         return result
 
-    
     def article_search2(self, keyword):
 
         articles = self._cite_repository.get_bibitex("article")
@@ -93,7 +105,6 @@ class CiteService:
 
         return result
 
-
     def in_proceedings_search2(self, keyword):
 
         in_proceedings = self._cite_repository.get_bibitex("inproceedings")
@@ -103,14 +114,14 @@ class CiteService:
             if self.match(keyword, in_proceeding[1]):
                 result.append(self._cite_repository.get_by_id(in_proceeding[0]))
 
-        return result 
+        return result
 
     def match(self, keyword, bibitex):
-        
+
         if keyword.lower() in bibitex.lower():
             print(keyword, bibitex)
             return True
-        
+
         return False
 
 
