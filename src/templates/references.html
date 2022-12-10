@@ -61,9 +61,6 @@
 
 
     </form>
-
-    {% if all %}
-    {% if books %}
     <style>
       h3 {
         text-align: center;
@@ -71,20 +68,23 @@
 
       .title {
         text-align: left;
-        margin-left: 80px;
+        margin-left: 120px;
       }
 
       .ref {
         text-align: left;
-        margin-left: 80px;
+        margin-left: 120px;
       }
 
       pre {
-        display: inline-block;
         text-align: left;
-        margin-left: 0px;
+        margin-left: 150px;
       }
     </style>
+
+    {% if all %}
+    {% if books %}
+
 
     <br>
     <h3>Books
@@ -101,7 +101,7 @@
 
       {% for book in books %}
 
-      <h5 class="title">Title: <b>{{ book.title }}</b></h5>
+      <h5 class="title">Title: {{ book.title }}</h5>
 
       <ul>
 
@@ -165,7 +165,6 @@
         <li class="ref">Year: {{ in_proceeding.year }}</li>
         <li class="ref">Booktitle: {{ in_proceeding.booktitle }}</li>
         <p>
-          Bibitex:
         <pre>{{ in_proceeding.bibitex }}</pre>
         </p>
 
