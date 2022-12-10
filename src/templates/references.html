@@ -9,31 +9,34 @@
           <path d="M14.667 11.668a6.51 6.51 0 0 1-1.458.789c-1.4.56-3.242.876-5.21.876-1.966 0-3.809-.316-5.208-.876a6.51 6.51 0 0 1-1.458-.79v1.666C1.333 14.806 4.318 16 8 16s6.667-1.194 6.667-2.667v-1.665z"/>
         </svg>
       </h1>
-      <p>
+      <p class="lead">
         Here you can see all currently stored references.
       </p>
-      <div class="text-center">
 
-        <h5>Search
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-          </svg>
-        </h5>
-    
-        <form action="/search" method="post">
-    
-          <div class="form-group text-center">
-            <label for="input">Search with this form</label>
-            <input type="text" class="form-control" id="input_keyword" name="keyword">
-          </div>
-    
+        <figure>
+          <blockquote class="blockquote">Search
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+          </blockquote>
+      
+          <form action="/search" method="post">
+      
+            <div class="form-group text-center">
+              <figcaption class="blockquote-footer">
+                <label for="input">Search with this form</label>
+                <input type="text" class="form-control" id="input_keyword" name="keyword">
+              </figcaption>
+            </div>
+          </figure>
+
           <div class="form-group text-center">
             <input type="submit" class="btn btn-primary" value="Search">
           </div>
     
         </form>
 
-      <h5>Or choose what references to display</h5>
+      <p class="lead">Or choose what references to display</p>
       <form action="/display_references" method="post">
 
         <div class="form-check form-check-inline">
