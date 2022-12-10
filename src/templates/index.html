@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-  <div class="row">
+  <div class="d-flex justify-content-center">
     <div class="col-8">
       <h1>Cite-Controller</h1>
       <p>
@@ -15,21 +15,21 @@
       <form action="/choosesource" method ="post">
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="radiobutton" id="book" value="book" checked="checked">
-            <label class="form-check-label" for="inlineRadio1">book</label>
+            <label class="form-check-label" for="inlineRadio1">Book</label>
         </div>
     
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="radiobutton" id="article" value="article">
-            <label class="form-check-label" for="inlineRadio2">article</label>
+            <label class="form-check-label" for="inlineRadio2">Article</label>
         </div>
         
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="radiobutton" id="in_proceedings" value="in_proceedings">
-            <label class="form-check-label" for="inlineRadio3">in proceedings</label>
+            <label class="form-check-label" for="inlineRadio3">In proceedings</label>
         </div>
 
-        <div class="form-group col-6">
-            <input type="submit" class="btn btn-primary" value="choose type">
+        <div class="form-group text-center">
+            <input type="submit" class="btn btn-primary" value="Choose type">
             </div>
 
       </form>
@@ -38,28 +38,28 @@
       {% if book  %}
       <form action="/createbook" method="post">
 
-        <div class="form-group col-6">
+        <div class="form-group text-center">
           <label for="inputbook_name">Title</label>
-          <input type="text" class="form-control" id="inputBookTitle" name="title">
+          <input type="text" class="form-control text-center" id="inputBookTitle" name="title">
         </div>
 
-        <div class="form-group col-6">
+        <div class="form-group text-center">
           <label for="inputAuthor">Author</label>
-          <input type="text" class="form-control" id="inputAuthor" name="author">
+          <input type="text" class="form-control text-center" id="inputAuthor" name="author">
         </div>
         
-        <div class="form-group col-6">
+        <div class="form-group text-center">
             <label for="inputYear">Year</label>
-            <input type="text" class="form-control" id="inputYear" name="year">
+            <input type="text" class="form-control text-center" id="inputYear" name="year">
           </div>
 
-        <div class="form-group col-6">
+        <div class="form-group text-center">
           <label for="inputYear">Publisher</label>
-          <input type="text" class="form-control" id="inputPublisher" name="publisher">
+          <input type="text" class="form-control text-center" id="inputPublisher" name="publisher">
         </div>
 
-        <div class="form-group col-6">
-          <input type="submit" class="btn btn-primary" value="Create source">
+        <div class="form-group text-center">
+          <input type="submit" class="btn btn-primary text-center" value="Create book source">
         </div>
 
       </form>
@@ -68,37 +68,37 @@
       {% if article  %}
       <form action="/createarticle" method="post">
         
-        <div class="form-group col-6">
+        <div class="form-group text-center">
           <label for="inputTitle">Article name</label>
-          <input type="text" class="form-control" id="inputArticleTitle" name="title">
+          <input type="text" class="form-control text-center" id="inputArticleTitle" name="title">
         </div>
 
-        <div class="form-group col-6">
+        <div class="form-group text-center">
           <label for="inputAuthor">Author</label>
-          <input type="text" class="form-control" id="inputAuthorname" name="author">
+          <input type="text" class="form-control text-center" id="inputAuthorname" name="author">
         </div>
 
-        <div class="form-group col-6">
+        <div class="form-group text-center">
           <label for="inputJournal">Journal</label>
-          <input type="text" class="form-control" id="inputJournal" name="journal">
+          <input type="text" class="form-control text-center" id="inputJournal" name="journal">
         </div>
 
-        <div class="form-group col-6">
+        <div class="form-group text-center">
             <label for="inputYear">Year</label>
-            <input type="text" class="form-control" id="inputYear" name="year">
+            <input type="text" class="form-control text-center" id="inputYear" name="year">
           </div>
 
-        <div class="form-group col-6">
+        <div class="form-group text-center">
           <label for="inputvolume">Volume</label>
-          <input type="text" class="form-control" id="inputVolume" name="volume">
+          <input type="text" class="form-control text-center" id="inputVolume" name="volume">
         </div>
 
-        <div class="form-group col-6">
+        <div class="form-group text-center">
           <label for="inputPages">Pages</label>
-          <input type="text" class="form-control" id="inputPages" name="pages">
+          <input type="text" class="form-control text-center" id="inputPages" name="pages">
         </div>
-        <div class="form-group col-6">
-          <input type="submit" class="btn btn-primary" value="Create source">
+        <div class="form-group text-center">
+          <input type="submit" class="btn btn-primary text-center" value="Create article source">
         </div>
 
       </form>
@@ -107,28 +107,28 @@
       {% if in_proceedings  %}
       <form action="/createinproceedings" method="post">
 
-        <div class="form-group col-6">
+        <div class="form-group text-center">
           <label for="inputbook_name">In proceeding name</label>
-          <input type="text" class="form-control" id="inputInProceedingName" name="title">
+          <input type="text" class="form-control text-center" id="inputInProceedingName" name="title">
         </div>
 
-        <div class="form-group col-6">
+        <div class="form-group text-center">
           <label for="inputAuthor">Author</label>
-          <input type="text" class="form-control" id="inputAuthorname" name="author">
+          <input type="text" class="form-control text-center" id="inputAuthorname" name="author">
         </div>
         
-        <div class="form-group col-6">
+        <div class="form-group text-center">
             <label for="inputYear">Year</label>
-            <input type="text" class="form-control" id="inputYear" name="year">
+            <input type="text" class="form-control text-center" id="inputYear" name="year">
           </div>
 
-        <div class="form-group col-6">
+        <div class="form-group text-center">
           <label for="inputBookTitle">Booktitle</label>
-          <input type="text" class="form-control" id="inputBooktitle" name="booktitle">
+          <input type="text" class="form-control text-center" id="inputBooktitle" name="booktitle">
         </div>
 
-        <div class="form-group col-6">
-          <input type="submit" class="btn btn-primary" value="Create source">
+        <div class="form-group text-center">
+          <input type="submit" class="btn btn-primary text-center" value="Create in proceedings source">
         </div>
 
       </form>

@@ -1,14 +1,29 @@
 {% extends "layout.html" %}
 {% block content %}
-  <div class="row">
+  <div class="d-flex justify-content-center">
     <div class="col-8">
       <h1>References</h1>
       <p>
         Here you can see all currently stored references.
       </p>
+      <div class="text-center">
 
+        <h5>Search</h5>
+    
+        <form action="/search" method="post">
+    
+          <div class="form-group text-center">
+            <label for="input">Search with this form</label>
+            <input type="text" class="form-control" id="input_keyword" name="keyword">
+          </div>
+    
+          <div class="form-group text-center">
+            <input type="submit" class="btn btn-primary" value="Search">
+          </div>
+    
+        </form>
 
-      <h5>Choose what references to display</h5>
+      <h5>Or choose what references to display</h5>
       <form action="/display_references" method="post">
 
         <div class="form-check form-check-inline">
@@ -21,7 +36,7 @@
           <label class="form-check-label" for="inlineRadio2">BibTeX only</label>
         </div>
 
-        <div class="form-group col-6">
+        <div class="form-group text-center">
           <input type="submit" class="btn btn-primary" value="choose type">
         </div>
 
@@ -32,7 +47,7 @@
       {% if books %}
 
       <h3>Books</h3>
-      <ul>
+      <ul class="col-12 text-center">
         {% for book in books %}
         <h5>Title: {{ book.title }}</h5>
         <ul>
@@ -52,7 +67,7 @@
       
       {% if articles %}
       <h3>Articles</h3>
-      <ul>
+      <ul class="col-12 text-center">
         {% for article in articles %}
         <h5>Title: {{ article.title }}</h5>
         <ul>
@@ -73,7 +88,7 @@
 
       {% if in_proceedings %}
       <h3>In proceedings</h3>
-      <ul>
+      <ul class="col-12 text-center">
         {% for in_proceeding in in_proceedings %}
         <h5>Title: {{ in_proceeding.title }}</h5>
         <ul>
@@ -92,17 +107,15 @@
       {% endif %}
 
       {% if bibitex %}
-      <div class="form-group col-6">
+      <div class="form-group text-center">
         <input type="submit" class="btn btn-primary" onclick=copyToClipboard() value="copy this bibtex?">
       </div>
+
       {% if books %}
-
-      <ul>
+      <ul class="col-12 text-ceter">
         {% for book in books %}
-        <ul>
-            <pre id="bok-to-copy">{{ book.bibitex }}</pre>
-          </li>
-
+        <ul class="text-center">
+          <pre id="bok-to-copy">{{ book.bibitex }}</pre>
         </ul>
         {% endfor %}
       </ul>
@@ -110,10 +123,9 @@
 
       
       {% if articles %}
-
-      <ul>
+      <ul class="col-12 text-ceter">
         {% for article in articles %}
-        <ul>
+        <ul class="text-center">
           <pre id="art-to-copy">{{ article.bibitex }}</pre>
         </ul>
         {% endfor %}
@@ -121,18 +133,14 @@
       {% endif %}
 
       {% if in_proceedings %}
-
-      <ul>
+      <ul class="col-12 text-ceter">
         {% for in_proceeding in in_proceedings %}
-        <ul>
-          <li>
-            <pre id="inp-to-copy"></pre>>{{ in_proceeding.bibitex }}</pre>
-            <p>{{ in_proceeding.bibtex }}</p>
-          </li>
-
+        <ul class="text-center">
+          <pre id="inp-to-copy">{{ in_proceeding.bibitex }}</pre>
         </ul>
         {% endfor %}
       </ul>
+      </div>
       {% endif %}
       {% endif %}
 
@@ -145,25 +153,8 @@
       </ul>
       {% endif %}
       {% endwith %}
-
     </div>
 
-    <div class="col-4">
-
-    <h5>Search</h5>
-
-    <form action="/search" method="post">
-
-      <div class="form-group col-6">
-        <label for="input">search</label>
-        <input type="text" class="form-control" id="input_keyword" name="keyword">
-      </div>
-
-      <div class="form-group col-6">
-        <input type="submit" class="btn btn-primary" value="Search">
-      </div>
-
-    </form>
 
     {% with messages = get_flashed_messages() %}
     {% if messages %}

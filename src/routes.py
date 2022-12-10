@@ -146,7 +146,7 @@ def search():
     else:
         return render_template(
             "references.html",
-            books=books, 
+            books=books,
             articles=articles,
             in_proceedings=in_proceedings,
             all=True
