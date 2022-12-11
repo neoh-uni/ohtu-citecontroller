@@ -5,12 +5,14 @@ from logic import reference
 class TestInproceedings(unittest.TestCase):
     def setUp(self):
         self.valid_inproceedings = reference.Inproceedings(
+            acronym="character20",
             author="Nonplayer character",
             title="Game of the Year",
             year=2020,
             booktitle="diipa2' daapa",
         )
         self.valid_inproceedings2 = reference.Inproceedings(
+            acronym="character20",
             author="Nonplayer characted",
             title="Game of the Year",
             year=2020,
@@ -28,6 +30,9 @@ class TestInproceedings(unittest.TestCase):
             volume="800",
         )
         self.error_str = "a" * 5001
+
+    def test_inproceedings_acronym(self):
+        self.assertEqual(self.valid_inproceedings.acronym, "character20")
 
     def test_inproceedings_author(self):
         self.assertEqual(self.valid_inproceedings.author, "Nonplayer character")
@@ -81,6 +86,7 @@ class TestInproceedings(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Inproceedings,
+            acronym="character20",
             author="Nonplayer character",
             title=self.error_str,
             year=2020,
@@ -91,6 +97,7 @@ class TestInproceedings(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Inproceedings,
+            acronym="character20",
             author="N0nplayer character",
             title="Game of the Year",
             year=2020,
@@ -101,6 +108,7 @@ class TestInproceedings(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Inproceedings,
+            acronym="character20",
             author="Nonplayer character",
             title="Game of the Year",
             year=9999,
@@ -109,6 +117,7 @@ class TestInproceedings(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Inproceedings,
+            acronym="character20",
             author="Nonplayer character",
             title="Game of the Year",
             year=15,
@@ -116,9 +125,20 @@ class TestInproceedings(unittest.TestCase):
         )
 
     def test_error_with_int_when_exptd_str(self):
+        
         self.assertRaises(
             ValueError,
             reference.Inproceedings,
+            acronym=2020,
+            author="Nonplayer character",
+            title="Game of the Year",
+            year=2020,
+            booktitle="diipa2' daapa",
+        )
+        self.assertRaises(
+            ValueError,
+            reference.Inproceedings,
+            acronym="character20",
             author="Nonplayer character",
             title=1,
             year=2020,
@@ -127,6 +147,7 @@ class TestInproceedings(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Inproceedings,
+            acronym="character20",
             author=1,
             title="Game of the Year",
             year=2020,
@@ -135,6 +156,7 @@ class TestInproceedings(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Inproceedings,
+            acronym="character20",
             author="Nonplayer character",
             title="Game of the Year",
             year=2020,
@@ -145,6 +167,7 @@ class TestInproceedings(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Inproceedings,
+            acronym="character20",
             author="Nonplayer character",
             title="Game of the Year",
             year=2020,
@@ -154,6 +177,7 @@ class TestInproceedings(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Inproceedings,
+            acronym="character20",
             author="Nonplayer character",
             title="Game of the Year",
             year=2020,

@@ -10,6 +10,7 @@ def create_table():
         """
             CREATE TABLE cites (
             id SERIAL PRIMARY KEY,
+            acronym TEXT,
             type TEXT,
             title TEXT,
             author TEXT,
