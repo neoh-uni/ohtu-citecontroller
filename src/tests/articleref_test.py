@@ -114,16 +114,6 @@ class TestArticle(unittest.TestCase):
             reference.Article,
             author="Pro Hackerman",
             title="What is Opsec?",
-            journal="AI News",
-            year=2009,
-            volume=3,
-            pages=44,
-        )
-        self.assertRaises(
-            ValueError,
-            reference.Article,
-            author="Pro Hackerman",
-            title="What is Opsec?",
             journal=12,
             year=2009,
             volume="3",
