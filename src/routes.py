@@ -93,10 +93,10 @@ def choose_source_type():
     if source_type == "book":
         return render_template("index.html", book=True)
 
-    if source_type == "article":
+    elif source_type == "article":
         return render_template("index.html", article=True)
 
-    if source_type == "in_proceedings":
+    elif source_type == "in_proceedings":
         return render_template("index.html", in_proceedings=True)
 
 
