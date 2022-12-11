@@ -15,6 +15,9 @@ def index():
 @routes.route("/doi", methods=["POST"])
 def doi_to_bibtex():
     doi = request.form["doi"]
+    if doi == "":
+        return render_template("index.html")
+        #TOD0 error msg
     doi_data = doi_service.get_doi_data(doi)
     return render_template("index.html", **doi_data)
 
