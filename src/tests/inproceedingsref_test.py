@@ -97,7 +97,7 @@ class TestInproceedings(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Inproceedings,
-            acronym="character20"
+            acronym="character20",
             author="N0nplayer character",
             title="Game of the Year",
             year=2020,

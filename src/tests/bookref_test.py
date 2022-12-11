@@ -108,7 +108,7 @@ class TestBook(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Book,
-            acronym="Coder11"
+            acronym="Coder11",
             author="Pro Coder",
             title="What is DevOps?",
             year=5000,
