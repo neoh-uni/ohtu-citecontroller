@@ -24,6 +24,12 @@ class TestArticle(unittest.TestCase):
             note="heloust this is a note",
             number="12380",
         )
+        self.valid_articleNoOpt = reference.Article(
+            author="James Bond",
+            title="Golden Eye",
+            journal="Spy News",
+            year="1995",
+        )
         self.error_str = "a" * 5001
 
     def test_article_author(self):
@@ -39,6 +45,7 @@ class TestArticle(unittest.TestCase):
         self.assertEqual(self.valid_article.year, 2015)
         self.assertNotEqual(self.valid_article.year, "2015")
 
+    # Optionals
     def test_article_volume_conversion_to_int(self):
         self.assertEqual(self.valid_article.volume, 3)
         self.assertNotEqual(self.valid_article.volume, "3")
@@ -46,7 +53,6 @@ class TestArticle(unittest.TestCase):
     def test_article_pages(self):
         self.assertEqual(self.valid_article.pages, "44--66")
 
-    # Optionals
     def test_article_note(self):
         self.assertEqual(self.valid_article2.note, "heloust this is a note")
 
@@ -58,7 +64,13 @@ class TestArticle(unittest.TestCase):
         self.assertNotEqual(self.valid_article2.number, 12380)
         self.assertEqual(self.valid_article2.number, "12380")
 
-    # ERROR raisesrs
+    def test_no_volume_convert_volume(self):
+        self.assertEqual(self.valid_articleNoOpt.volume, None)
+
+    def test_no_pages_convert_pages(self):
+        self.assertEqual(self.valid_articleNoOpt.pages, None)
+
+    # ERROR raises
     def test_class_errors_without_args(self):
         self.assertRaises(TypeError, reference.Article)
 
@@ -109,16 +121,6 @@ class TestArticle(unittest.TestCase):
         )
 
     def test_error_with_int_when_exptd_str(self):
-        self.assertRaises(
-            ValueError,
-            reference.Article,
-            author="Pro Hackerman",
-            title="What is Opsec?",
-            journal="AI News",
-            year=2009,
-            volume=3,
-            pages=44,
-        )
         self.assertRaises(
             ValueError,
             reference.Article,

@@ -1,161 +1,177 @@
-<!doctype html>
+{% extends "layout.html" %}
+{% block content %}
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <h1 class="display-1">CiteController
+    </h1>
+    <p class="lead">
+      Welcome to the supreme citation manager. Here you will be able to fill in forms for various different source types
+      such as books, articles and so forth. Filled in information will automatically be transformed to BibTex format and
+      stored in a database.
+    </p>
+    <p>
+      The website is still in development.
+    </p>
+    <figure>
+      <blockquote class="blockquote">DOI Search
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+          viewBox="0 0 16 16">
+          <path
+            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+        </svg>
+      </blockquote>
 
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <form action="/doi" method="post">
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> <link rel="stylesheet" href="test.css">
-<title>Source manager for LaTex</title>
-<div class="container">
-  <nav class="navbar navbar-expand-sm navbar-light">
-    <a class="navbar-brand" href="/">Main Page</a>
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/references">references</a>
-      </li>
-    </ul>
-  </nav>
-  <div class="row">
-    <div class="col-8">
-      <h1>Cite-Controller</h1>
-      <p>
-        Welcome to the supreme citation manager. Here you will be able to fill in forms for various different source types such as books, articles and so forth. Filled in information will automatically be transformed to BibTex format and stored in a database. 
-      </p>
-      <p>
-        The website is still in development.
-      </p>
-      
-      <h5>Create New Source</h5>
-      
-      <form action="/choosesource" method ="post">
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="radiobutton" id="book" value="book" checked="checked">
-            <label class="form-check-label" for="inlineRadio1">book</label>
+        <div class="form-group text-center">
+          <figcaption class="blockquote-footer">
+            <label for="input">DOI search reference with this form</label>
+            <input type="text" class="form-control text-center" id="input_keyword" name="doi"
+              placeholder="https://doi.org/10.123/123 or 10.123/123">
+          </figcaption>
         </div>
-    
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="radiobutton" id="article" value="article">
-            <label class="form-check-label" for="inlineRadio2">article</label>
-        </div>
-        
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="radiobutton" id="in_proceedings" value="in_proceedings">
-            <label class="form-check-label" for="inlineRadio3">in proceedings</label>
-        </div>
+    </figure>
 
-        <div class="form-group col-6">
-            <input type="submit" class="btn btn-primary" value="choose type">
-            </div>
-
-      </form>
-
-
-      {% if book  %}
-      <form action="/createbook" method="post">
-
-        <div class="form-group col-6">
-          <label for="inputbook_name">Title</label>
-          <input type="text" class="form-control" id="inputBookTitle" name="title">
-        </div>
-
-        <div class="form-group col-6">
-          <label for="inputAuthor">Author</label>
-          <input type="text" class="form-control" id="inputAuthor" name="author">
-        </div>
-        
-        <div class="form-group col-6">
-            <label for="inputYear">Year</label>
-            <input type="text" class="form-control" id="inputYear" name="year">
-          </div>
-
-        <div class="form-group col-6">
-          <label for="inputYear">Publisher</label>
-          <input type="text" class="form-control" id="inputPublisher" name="publisher">
-        </div>
-
-        <div class="form-group col-6">
-          <input type="submit" class="btn btn-primary" value="Create source">
-        </div>
-
-      </form>
-      {% endif %}
-
-      {% if article  %}
-      <form action="/createarticle" method="post">
-        
-        <div class="form-group col-6">
-          <label for="inputTitle">Article name</label>
-          <input type="text" class="form-control" id="inputArticleTitle" name="title">
-        </div>
-
-        <div class="form-group col-6">
-          <label for="inputAuthor">Author</label>
-          <input type="text" class="form-control" id="inputAuthorname" name="author">
-        </div>
-
-        <div class="form-group col-6">
-          <label for="inputJournal">Journal</label>
-          <input type="text" class="form-control" id="inputJournal" name="journal">
-        </div>
-
-        <div class="form-group col-6">
-            <label for="inputYear">Year</label>
-            <input type="text" class="form-control" id="inputYear" name="year">
-          </div>
-
-        <div class="form-group col-6">
-          <label for="inputvolume">Volume</label>
-          <input type="text" class="form-control" id="inputVolume" name="volume">
-        </div>
-
-        <div class="form-group col-6">
-          <label for="inputPages">Pages</label>
-          <input type="text" class="form-control" id="inputPages" name="pages">
-        </div>
-        <div class="form-group col-6">
-          <input type="submit" class="btn btn-primary" value="Create source">
-        </div>
-
-      </form>
-      {% endif %}
-
-      {% if in_proceedings  %}
-      <form action="/createinproceedings" method="post">
-
-        <div class="form-group col-6">
-          <label for="inputbook_name">In proceeding name</label>
-          <input type="text" class="form-control" id="inputInProceedingName" name="title">
-        </div>
-
-        <div class="form-group col-6">
-          <label for="inputAuthor">Author</label>
-          <input type="text" class="form-control" id="inputAuthorname" name="author">
-        </div>
-        
-        <div class="form-group col-6">
-            <label for="inputYear">Year</label>
-            <input type="text" class="form-control" id="inputYear" name="year">
-          </div>
-
-        <div class="form-group col-6">
-          <label for="inputBookTitle">Booktitle</label>
-          <input type="text" class="form-control" id="inputBooktitle" name="booktitle">
-        </div>
-
-        <div class="form-group col-6">
-          <input type="submit" class="btn btn-primary" value="Create source">
-        </div>
-
-      </form>
-      {% endif %}
-
-      {% if message %}
-        <p>{{ message }}</p>
-      {% endif %}
-
-
-      
+    <div class="form-group text-center">
+      <input type="submit" class="btn btn-primary" value="Search">
     </div>
+
+    </form>
+
+    <h5>Create New Source</h5>
+
+    <form action="/choosesource" method="post">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="radiobutton" id="book" value="book" checked>
+        <label class="form-check-label" for="inlineRadio1">Book</label>
+      </div>
+
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="radiobutton" id="article" value="article">
+        <label class="form-check-label" for="inlineRadio2">Article</label>
+      </div>
+
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="radiobutton" id="in_proceedings" value="in_proceedings">
+        <label class="form-check-label" for="inlineRadio3">In proceedings</label>
+      </div>
+
+      <div class="form-group text-center">
+        <input type="submit" class="btn btn-primary" value="Choose type">
+      </div>
+
+    </form>
+
+
+    {% if book %}
+    <form action="/createbook" method="post">
+      <label>Create Book</label>
+      <div class="form-group text-center">
+        <input type="text" class="form-control text-center" id="inputTitle" name="title" placeholder="Title"
+          value="{{ inputTitle }}">
+      </div>
+
+      <div class="form-group text-center">
+
+        <input type="text" class="form-control text-center" id="inputAuthor" name="author" placeholder="Author"
+          value="{{ inputAuthor }}">
+      </div>
+
+      <div class="form-group text-center">
+
+        <input type="text" class="form-control text-center" id="inputYear" name="year" placeholder="Year"
+          value="{{ inputYear }}">
+      </div>
+
+      <div class="form-group text-center">
+
+        <input type="text" class="form-control text-center" id="inputPublisher" name="publisher"
+          placeholder="Publisher">
+      </div>
+
+      <div class="form-group text-center">
+        <input type="submit" class="btn btn-primary text-center" value="Create book source">
+      </div>
+
+    </form>
+    {% endif %}
+
+    {% if article %}
+    <form action="/createarticle" method="post">
+      <label>Create Article</label>
+
+      <div class="form-group text-center">
+        <input type="text" class="form-control text-center" id="inputTitle" name="title" placeholder="Title"
+          value='{{ inputTitle }}'>
+      </div>
+
+      <div class="form-group text-center">
+        <input type="text" class="form-control text-center" id="inputAuthor" name="author" placeholder="Author"
+          value='{{ inputAuthor }} '>
+      </div>
+
+      <div class="form-group text-center">
+        <input type="text" class="form-control text-center" id="inputJournal" name="journal" placeholder="Journal"
+          value="{{ inputJournal }}">
+      </div>
+
+      <div class="form-group text-center">
+        <input type="text" class="form-control text-center" id="inputYear" name="year" placeholder="Year"
+          value="{{ inputYear }}">
+      </div>
+
+      <div class="form-group text-center">
+        <input type="text" class="form-control text-center" id="inputVolume" name="volume"
+          placeholder="Optional: Volume">
+      </div>
+
+      <div class="form-group text-center">
+        <input type="text" class="form-control text-center" id="inputPages" name="pages" placeholder="Optional: Pages">
+      </div>
+      <div class="form-group text-center">
+        <input type="submit" class="btn btn-primary text-center" value="Create article source">
+      </div>
+
+    </form>
+    {% endif %}
+
+    {% if in_proceedings %}
+    <form action="/createinproceedings" method="post">
+      <label>Create In proceeding</label>
+
+      <div class="form-group text-center">
+        <input type="text" class="form-control text-center" id="inputTitle" name="title" placeholder="Title">
+      </div>
+
+      <div class="form-group text-center">
+        <input type="text" class="form-control text-center" id="inputAuthor" name="author" placeholder="Author">
+      </div>
+
+      <div class="form-group text-center">
+        <input type="text" class="form-control text-center" id="inputYear" name="year" placeholder="Year">
+      </div>
+
+      <div class="form-group text-center">
+        <input type="text" class="form-control text-center" id="inputBooktitle" name="booktitle"
+          placeholder="Booktitle">
+      </div>
+
+      <div class="form-group text-center">
+        <input type="submit" class="btn btn-primary text-center" value="Create in proceedings source">
+      </div>
+
+    </form>
+    {% endif %}
+
+    {% if message %}
+    <div class="alert alert-info" role="alert">
+      <p>{{ message }}</p>
+    </div>
+    {% endif %}
+
+
+
   </div>
 </div>
- <p></p>
-
-
+</div>
+{% endblock %}
