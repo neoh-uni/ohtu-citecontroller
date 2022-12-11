@@ -30,7 +30,7 @@ def create_book():
         if all_fields:
             clf = remove_whitespace(request.form)
             msg = cite_service.add_book(
-                acronym=clf["acronym"]
+                acronym=clf["acronym"],
                 author=clf["author"],
                 publisher=clf["publisher"],
                 title=clf["title"],
@@ -78,7 +78,7 @@ def create_inproceedings():
         if all_fields:
             clf = remove_whitespace(request.form)
             msg = cite_service.add_inproceedings(
-                acronym=clf["acronym"]
+                acronym=clf["acronym"],
                 author=clf["author"],
                 booktitle=clf["booktitle"],
                 title=clf["title"],
