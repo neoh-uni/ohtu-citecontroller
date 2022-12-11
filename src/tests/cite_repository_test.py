@@ -9,25 +9,26 @@ class TestCiteRepocitory(unittest.TestCase):
 
     def test_new_book(self):
         cite_repository.new_book(
-            Book("Test Author", "Title", "2022", "Publisher"), "b{bikoodia"
+            Book("Acronym", "Test Author", "Title", "2022", "Publisher"), "b{bikoodia"
         )
         books = cite_repository.get_books()
 
         self.assertEqual(len(books), 1)
         self.assertEqual(
             [
+                books[0].acronym,
                 books[0].author,
                 books[0].title,
                 books[0].year,
                 books[0].publisher,
                 books[0].bibitex,
             ],
-            ["Test Author", "Title", 2022, "Publisher", "b{bikoodia"],
+            ["Acronym", "Test Author", "Title", 2022, "Publisher", "b{bikoodia"],
         )
 
     def test_new_article(self):
         cite_repository.new_article(
-            Article("Test Author", "Journal", "Title", "2020", "10", "10-12"),
+            Article("Acronym", "Test Author", "Journal", "Title", "2020", "10", "10-12"),
             "b{bikoodia",
         )
         articles = cite_repository.get_articles()
@@ -35,6 +36,7 @@ class TestCiteRepocitory(unittest.TestCase):
         self.assertEqual(len(articles), 1)
         self.assertEqual(
             [
+                articles[0].acronym,
                 articles[0].author,
                 articles[0].journal,
                 articles[0].title,
@@ -43,23 +45,24 @@ class TestCiteRepocitory(unittest.TestCase):
                 articles[0].pages,
                 articles[0].bibitex,
             ],
-            ["Test Author", "Journal", "Title", 2020, 10, "10-12", "b{bikoodia"],
+            ["Acronym", "Test Author", "Journal", "Title", 2020, 10, "10-12", "b{bikoodia"],
         )
 
     def test_new_inproceedings(self):
         cite_repository.new_inproceedings(
-            Inproceedings("Test Author", "Title", "2022", "Booktitle"), "b{bikoodia"
+            Inproceedings("Acronym", "Test Author", "Title", "2022", "Booktitle"), "b{bikoodia"
         )
         inproceedings = cite_repository.get_inproceedings()
 
         self.assertEqual(len(inproceedings), 1)
         self.assertEqual(
             [
+                inproceedings[0].acronym,
                 inproceedings[0].author,
                 inproceedings[0].title,
                 inproceedings[0].year,
                 inproceedings[0].booktitle,
                 inproceedings[0].bibitex,
             ],
-            ["Test Author", "Title", 2022, "Booktitle", "b{bikoodia"],
+            ["Acronym", "Test Author", "Title", 2022, "Booktitle", "b{bikoodia"],
         )
