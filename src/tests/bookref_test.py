@@ -5,12 +5,14 @@ from logic import reference
 class TestBook(unittest.TestCase):
     def setUp(self):
         self.valid_book = reference.Book(
+            acronym="Coder11",
             author="Pro Coder",
             title="What is DevOps?",
             year=2011,
             publisher="unigrafia",
         )
         self.valid_book2 = reference.Book(
+            acronym="Coder11",
             author="Pro Coder",
             title="What is DevOps?",
             year=2011,
@@ -26,6 +28,9 @@ class TestBook(unittest.TestCase):
             volume="99",
         )
         self.error_str = "a" * 5001
+
+    def test_book_acronym(self):
+        self.assertEqual(self.validate_book.acronym, "Coder11")
 
     def test_book_author(self):
         self.assertEqual(self.valid_book.author, "Pro Coder")
@@ -72,6 +77,7 @@ class TestBook(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Book,
+            acronym="Coder11",
             author="Pro Coder",
             title="What is DevOps?",
             year=2011,
@@ -82,6 +88,7 @@ class TestBook(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Book,
+            acronym="Coder11",
             author="Pro C0der",
             title="What is DevOps?",
             year=2011,
@@ -92,6 +99,7 @@ class TestBook(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Book,
+            acronym="Coder11",
             author="Pro Coder",
             title="What is DevOps?",
             year=300,
@@ -100,6 +108,7 @@ class TestBook(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Book,
+            acronym="Coder11"
             author="Pro Coder",
             title="What is DevOps?",
             year=5000,
@@ -107,9 +116,21 @@ class TestBook(unittest.TestCase):
         )
 
     def test_error_with_int_when_exptd_str(self):
+
         self.assertRaises(
             ValueError,
             reference.Book,
+            acronym=2011,
+            author="Pro Coder",
+            title="What is DevOps?",
+            year=2000,
+            publisher="unigrafia",
+        )
+
+        self.assertRaises(
+            ValueError,
+            reference.Book,
+            acronym="Coder11",
             author=1,
             title="What is DevOps?",
             year=2000,
@@ -118,6 +139,7 @@ class TestBook(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Book,
+            acronym="Coder11",
             author="Pro Coder",
             title=2,
             year=2000,
@@ -126,6 +148,7 @@ class TestBook(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Book,
+            acronym="Coder11",
             author="Pro Coder",
             title="What is DevOps?",
             year=2000,
@@ -136,6 +159,7 @@ class TestBook(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Book,
+            acronym="Coder11",
             author="Pro Coder",
             title="What is DevOps?",
             year=2000,
@@ -145,6 +169,7 @@ class TestBook(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Book,
+            acronym="Coder11",
             author="Pro Coder",
             title="What is DevOps?",
             year=2000,
