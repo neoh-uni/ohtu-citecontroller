@@ -4,7 +4,7 @@ from app import db
 class CiteRepository:
     def new_book(self, book, bibi):
 
-        sql = """INSERT INTO cites (id, type, author, title, year, publisher, bibitex)
+        sql = """INSERT INTO cites (acronym, type, author, title, year, publisher, bibitex)
                  VALUES (:acronym, :type, :author, :title, :year, :publisher, :bibitex)"""
         db.session.execute(
             sql,
@@ -21,7 +21,7 @@ class CiteRepository:
         db.session.commit()
 
     def new_article(self, article, bibi):
-        sql = """INSERT INTO cites (id, type, author, title, year, journal, volume, pages, bibitex)
+        sql = """INSERT INTO cites (acronym, type, author, title, year, journal, volume, pages, bibitex)
                 VALUES (:acronym, :type, :author, :title, :year, :journal, :volume, :pages, :bibitex)"""
         db.session.execute(
             sql,
@@ -40,7 +40,7 @@ class CiteRepository:
         db.session.commit()
 
     def new_inproceedings(self, inproceedings, bibi):
-        sql = """INSERT INTO cites (id, type, author, title, year, booktitle, bibitex)
+        sql = """INSERT INTO cites (acronym, type, author, title, year, booktitle, bibitex)
                 VALUES (:acronym, :type, :author, :title, :year, :booktitle, :bibitex)"""
         db.session.execute(
             sql,
@@ -79,9 +79,10 @@ class CiteRepository:
             pass
 
         if is_int:
+            result.append(self.search_field("id", int(keyword), "book"))
             result.append(self.search_field("year", int(keyword), "book"))
 
-        result.append(self.search_field("id", keyword, "book"))
+        result.append(self.search_field("acronym", keyword, "book"))
         result.append(self.search_field("title", keyword, "book"))
         result.append(self.search_field("author", keyword, "book"))
         result.append(self.search_field("publisher", keyword, "book"))
@@ -106,9 +107,10 @@ class CiteRepository:
             pass
 
         if is_int:
+            result.append(self.search_field("id", int(keyword), "article"))
             result.append(self.search_field("year", int(keyword), "article"))
 
-        result.append(self.search_field("id", keyword, "article"))
+        result.append(self.search_field("acronym", keyword, "article"))
         result.append(self.search_field("title", keyword, "article"))
         result.append(self.search_field("author", keyword, "article"))
         result.append(self.search_field("volume", keyword, "article"))
@@ -135,9 +137,10 @@ class CiteRepository:
             pass
 
         if is_int:
+            result.append(self.search_field("id", int(keyword), "inproceedings"))
             result.append(self.search_field("year", int(keyword), "inproceedings"))
 
-        result.append(self.search_field("id", keyword, "inproceedings"))
+        result.append(self.search_field("acronym", keyword, "inproceedings"))
         result.append(self.search_field("title", keyword, "inproceedings"))
         result.append(self.search_field("author", keyword, "inproceedings"))
         result.append(self.search_field("booktitle", keyword, "inproceedings"))
