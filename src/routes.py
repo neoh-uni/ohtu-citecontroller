@@ -16,8 +16,7 @@ def index():
 def doi_to_bibtex():
     doi = request.form["doi"]
     if doi == "":
-        return render_template("index.html")
-        #TOD0 error msg
+        return render_template("index.html", message="Search field empty")
     doi_data = doi_service.get_doi_data(doi)
     return render_template("index.html", **doi_data)
 
