@@ -5,7 +5,7 @@ from logic import reference
 class TestArticle(unittest.TestCase):
     def setUp(self):
         self.valid_article = reference.Article(
-            acronym="Hackerman15"
+            acronym="Hackerman15",
             author="Pro Hackerman",
             title="What is Opsec?",
             journal="AI News",
@@ -14,7 +14,7 @@ class TestArticle(unittest.TestCase):
             pages="44--66",
         )
         self.valid_article2 = reference.Article(
-            acronym="Hackerman15"
+            acronym="Hackerman15",
             author="Pro Hackerman",
             title="What is Opsec?",
             journal="AI News",
@@ -27,7 +27,7 @@ class TestArticle(unittest.TestCase):
             number="12380",
         )
         self.valid_articleNoOpt = reference.Article(
-            acronym="Bond95"
+            acronym="Bond95",
             author="James Bond",
             title="Golden Eye",
             journal="Spy News",
@@ -97,7 +97,7 @@ class TestArticle(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Article,
-            acronym="",
+            acronym=2015,
             author="Pro Hackerman",
             title="What is Opsec?",
             journal="AI News",
