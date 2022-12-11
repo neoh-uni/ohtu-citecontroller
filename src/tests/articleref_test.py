@@ -5,6 +5,7 @@ from logic import reference
 class TestArticle(unittest.TestCase):
     def setUp(self):
         self.valid_article = reference.Article(
+            acronym="Hackerman15"
             author="Pro Hackerman",
             title="What is Opsec?",
             journal="AI News",
@@ -13,6 +14,7 @@ class TestArticle(unittest.TestCase):
             pages="44--66",
         )
         self.valid_article2 = reference.Article(
+            acronym="Hackerman15"
             author="Pro Hackerman",
             title="What is Opsec?",
             journal="AI News",
@@ -25,12 +27,16 @@ class TestArticle(unittest.TestCase):
             number="12380",
         )
         self.valid_articleNoOpt = reference.Article(
+            acronym="Bond95"
             author="James Bond",
             title="Golden Eye",
             journal="Spy News",
             year="1995",
         )
         self.error_str = "a" * 5001
+
+    def test_article_acronym(self):
+        self.assertEqual(self.valid_article.acronym, "Hackerman15")
 
     def test_article_author(self):
         self.assertEqual(self.valid_article.author, "Pro Hackerman")
@@ -78,9 +84,23 @@ class TestArticle(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Article,
+            acronym="Hackerman15",
             author="Pro Hackerman",
             title="What is Opsec?",
             journal=self.error_str,
+            year=2015,
+            volume="3",
+            pages="44--66",
+        )
+
+    def test_error_with_nonvalid_acronym(self):
+        self.assertRaises(
+            ValueError,
+            reference.Article,
+            acronym="",
+            author="Pro Hackerman",
+            title="What is Opsec?",
+            journal="AI News",
             year=2015,
             volume="3",
             pages="44--66",
@@ -90,6 +110,7 @@ class TestArticle(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Article,
+            acronym="Hackerman15",
             author="Pr0 Hackerman",
             title="What is Opsec?",
             journal="AI News",
@@ -102,6 +123,7 @@ class TestArticle(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Article,
+            acronym="Hackerman15",
             author="Pro Hackerman",
             title="What is Opsec?",
             journal="AI News",
@@ -112,6 +134,7 @@ class TestArticle(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Article,
+            acronym="Hackerman15",
             author="Pro Hackerman",
             title="What is Opsec?",
             journal="AI News",
@@ -124,6 +147,19 @@ class TestArticle(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Article,
+            acronym=15,
+            author="Pro Hackerman",
+            title="What is Opsec?",
+            journal="AI News",
+            year=2009,
+            volume="3",
+            pages="44--66",
+        )
+
+        self.assertRaises(
+            ValueError,
+            reference.Article,
+            acronym="Hackerman15",
             author="Pro Hackerman",
             title="What is Opsec?",
             journal=12,
@@ -134,6 +170,7 @@ class TestArticle(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Article,
+            acronym="Hackerman15",
             author="Pro Hackerman",
             title="What is Opsec?",
             journal="AI News",
@@ -144,6 +181,7 @@ class TestArticle(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Article,
+            acronym="Hackerman15",
             author="Pro Hackerman",
             title=1,
             journal="AI News",
@@ -154,6 +192,7 @@ class TestArticle(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Article,
+            acronym="Hackerman15",
             author=12,
             title="mitä ikinä",
             journal="AI News",
@@ -166,6 +205,7 @@ class TestArticle(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Article,
+            acronym="Hackerman15",
             author="Pro Hackerman",
             title="What is Opsec?",
             journal="AI News",
@@ -177,6 +217,7 @@ class TestArticle(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Article,
+            acronym="Hackerman15",
             author="Pro Hackerman",
             title="What is Opsec?",
             journal="AI News",
@@ -188,6 +229,7 @@ class TestArticle(unittest.TestCase):
         self.assertRaises(
             ValueError,
             reference.Article,
+            acronym="Hackerman15",
             author="Pro Hackerman",
             title="What is Opsec?",
             journal="AI News",
