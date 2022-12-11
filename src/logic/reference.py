@@ -58,12 +58,16 @@ def convert_year(given_str):
 
 
 def convert_volume(given_str):
-    if given_str is None:
+    if given_str is None or given_str == "":
         return None
     try:
         return int(given_str)
     except ValueError as exc:
         raise ValueError("Volume was not given as an integer") from exc
+
+def convert_pages(given_str):
+    if given_str == "":
+        return None
 
 
 @define
@@ -111,7 +115,7 @@ class Article:
     year: int = field(converter=convert_year, validator=[check_year])
 
     volume: Optional[int] = field(default=None, converter=convert_volume)
-    pages: Optional[str] = field(default=None, validator=[check_str, check_len])
+    pages: Optional[str] = field(default=None, converter=convert_pages, validator=[check_str, check_len])
     month: Optional[str] = field(default=None, validator=[check_str, check_len])
     note: Optional[str] = field(default=None, validator=[check_str, check_len])
     number: Optional[str] = field(default=None, validator=[check_str, check_len])
