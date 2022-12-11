@@ -17,13 +17,12 @@ class DoiService:
 
     def get_from_datacite(self, response):
         try:
-            if response["errors"][0]["status"] == "404":
-                return self.not_found()
+            doi_dict = response.json()
+            data_dict = doi_dict["data"]["attributes"]
+        except requests.exceptions.JSONDecodeError:
+            return self.not_found()
         except KeyError:
-            pass
-        doi_dict = response.json()
-        data_dict = doi_dict["data"]["attributes"]
-
+            return self.not_found()
         input_dict = {}
 
         input_dict["inputAuthor"] = ", ".join(
@@ -41,21 +40,22 @@ class DoiService:
         return input_dict
 
     def get_from_crossref(self, response):
-        try:
-            if response == "Resource not found.":
-                return self.not_found()
-        except KeyError:
-            pass
 
-        doi_dict = response.json()
-        data_dict = doi_dict["message"]
+        try:
+            doi_dict = response.json()
+            data_dict = doi_dict["message"]
+        except requests.exceptions.JSONDecodeError:
+            return self.not_found()
+        except KeyError:
+            return self.not_found()
+
         input_dict = {}
 
         input_dict["inputAuthor"] = ", ".join(
             f"{name['given']} {name['family']}" for name in data_dict["author"]
         )
         input_dict["inputTitle"] = data_dict["title"][0]
-        input_dict["inputYear"] = data_dict["created"]["date-parts"][0][0]
+        input_dict["inputYear"] = str(data_dict["created"]["date-parts"][0][0])
 
         if data_dict["type"] == "journal-article":
             input_dict["article"] = True
@@ -82,7 +82,7 @@ class DoiService:
         return requests.get(api_url, verify=False, timeout=10)
 
     def not_found(self):
-        return "{'books':True, 'title': 'Resource not found.'}"
+        return {'message': 'Resource not found.'}
 
 
 doi_service = DoiService()
