@@ -66,6 +66,12 @@
     {% if book %}
     <form action="/createbook" method="post">
       <label>Create Book</label>
+
+      <div class="form-group text-center">
+        <input type="text" class="form-control text-center" id="inputAcronym" name="acronym" placeholder="Acronym"
+          value="{{ inputAcronym }}">
+      </div>
+
       <div class="form-group text-center">
         <input type="text" class="form-control text-center" id="inputTitle" name="title" placeholder="Title"
           value="{{ inputTitle }}">
@@ -101,13 +107,18 @@
       <label>Create Article</label>
 
       <div class="form-group text-center">
+        <input type="text" class="form-control text-center" id="inputAcronym" name="acronym" placeholder="Acronym"
+          value="{{ inputAcronym }}">
+      </div>
+
+      <div class="form-group text-center">
         <input type="text" class="form-control text-center" id="inputTitle" name="title" placeholder="Title"
           value='{{ inputTitle }}'>
       </div>
 
       <div class="form-group text-center">
         <input type="text" class="form-control text-center" id="inputAuthor" name="author" placeholder="Author"
-          value='{{ inputAuthor }} '>
+          value='{{ inputAuthor }}'>
       </div>
 
       <div class="form-group text-center">
@@ -138,6 +149,11 @@
     {% if in_proceedings %}
     <form action="/createinproceedings" method="post">
       <label>Create In proceeding</label>
+
+      <div class="form-group text-center">
+        <input type="text" class="form-control text-center" id="inputAcronym" name="acronym" placeholder="Acronym"
+          value="{{ inputAcronym }}">
+      </div>
 
       <div class="form-group text-center">
         <input type="text" class="form-control text-center" id="inputTitle" name="title" placeholder="Title">

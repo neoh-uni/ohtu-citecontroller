@@ -8,27 +8,27 @@ class CiteService:
     def __init__(self, cite_repository=default_cite_repository):
         self._cite_repository = cite_repository
 
-    def add_book(self, author, title, year, publisher):
+    def add_book(self, acronym, author, title, year, publisher):
         try:
-            book = reference.Book(author, title, year, publisher)
+            book = reference.Book(acronym, author, title, year, publisher)
             bibi = self.to_bibitex(book, "book")
             self._cite_repository.new_book(book, bibi)
             return "Book added"
         except ValueError as err:
             return err
 
-    def add_article(self, author, title, year, journal, volume, pages):
+    def add_article(self, acronym, author, title, year, journal, volume, pages):
         try:
-            article = reference.Article(author, journal, title, year, volume, pages)
+            article = reference.Article(acronym, author, journal, title, year, volume, pages)
             bibi = self.to_bibitex(article, "article")
             self._cite_repository.new_article(article, bibi)
             return "Article added"
         except ValueError as err:
             return err
 
-    def add_inproceedings(self, author, title, year, booktitle):
+    def add_inproceedings(self, acronym, author, title, year, booktitle):
         try:
-            inproceedings = reference.Inproceedings(author, title, year, booktitle)
+            inproceedings = reference.Inproceedings(acronym, author, title, year, booktitle)
             bibi = self.to_bibitex(inproceedings, "inproceedings")
             self._cite_repository.new_inproceedings(inproceedings, bibi)
             return "Inproceedings added"
@@ -67,7 +67,7 @@ class CiteService:
             (name, value) for name, value in asdict(ref).items() if value is not None
         ]
 
-        bibi = f"@{ref_type}{{CITEACRONYM,\n"
+        bibi = f"@{ref_type}{{{ref.acronym},\n"
         for (attribute, value) in non_none_attrs:
             bibi += "    " + attribute + " = {" + str(value) + "},\n"
         bibi += "}"

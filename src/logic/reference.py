@@ -83,6 +83,7 @@ class Book:
     }
     """
 
+    acronym: str = field(validator=[check_str, check_len])
     author: str = field(validator=[check_str, check_name, check_len])
     title: str = field(validator=[check_str, check_len])
     year: int = field(converter=convert_year, validator=[check_year])
@@ -111,6 +112,7 @@ class Article:
     }
     """
 
+    acronym: str = field(validator=[check_str, check_len])
     author: str = field(validator=[check_str, check_name, check_len])
     journal: str = field(validator=[check_str, check_len])
     title: str = field(validator=[check_str, check_len])
@@ -137,6 +139,7 @@ class Inproceedings:
     }
     """
 
+    acronym: str = field(validator=[check_str, check_len])
     author: str = field(validator=[check_str, check_name, check_len])
     title: str = field(validator=[check_str, check_len])
     year: int = field(converter=convert_year, validator=[check_year])
