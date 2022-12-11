@@ -30,7 +30,7 @@ class TestBook(unittest.TestCase):
         self.error_str = "a" * 5001
 
     def test_book_acronym(self):
-        self.assertEqual(self.validate_book.acronym, "Coder11")
+        self.assertEqual(self.valid_book.acronym, "Coder11")
 
     def test_book_author(self):
         self.assertEqual(self.valid_book.author, "Pro Coder")
