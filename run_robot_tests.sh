@@ -4,7 +4,7 @@
 poetry run python3 src/run.py &
 
 # odetetaan, että palvelin on valmiina ottamaan vastaan pyyntöjä
-while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:5000/index.html)" != "200" ]];
+while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:5000/index.html)" != "404" ]];
   do sleep 1;
 done
 
