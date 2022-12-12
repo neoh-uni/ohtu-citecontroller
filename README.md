@@ -39,6 +39,4 @@ Deployed at: https://citecontroller.herokuapp.com/
 `heroku config:set POETRY_VERSION=1.2.2 -a citecontroller`
 
 ## References
-[OhTu example app](https://github.com/ohjelmistotuotanto-hy/todo-web
-)
-
+[OhTu example app](https://github.com/ohjelmistotuotanto-hy/todo-web)
