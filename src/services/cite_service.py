@@ -62,7 +62,7 @@ class CiteService:
             bibi += "    " + attribute + " = {" + str(value) + "},\n"
         bibi += "}"
         return bibi
-
+        
     def all_bibtex_out(self):
         bibtexs = self._cite_repository.get_only_bibtex()
         with open("references.bib", "w", encoding="utf-8") as f:
