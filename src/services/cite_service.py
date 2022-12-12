@@ -59,7 +59,8 @@ class CiteService:
 
         bibi = f"@{ref_type}{{{ref.acronym},\n"
         for (attribute, value) in non_none_attrs:
-            bibi += "    " + attribute + " = {" + str(value) + "},\n"
+            if attribute != "acronym":
+                bibi += "    " + attribute + " = {" + str(value) + "},\n"
         bibi += "}"
         return bibi
 
