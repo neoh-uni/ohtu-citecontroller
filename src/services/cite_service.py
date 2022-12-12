@@ -35,16 +35,6 @@ class CiteService:
         except ValueError as err:
             return err
 
-    def get_doi_data(self, doi: str):
-        # datacite_url = f"https://api.datacite.org/works/{doi}"
-        crossref_url = f"https://api.crossref.org/works/{doi}"
-        response = requests.get(crossref_url)
-        if response == "Resource not found.":
-            data = {"ref": "books", "title": "Resource not found."}
-        else:
-            data = response.json()
-        bibtex = data["data"]["attributes"]
-        print(bibtex)
 
     def get_all(self):
         return list(
