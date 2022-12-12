@@ -157,15 +157,12 @@ def search():
             in_proceedings=in_proceedings,
             all=True,
         )
-#https://www.educative.io/answers/how-to-download-files-in-flask
-#free tier zoomi loppu XD voitko teha miitin lOl sekka
 
 @routes.route("/download_bib", methods=["POST"])
 def bibload():
     file_path = cite_service.all_bibtex_out()
-    #return render_template('references.html')
-    return send_file(file_path, as_attachment=True, download_name="references.bib")
 
+    return send_file(file_path, as_attachment=True, download_name="references.bib")
 
 def check_field(form: dict, check_list: list):
     for att in check_list:
