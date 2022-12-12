@@ -9,10 +9,14 @@ See List Of Just Bibitex
     Create Book
     Go To References Page
     Select Radio Button  radiobutton  bibitex
-    Click Button  choose type
-    Page Should Contain  author = {Kirjan Kirjoittaja},
+    Click Button  Choose type
+    Page Should Contain  author = {J.R.R. Tolkien},
 
 *** Keywords ***
+Set Acronym
+    [Arguments]  ${acronym}
+    Input Text  acronym  ${acronym}
+
 Set Title
     [Arguments]  ${title}
     Input Text  title  ${title}
@@ -32,9 +36,10 @@ Set Publisher
 
 Create Book
     Select Radio Button  radiobutton  book
-    Click Button  choose type
-    Set Title  kirja
-    Set Author  Kirjan Kirjoittaja
-    Set Year    2000
-    Set Publisher  julkaisija
-    Click Button  Create source
+    Click Button  Choose type
+    Set Acronym  tolkien
+    Set Title  Taru sormusten herrasta
+    Set Author  J.R.R. Tolkien
+    Set Year    1954
+    Set Publisher  WSOY
+    Click Button  Create book source

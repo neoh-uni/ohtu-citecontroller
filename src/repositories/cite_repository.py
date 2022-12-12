@@ -166,10 +166,14 @@ class CiteRepository:
         db.session.execute(sql)
         db.session.commit()
 
-    def get_bibitex(self, type):
+    def get_bibitex(self, ref_type):
 
         sql = "SELECT id, bibitex FROM cites WHERE type =:type"
-        return db.session.execute(sql, {"type": type}).fetchall()
+        return db.session.execute(sql, {"type": ref_type}).fetchall()
+
+    def get_only_bibtex(self):
+        sql = "SELECT bibitex FROM cites"
+        return db.session.execute(sql).fetchall()
 
     def get_by_id(self, id):
 

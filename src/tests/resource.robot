@@ -2,9 +2,9 @@
 Library  SeleniumLibrary
 
 *** Variables ***
-${SERVER}  citecontroller.herokuapp.com
-${BROWSER}  chrome
-${DELAY}  0.5
+${SERVER}  localhost:5000
+${BROWSER}  headlesschrome
+${DELAY}  0
 ${HOME URL}  http://${SERVER}
 ${REFERENCES URL}  http://${SERVER}/references
 
