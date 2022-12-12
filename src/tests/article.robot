@@ -8,6 +8,7 @@ Test Setup  Go To Home Page
 Adding Article With Valid Everything
     Select Radio Button  radiobutton  article
     Choose Type
+    Set Acronym  astronomy
     Set Title  Artikkeli
     Set Author  Artikkelin Kirjoittaja
     Set Year    2000
@@ -18,9 +19,22 @@ Adding Article With Valid Everything
     Adding Should Succeed
 
 #JOKU KENTTÄ TYHJÄ
+Adding Article Without Acronym
+    Select Radio Button  radiobutton  article
+    Choose Type
+    Set Title  Artikkeli
+    Set Author  Artikkelin Kirjoittaja
+    Set Year    2000
+    Set Journal  Journal
+    Set Volume  6
+    Set Pages  20-22
+    Submit Reference
+    Adding Should Fail With Message  All fields must have a value
+
 Adding Article Without Year
     Select Radio Button  radiobutton  article
     Choose Type
+    Set Acronym  astronomy
     Set Title  Artikkeli
     Set Author  Artikkelin Kirjoittaja
     Set Journal  Journal
@@ -32,6 +46,7 @@ Adding Article Without Year
 Adding Article Without Title
     Select Radio Button  radiobutton  article
     Choose Type
+    Set Acronym  astronomy
     Set Author  Artikkelin Kirjoittaja
     Set Year    2000
     Set Journal  Journal
@@ -43,6 +58,7 @@ Adding Article Without Title
 Adding Article Without Author
     Select Radio Button  radiobutton  article
     Choose Type
+    Set Acronym  astronomy
     Set Title  Artikkeli
     Set Year    2000
     Set Journal  Journal
@@ -54,6 +70,7 @@ Adding Article Without Author
 Adding Article Without Journal
     Select Radio Button  radiobutton  article
     Choose Type
+    Set Acronym  astronomy
     Set Title  Artikkeli
     Set Author  Artikkelin Kirjoittaja
     Set Year    2000
@@ -66,6 +83,7 @@ Adding Article Without Journal
 Adding Article With Invalid Year
     Select Radio Button  radiobutton  article
     Choose Type
+    Set Acronym  astronomy
     Set Title  Artikkeli
     Set Author  Artikkelin Kirjoittaja
     Set Year    2
@@ -78,6 +96,7 @@ Adding Article With Invalid Year
 Adding Article With Invalid Author
     Select Radio Button  radiobutton  article
     Choose Type
+    Set Acronym  astronomy
     Set Title  Artikkeli
     Set Author  Author
     Set Year    2000
@@ -95,6 +114,10 @@ Adding Should Succeed
 Adding Should Fail With Message
     [Arguments]  ${message}
     Page Should Contain  ${message}
+
+Set Acronym
+    [Arguments]  ${acronym}
+    Input Text  acronym  ${acronym}
 
 Set Title
     [Arguments]  ${article}
@@ -122,7 +145,7 @@ Set Volume
 
 
 Submit Reference
-    Click Button  Create source
+    Click Button  Create article source
 
 Choose Type
-    Click Button  choose type
+    Click Button  Choose type

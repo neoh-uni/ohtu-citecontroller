@@ -8,10 +8,11 @@ Test Setup  Go To Home Page
 Adding Book With Valid Everything
     Select Radio Button  radiobutton  book
     Choose Type
-    Set Title  kirja
-    Set Author  Kirjan Kirjoittaja
-    Set Year    2000
-    Set Publisher  julkaisija
+    Set Acronym  tolkien
+    Set Title  Taru sormusten herrasta
+    Set Author  J.R.R. Tolkien
+    Set Year    1954
+    Set Publisher  WSOY
     Submit Reference
     Adding Should Succeed
 
@@ -19,36 +20,50 @@ Adding Book With Valid Everything
 Adding Book Without Year
     Select Radio Button  radiobutton  book
     Choose Type
-    Set Title  kirja
-    Set Author  Kirjan Kirjoittaja
-    Set Publisher  julkaisija
+    Set Acronym  tolkien
+    Set Title  Taru sormusten herrasta
+    Set Author  J.R.R. Tolkien
+    Set Publisher  WSOY
     Submit Reference
     Adding Should Fail With Message  All fields must have a value
 
 Adding Book Without Title
     Select Radio Button  radiobutton  book
     Choose Type
-    Set Author  Kirjan Kirjoittaja
-    Set Year    2000
-    Set Publisher  julkaisija
+    Set Acronym  tolkien
+    Set Author  J.R.R. Tolkien
+    Set Year    1954
+    Set Publisher  WSOY
     Submit Reference
     Adding Should Fail With Message  All fields must have a value
 
 Adding Book Without Author
     Select Radio Button  radiobutton  book
     Choose Type
-    Set Title  kirja
-    Set Year    2000
-    Set Publisher  julkaisija
+    Set Acronym  tolkien
+    Set Title  Taru sormusten herrasta
+    Set Year    1954
+    Set Publisher  WSOY
     Submit Reference
     Adding Should Fail With Message  All fields must have a value
 
 Adding Book Without Publisher
     Select Radio Button  radiobutton  book
     Choose Type
-    Set Title  kirja
-    Set Author  Kirjan Kirjoittaja
-    Set Year    2000
+    Set Acronym  tolkien
+    Set Title  Taru sormusten herrasta
+    Set Author  J.R.R. Tolkien
+    Set Year    1954
+    Submit Reference
+    Adding Should Fail With Message  All fields must have a value
+
+Adding Book Without Acronym
+    Select Radio Button  radiobutton  book
+    Choose Type
+    Set Title  Taru sormusten herrasta
+    Set Author  J.R.R. Tolkien
+    Set Year    1954
+    Set Publisher  WSOY
     Submit Reference
     Adding Should Fail With Message  All fields must have a value
 
@@ -56,20 +71,22 @@ Adding Book Without Publisher
 Adding Book With Invalid Year
     Select Radio Button  radiobutton  book
     Choose Type
-    Set Title  kirja
-    Set Author  Kirjan Kirjoittaja
+    Set Acronym  tolkien
+    Set Title  Taru sormusten herrasta
+    Set Author  J.R.R. Tolkien
     Set Year    2
-    Set Publisher  julkaisija
+    Set Publisher  WSOY
     Submit Reference
     Adding Should Fail With Message  Given year is not in range [500, 2027]
 
 Adding Book With Invalid Author
     Select Radio Button  radiobutton  book
     Choose Type
-    Set Title  kirja
+    Set Acronym  tolkien
+    Set Title  Taru sormusten herrasta
     Set Author  Author
-    Set Year    2000
-    Set Publisher  julkaisija
+    Set Year    1954
+    Set Publisher  WSOY
     Submit Reference
     Adding Should Fail With Message  First name and surname is required
     
@@ -81,6 +98,10 @@ Adding Should Succeed
 Adding Should Fail With Message
     [Arguments]  ${message}
     Page Should Contain  ${message}
+
+Set Acronym
+    [Arguments]  ${acronym}
+    Input Text  acronym  ${acronym}
 
 Set Title
     [Arguments]  ${title}
@@ -100,7 +121,7 @@ Set Publisher
 
 
 Submit Reference
-    Click Button  Create source
+    Click Button  Create book source
 
 Choose Type
-    Click Button  choose type
+    Click Button  Choose type

@@ -8,6 +8,7 @@ Test Setup  Go To Home Page
 Adding Inproceedings With Valid Everything
     Select Radio Button  radiobutton  in_proceedings
     Choose Type
+    Set Acronym  proceeding
     Set Title  inproceeding
     Set Author  Inproceedingin Kirjoittaja
     Set Year    2000
@@ -16,9 +17,20 @@ Adding Inproceedings With Valid Everything
     Adding Should Succeed
 
 #JOKU KENTTÄ TYHJÄ
+Adding Inproceedings Without Acronym
+    Select Radio Button  radiobutton  in_proceedings
+    Choose Type
+    Set Title  inproceeding
+    Set Author  Inproceedingin Kirjoittaja
+    Set Year    2000
+    Set Booktitle  booktitle
+    Submit Reference
+    Adding Should Fail With Message  All fields must have a value
+
 Adding Inproceedings Without Year
     Select Radio Button  radiobutton  in_proceedings
     Choose Type
+    Set Acronym  proceeding
     Set Title  inproceeding
     Set Author  Inproceedingin Kirjoittaja
     Set Booktitle  booktitle
@@ -28,6 +40,7 @@ Adding Inproceedings Without Year
 Adding Inproceedings Without Title
     Select Radio Button  radiobutton  in_proceedings
     Choose Type
+    Set Acronym  proceeding
     Set Author  Inproceedingin Kirjoittaja
     Set Year    2000
     Set Booktitle  booktitle
@@ -37,6 +50,7 @@ Adding Inproceedings Without Title
 Adding Inproceedings Without Author
     Select Radio Button  radiobutton  in_proceedings
     Choose Type
+    Set Acronym  proceeding
     Set Title  inproceeding
     Set Year    2000
     Set Booktitle  booktitle
@@ -46,6 +60,7 @@ Adding Inproceedings Without Author
 Adding Inproceedings Without Booktitle
     Select Radio Button  radiobutton  in_proceedings
     Choose Type
+    Set Acronym  proceeding
     Set Title  Inproceeding
     Set Author  Inproceedingin Kirjoittaja
     Set Year    2000
@@ -56,6 +71,7 @@ Adding Inproceedings Without Booktitle
 Adding Inproceedings With Invalid Year
     Select Radio Button  radiobutton  in_proceedings
     Choose Type
+    Set Acronym  proceeding
     Set Title  Inproceeding
     Set Author  Inproceedingin Kirjoittaja
     Set Year    2
@@ -66,6 +82,7 @@ Adding Inproceedings With Invalid Year
 Adding Inproceedings With Invalid Author
     Select Radio Button  radiobutton  in_proceedings
     Choose Type
+    Set Acronym  proceeding
     Set Title  Inproceeding
     Set Author  Author
     Set Year    2000
@@ -80,6 +97,10 @@ Adding Should Succeed
 Adding Should Fail With Message
     [Arguments]  ${message}
     Page Should Contain  ${message}
+
+Set Acronym
+    [Arguments]  ${acronym}
+    Input Text  acronym  ${acronym}
 
 Set Title
     [Arguments]  ${title}
@@ -98,7 +119,7 @@ Set Booktitle
     Input Text  booktitle  ${booktitle}
 
 Submit Reference
-    Click Button  Create source
+    Click Button  Create in proceedings source
 
 Choose Type
-    Click Button  choose type
+    Click Button  Choose type
