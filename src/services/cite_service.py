@@ -1,7 +1,7 @@
 from attrs import asdict
 from repositories.cite_repository import cite_repository as default_cite_repository
 from logic import reference
-import requests
+from pathlib import Path
 
 
 class CiteService:
@@ -62,6 +62,15 @@ class CiteService:
             bibi += "    " + attribute + " = {" + str(value) + "},\n"
         bibi += "}"
         return bibi
+
+    def all_bibtex_out(self):
+        bibtexs = self._cite_repository.get_only_bibtex()
+        with open("references.bib", "w", encoding="utf-8") as f:
+            for bib in bibtexs:
+               f.write(bib.bibitex)
+               f.write("\n\n")
+        return Path().absolute() / "references.bib"
+
 
     def book_search(self, keyword):
 
