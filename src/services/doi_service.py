@@ -59,7 +59,7 @@ class DoiService:
 
         if data_dict["type"] == "journal-article":
             input_dict["article"] = True
-        if data_dict["type"] == "monograph" or data_dict["type"] == "book-chapter":
+        if data_dict["type"] == "monograph" or data_dict["type"] == "book-chapter" or data_dict["type"] == "book":
             input_dict["book"] = True
             input_dict["inputPublisher"] = data_dict["publisher"]
 
