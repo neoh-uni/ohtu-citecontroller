@@ -142,9 +142,9 @@ def search():
 
     keyword = request.form["keyword"]
 
-    books = cite_service.book_search2(keyword)
-    articles = cite_service.article_search2(keyword)
-    in_proceedings = cite_service.in_proceedings_search2(keyword)
+    books = cite_service.book_search(keyword)
+    articles = cite_service.article_search(keyword)
+    in_proceedings = cite_service.in_proceedings_search(keyword)
 
     if books is None and articles is None and in_proceedings is None:
         flash("No searches found")
