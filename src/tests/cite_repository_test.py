@@ -66,3 +66,34 @@ class TestCiteRepocitory(unittest.TestCase):
             ],
             ["Acronym", "Test Author", "Title", 2022, "Booktitle", "b{bikoodia"],
         )
+        
+    def test_get_bibitext(self):
+        cite_repository.new_book(
+            Book("Acronym", "Test Author", "Title", "2022", "Publisher"), "b{bikoodia"
+        )
+        books = cite_repository.get_bibitex("book")
+        self.assertEqual([books[0].id, books[0].bibitex], [1, "b{bikoodia"])
+    
+    def test_get_bibitext_returs_empty_list_if_table_is_empty(self):
+        books = cite_repository.get_bibitex("book")
+        self.assertEqual(len(books), 0)
+
+    def test_get_only_bibitext(self):
+        cite_repository.new_book(
+            Book("Acronym", "Test Author", "Title", "2022", "Publisher"), "b{bikoodia"
+        )
+        result = cite_repository.get_only_bibtex()
+        self.assertEqual(result[0].bibitex, "b{bikoodia")
+    
+    def test_get_by_id(self):
+        cite_repository.new_book(
+            Book("Acronym", "Test Author", "Title", "2022", "Publisher"), "b{bikoodia"
+        )
+        cite_repository.new_inproceedings(
+            Inproceedings("Acronym", "Test Author", "Title", "2022", "Booktitle"), "b{bikoodia"
+        )
+        result = cite_repository.get_by_id(2)
+        print(result)
+        self.assertEqual(result, 
+                        (2,'Acronym', 'book', 'Title', 'Test Author', 2022, 'Publisher', None, None, None, None, 'b{bikoodia')
+        )
