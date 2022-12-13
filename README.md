@@ -41,4 +41,3 @@ Deployed at: https://citecontroller.herokuapp.com/
 ## References
 [OhTu example app](https://github.com/ohjelmistotuotanto-hy/todo-web
 )
-
