@@ -72,21 +72,7 @@ class CiteService:
                f.write("\n\n")
         return Path().absolute() / "references.bib"
 
-
     def book_search(self, keyword):
-
-        return self._cite_repository.book_search(keyword)
-
-    def article_search(self, keyword):
-
-        return self._cite_repository.article_search(keyword)
-
-    def in_proceedings_search(self, keyword):
-
-        return self._cite_repository.in_proceedings_search(keyword)
-
-    def book_search2(self, keyword):
-
         books = self._cite_repository.get_bibitex("book")
         result = []
         for book in books:
@@ -95,7 +81,7 @@ class CiteService:
 
         return result
 
-    def article_search2(self, keyword):
+    def article_search(self, keyword):
 
         articles = self._cite_repository.get_bibitex("article")
         result = []
@@ -105,7 +91,7 @@ class CiteService:
 
         return result
 
-    def in_proceedings_search2(self, keyword):
+    def in_proceedings_search(self, keyword):
 
         in_proceedings = self._cite_repository.get_bibitex("inproceedings")
         result = []
