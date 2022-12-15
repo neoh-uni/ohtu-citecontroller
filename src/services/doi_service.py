@@ -25,7 +25,7 @@ class DoiService:
             return self.not_found()
         input_dict = {}
 
-        input_dict["inputAuthor"] = ", ".join(
+        input_dict["inputAuthor"] = " and ".join(
             f"{name['given']} {name['family']}" for name in data_dict["author"]
         )
         input_dict["inputTitle"] = data_dict["title"]
@@ -51,7 +51,7 @@ class DoiService:
 
         input_dict = {}
 
-        input_dict["inputAuthor"] = ", ".join(
+        input_dict["inputAuthor"] = " and ".join(
             f"{name['given']} {name['family']}" for name in data_dict["author"]
         )
         input_dict["inputTitle"] = data_dict["title"][0]
