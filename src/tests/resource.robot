@@ -3,8 +3,8 @@ Library  SeleniumLibrary
 
 *** Variables ***
 ${SERVER}  localhost:5000
-${BROWSER}  chrome
-${DELAY}  0.5
+${BROWSER}  headlesschrome
+${DELAY}  0
 ${HOME URL}  http://${SERVER}
 ${REFERENCES URL}  http://${SERVER}/references
 
