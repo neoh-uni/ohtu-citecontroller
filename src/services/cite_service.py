@@ -3,7 +3,6 @@ from repositories.cite_repository import cite_repository as default_cite_reposit
 from logic import reference
 from pathlib import Path
 
-
 class CiteService:
     def __init__(self, cite_repository=default_cite_repository):
         self._cite_repository = cite_repository
@@ -59,7 +58,9 @@ class CiteService:
 
         bibi = f"@{ref_type}{{{ref.acronym},\n"
         for (attribute, value) in non_none_attrs:
-            if attribute != "acronym":
+            if attribute == "author":
+                bibi += "    " + attribute + " = {" + str(value).replace(", ", " and ") + "},\n"
+            elif attribute != "acronym":
                 bibi += "    " + attribute + " = {" + str(value) + "},\n"
         bibi += "}"
         return bibi
