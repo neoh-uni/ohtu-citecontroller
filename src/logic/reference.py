@@ -24,7 +24,7 @@ def check_name(instance_unused, attribute_unused, given_name):
     - Firstname + ... + Surname
     - str made of [Aa-Zz]
     """
-    given_name = given_name.replace(".", "").replace(",", "")
+    given_name = given_name.replace(".", " ").replace(",", " ").replace("-", " ")
     split_name = given_name.split()
     len_n = len(split_name)
     if len_n < 2:

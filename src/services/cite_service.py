@@ -3,7 +3,6 @@ from repositories.cite_repository import cite_repository as default_cite_reposit
 from logic import reference
 from pathlib import Path
 
-
 class CiteService:
     def __init__(self, cite_repository=default_cite_repository):
         self._cite_repository = cite_repository
@@ -59,11 +58,13 @@ class CiteService:
 
         bibi = f"@{ref_type}{{{ref.acronym},\n"
         for (attribute, value) in non_none_attrs:
-            if attribute != "acronym":
+            if attribute == "author":
+                bibi += "    " + attribute + " = {" + str(value).replace(", ", " and ") + "},\n"
+            elif attribute != "acronym":
                 bibi += "    " + attribute + " = {" + str(value) + "},\n"
         bibi += "}"
         return bibi
-
+        
     def all_bibtex_out(self):
         bibtexs = self._cite_repository.get_only_bibtex()
         with open("references.bib", "w", encoding="utf-8") as f:
@@ -72,21 +73,7 @@ class CiteService:
                f.write("\n\n")
         return Path().absolute() / "references.bib"
 
-
     def book_search(self, keyword):
-
-        return self._cite_repository.book_search(keyword)
-
-    def article_search(self, keyword):
-
-        return self._cite_repository.article_search(keyword)
-
-    def in_proceedings_search(self, keyword):
-
-        return self._cite_repository.in_proceedings_search(keyword)
-
-    def book_search2(self, keyword):
-
         books = self._cite_repository.get_bibitex("book")
         result = []
         for book in books:
@@ -95,7 +82,7 @@ class CiteService:
 
         return result
 
-    def article_search2(self, keyword):
+    def article_search(self, keyword):
 
         articles = self._cite_repository.get_bibitex("article")
         result = []
@@ -105,7 +92,7 @@ class CiteService:
 
         return result
 
-    def in_proceedings_search2(self, keyword):
+    def in_proceedings_search(self, keyword):
 
         in_proceedings = self._cite_repository.get_bibitex("inproceedings")
         result = []
