@@ -28,7 +28,7 @@ def check_name(instance_unused, attribute_unused, given_name):
     split_name = given_name.split()
     len_n = len(split_name)
     if len_n < 2:
-        raise ValueError("First name and surname is required")
+        raise ValueError("First name and surname are both required")
     for name in split_name:
         if not name.isalpha():
             raise ValueError("Name has to consists only of alphabet letters")
